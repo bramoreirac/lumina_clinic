@@ -24,5 +24,9 @@ dist-ssr
 *.sw?
 
 # customer files
-customer_files/*
-docs/*
+customer_files/
+docs/
+
+# agent skills
+.agents/
+.impeccable/

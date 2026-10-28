@@ -1,0 +1,20 @@
+{
+  "portrait": {
+    "path": "../customer_files/content/snapgram.io_cj70oscefdan.jpg",
+    "origin": "Customer-supplied Instagram download; approved for website portrait publication in this conversation.",
+    "sha256": "19720a719317ef51f910cab18f24d3e17ea7965866dd42421af267527ecf3578",
+    "role": "Local design preview hero; original file unchanged."
+  },
+  "fonts": [
+    {
+      "path": "fonts/playfair-display.ttf",
+      "origin": "https://github.com/google/fonts/tree/main/ofl/playfairdisplay",
+      "license": "fonts/PlayfairDisplay-OFL.txt"
+    },
+    {
+      "path": "fonts/montserrat.ttf",
+      "origin": "https://github.com/google/fonts/tree/main/ofl/montserrat",
+      "license": "fonts/Montserrat-OFL.txt"
+    }
+  ]
+}
