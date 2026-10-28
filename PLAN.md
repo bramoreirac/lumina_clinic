@@ -2,7 +2,7 @@
 
 Prepared: 27 October 2026.
 
-Status: Phase 1 discovery inventory prepared in [PHASE_1.md](PHASE_1.md). Phase 2 working design preview prepared in [design/index.html](design/index.html), with its visual-system handoff in [DESIGN.md](DESIGN.md). Final visual approval, React implementation, and deployment remain ahead.
+Status: The personal-welcome preview was reviewed positively. This branch compares a clinic-introduction variant at [design/index.html](design/index.html), with the visual handoff in [DESIGN.md](DESIGN.md) and search strategy in [SEO.md](SEO.md). Review of this alternate layout, React implementation, and deployment remain ahead.
 
 ## 1. Objective and agreed constraints
 
@@ -166,7 +166,8 @@ Source review, asset recommendations, the service catalog, draft copy, and custo
 - [x] Create mobile and desktop layouts using supplied content and the approved doctor portrait.
 - [x] Define navigation, service presentation, contact placement, and interaction states.
 - [x] Validate the browser preview at 320, 390, 768, 1024, and 1440 CSS pixels; check fonts, images, overflow, menu/FAQ keyboard behavior, and navigation without JavaScript. Lint passes.
-- [ ] Obtain user review of the full visual preview before React implementation. The user already chose a working browser preview and doctor introduction with portrait/personal welcome.
+- [x] Receive positive user review of the personal-welcome preview.
+- [ ] Review the clinic-introduction alternative requested on `feature/optionb` before choosing the composition for React implementation.
 
 Preview: run the existing Vite server and open `/design/`. See [design/README.md](design/README.md) for instructions and review scope. This is a local HTML/CSS/JavaScript prototype; `/` remains the original React starter and the default production build does not include the prototype. Draft copy and missing logo/address remain tracked dependencies.
 

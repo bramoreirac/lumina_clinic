@@ -10,9 +10,21 @@ colors:
 typography:
   display:
     fontFamily: "Playfair Display, Georgia, serif"
-    fontSize: "clamp(2.6rem, 4.25vw, 4rem)"
+    fontSize: "clamp(3.7rem, 9vw, 6rem)"
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: "0.08em"
+  hero-descriptor:
+    fontFamily: "Playfair Display, Georgia, serif"
+    fontSize: "clamp(2rem, 3.5vw, 3rem)"
     fontWeight: 700
-    lineHeight: 1.15
+    lineHeight: 1.2
+    letterSpacing: "-0.035em"
+  hero-descriptor-mobile:
+    fontFamily: "Playfair Display, Georgia, serif"
+    fontSize: "clamp(1.8rem, 5.5vw, 2.6rem)"
+    fontWeight: 700
+    lineHeight: 1.2
     letterSpacing: "-0.035em"
   headline:
     fontFamily: "Playfair Display, Georgia, serif"
@@ -38,6 +50,8 @@ typography:
 rounded:
   control: "4px"
   circle: "50%"
+  portrait: "140px 140px 0 0"
+  portrait-mobile: "130px 130px 0 0"
 spacing:
   space-1: "0.5rem"
   space-2: "1rem"
@@ -59,6 +73,27 @@ components:
   button-primary-active:
     backgroundColor: "{colors.stone}"
     textColor: "{colors.ink}"
+  button-hero:
+    backgroundColor: "{colors.ivory}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "0.9rem 1.5rem"
+  button-hero-hover:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ivory}"
+  button-hero-active:
+    backgroundColor: "{colors.gold}"
+    textColor: "{colors.ink}"
+  portrait:
+    rounded: "{rounded.portrait}"
+    height: "470px"
+  portrait-tablet:
+    rounded: "{rounded.portrait}"
+    height: "420px"
+  portrait-mobile:
+    rounded: "{rounded.portrait-mobile}"
+    width: "100%"
   button-light:
     backgroundColor: "{colors.ivory}"
     textColor: "{colors.green}"
@@ -84,9 +119,9 @@ components:
 
 ## Overview
 
-**Creative North Star: "A personal welcome"**
+**Creative North Star: "A clinic introduction"**
 
-This is a proposed prototype design system, awaiting user review. It records the implemented local preview in `design/index.html`, `design/preview.css`, and `design/preview.js`; it is not a final approved production system or an approved visual comp. The user chose a working browser preview with the doctor's introduction and personal welcome. The descriptive North Star names that implemented character rather than a new brand identity.
+This is a proposed prototype design system, awaiting user review. It records the implemented local preview in `design/index.html`, `design/preview.css`, and `design/preview.js`; it is not a final approved production system or an approved visual comp. The user requested this clinic-introduction alternative on `feature/optionb` after approving the personal-welcome preview. This branch leads with the clinic name, services, and city, then introduces the doctor. The descriptive North Star names that implemented character rather than a new brand identity.
 
 The supplied identity stays binding: warm ivory space, deep ink copy, restrained gold, stone separators, bottle-green surfaces, Playfair Display and Montserrat. Real approved portrait photography brings the human presence. Thin rules and open layouts keep information calm and readable, with no text laid over the doctor's face. The temporary typographic wordmark awaits the clean logo.
 
@@ -104,7 +139,7 @@ The palette follows the supplied brand manual; frontmatter records the exact CSS
 ### Primary
 
 - **Deep ink:** principal text, primary controls, and dark section surfaces.
-- **Warm gold:** limited heading emphasis, portrait-caption rule, and contact labels on dark backgrounds.
+- **Warm gold:** clinic masthead lettering, its short rule, limited contact-heading emphasis, and contact labels on dark backgrounds.
 
 ### Secondary
 
@@ -122,11 +157,11 @@ The palette follows the supplied brand manual; frontmatter records the exact CSS
 **Display Font:** Playfair Display, with Georgia and serif fallbacks.
 **Body Font:** Montserrat, with Arial and sans-serif fallbacks.
 
-The bold serif carries warm, personal statements; regular Montserrat carries services and logistics. Both families are locally served with OFL licenses. The preview uses upright emphasis, not an italic heading style. Body paragraphs are capped at (65ch); introduction copy narrows further by context.
+The large regular-weight serif clinic name anchors the masthead; bold serif carries section statements; regular Montserrat carries services and logistics. Both families are locally served with OFL licenses. The preview uses upright emphasis, not an italic heading style. Body paragraphs are capped at (65ch); introduction copy narrows further by context.
 
 ### Hierarchy
 
-- **Display:** the frontmatter display role is the desktop hero heading. At widths up to (799px), it becomes `clamp(2.45rem, 7.7vw, 3.7rem)`, with a (15ch) maximum rather than the desktop (11ch).
+- **Display:** the display role is the large gold clinic name within the centered H1, with regular weight and generous tracking. The H1 also contains a bold ivory service-and-city descriptor using the hero-descriptor role, switching to hero-descriptor-mobile at widths up to (799px).
 - **Headline:** section headings use the headline role, becoming `clamp(2rem, 6vw, 2.6rem)` on phones.
 - **Title:** Montserrat semibold identifies consultation steps. Service names use (0.96rem), weight (500), line height (1.5).
 - **Body:** the inherited body role is the baseline; rendered section copy uses context-specific sizes from (0.85rem) to (0.94rem), with inherited reading rhythm.
@@ -136,31 +171,31 @@ The bold serif carries warm, personal statements; regular Montserrat carries ser
 
 The main desktop container is centered and capped at (1200px), with a width of `min(1200px, calc(100% - 6rem))`. At widths up to (1050px), the observed CSS switches to `calc(100% - 4rem)`. At (799px), it uses `calc(100% - 3rem)`; at (374px), `calc(100% - 2rem)`. The declared spacing scale is in frontmatter; actual component rules also use optical adjustments rather than a rigid multiple-only grid.
 
-Desktop content uses open two-column arrangements: a near-equal introduction, equal doctor and section-introduction columns, two service columns, a narrower FAQ title beside its list, and a slightly wider contact introduction. Process steps form three columns. Sections generally use (6rem) vertical spacing; the dark doctor and green contact sections use their own spacing. At (1050px), column gaps tighten and contact details form one column. At (799px), main layouts, service rows, and process steps become single-column; contact details return to two columns until (374px), where they stack. Major mobile sections use (3.5rem) vertical padding.
+The full-width ink masthead centers its content, with (4rem 4.5rem) vertical padding and a (5rem) gold rule. Its supporting copy is capped at (48ch), followed by wrapping actions. The ivory clinic introduction has equal columns, a (5rem) gap, and (5rem) vertical padding. The ivory doctor section uses portrait/copy columns of (0.85fr / 1.15fr), a (6rem) gap, and a top rule with (4rem) inset. Other desktop content retains equal section-introduction columns, two service columns, a narrower FAQ title beside its list, and a slightly wider contact introduction. Process steps form three columns. Sections generally use (6rem) vertical spacing; the ivory doctor and green contact sections use their own spacing. At (1050px), column gaps tighten and contact details form one column. At (799px), main layouts, service rows, and process steps become single-column; contact details return to two columns until (374px), where they stack. Major mobile sections use (3.5rem) vertical padding.
 
-The header is a normal-flow row, not sticky. Its mobile disclosure sits above the page content. The portrait remains after the introduction on mobile and never becomes a background behind copy. The preview has been checked at (320px), (390px), (768px), (1024px), and (1440px); this is prototype evidence, not a production browser certification.
+The header is a normal-flow row, not sticky. Its mobile disclosure sits above the page content. The masthead remains centered on mobile with (3rem) vertical padding and stacked actions. The portrait is in the doctor section after the clinic introduction, preceding doctor copy when stacked; it never becomes a background behind copy. The preview has been checked at (320px), (390px), (768px), (1024px), and (1440px); this is prototype evidence, not a production browser certification.
 
 ## Elevation & Depth
 
-No box shadows are implemented. Depth comes from alternating ivory, ink, and green section surfaces, fine borders, and the real photograph. Controls change foreground, background, and border on interaction. Their state transition lasts (180ms); the portrait has a restrained clip reveal lasting (850ms), enabled only from (800px) when reduced motion is not requested. Reduced motion disables animation and transitions and restores automatic scrolling.
+No box shadows are implemented. Depth comes from alternating ivory, ink, and green section surfaces, fine borders, and the real photograph. Controls change foreground, background, and border on interaction. Their state transition lasts (180ms); the masthead rule has a restrained horizontal reveal from `scaleX(0.25)` to `scaleX(1)` lasting (850ms), enabled only from (800px) when reduced motion is not requested. Reduced motion disables animation and transitions and restores automatic scrolling.
 
 **The Flat Surface Rule.** Use tonal separation and fine rules for this system's depth; do not add unsupported shadow tokens.
 
 ## Shapes
 
-Controls have gently curved corners using the control radius. Service actions and process numerals are circular. Most content containers have no enclosing card or rounded panel. Separators use a single-pixel stone border. The portrait alone uses an architectural arch: desktop top corners (160px), then mobile top corners (130px), with square lower corners. Its crop is (510px) high on desktop, (460px) at the intermediate breakpoint, and an aspect ratio of (1 / 1.05) on mobile; mobile maximum width is (520px). Keep the face visible in any future crop.
+Controls have gently curved corners using the control radius. Service actions and process numerals are circular. Most content containers have no enclosing card or rounded panel. Separators use a single-pixel stone border. The portrait alone uses an architectural arch: desktop top corners (140px), then mobile top corners (130px), with square lower corners. Its crop is (470px) high on desktop, (420px) at the intermediate breakpoint, and an aspect ratio of (1 / 1.05) on mobile; mobile maximum width is (520px). Keep the face visible in any future crop.
 
 ## Components
 
 ### Buttons and text links
 
-Buttons are quiet rectangular contact actions with an inline outline arrow. The primary and light variants are defined in frontmatter; both have a minimum height of (56px), a (1.75rem) icon gap, and a transparent single-pixel border at rest. Hover inverts the foreground and background with a contrasting border. Active states use stone for primary and gold for light. At the narrowest breakpoint, horizontal padding becomes (1.1rem) and the gap (1rem). Text links keep an underline, a minimum height of (44px), and a thicker underline on hover.
+Buttons are quiet rectangular contact actions with an inline outline arrow. The primary and light variants are defined in frontmatter; both have a minimum height of (56px), a (1.75rem) icon gap, and a transparent single-pixel border at rest. Hover inverts the foreground and background with a contrasting border. The generic primary active state uses stone; the actual dark-masthead override uses ivory with ink text, inverts to ink/ivory with an ivory border on hover, and uses gold/ink when active. The light contact variant also uses gold when active. At the narrowest breakpoint, horizontal padding becomes (1.1rem) and the gap (1rem). Text links keep an underline, a minimum height of (44px), and a thicker underline on hover.
 
 All links, buttons, FAQ summaries, and the main focus target use a visible current-color outline (3px) with an offset of (5px). A focus-revealed skip link precedes navigation.
 
 ### Navigation
 
-Desktop navigation is an inline row with (44px) minimum-height links and an underlined contact action. The menu toggle appears up to (799px). With JavaScript, it controls navigation visibility through `aria-expanded`; Escape closes it and returns focus to the toggle. Choosing a section closes it and focuses the destination. Breakpoint changes reset the disclosure. Without JavaScript, mobile navigation remains visible. There is no active-section tracking or dialog overlay.
+Desktop navigation includes a clinic-introduction anchor and is an inline row with (44px) minimum-height links and an underlined contact action. The menu toggle appears up to (799px). With JavaScript, it controls navigation visibility through `aria-expanded`; Escape closes it and returns focus to the toggle. Choosing a section closes it and focuses the destination. Breakpoint changes reset the disclosure. Without JavaScript, mobile navigation remains visible. There is no active-section tracking or dialog overlay.
 
 ### Service directory
 
@@ -176,7 +211,7 @@ Native `details` and `summary` provide keyboard-operable disclosure without cust
 
 ### Portrait and caption
 
-The approved original portrait is referenced locally; `design/assets.json` records its source and hash. The image has explicit dimensions and descriptive Spanish alternative text. Name and title sit below it with a gold rule, in a responsive caption. Original files remain unchanged. Production asset copies, optimization, and final integration are deferred to Phase 3.
+The approved original portrait is referenced locally; `design/assets.json` records its source and hash. The image is lazy-loaded in the doctor section, has explicit dimensions and descriptive Spanish alternative text. A plain caption below identifies the doctor and clinic; the professional title sits in the adjacent doctor copy, with no gold caption rule. Original files remain unchanged. Production asset copies, optimization, and final integration are deferred to Phase 3.
 
 ### Contact surface
 
