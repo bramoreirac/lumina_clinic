@@ -16,5 +16,25 @@
       "origin": "https://github.com/google/fonts/tree/main/ofl/montserrat",
       "license": "fonts/Montserrat-OFL.txt"
     }
+  ],
+  "logo": {
+    "svg": "brand/lumina-logo-reconstructed.svg",
+    "inkSvg": "brand/lumina-logo-ink.svg",
+    "png": "brand/lumina-logo-reconstructed.png",
+    "origin": "Customer-supplied video01.mov, approximately 00:24.2; threshold-segmented, vector traced, and contour-smoothed with quadratic curves.",
+    "sourceSha256": "b743cfdc09d1a2298dc789dcfa151c235128c644799dcc74b1c3dc70117b9647",
+    "status": "Reconstructed from a compressed video frame; compare with original master if supplied.",
+    "color": "#B48F2D",
+    "notes": "Sampled source appearance; differs from the brand guide gold accent #C9A66B. See brand/README.md."
+  },
+  "serviceImages": [
+    {
+      "path": "images/microneedling-video.webp",
+      "origin": "Customer-supplied video01.mov, extracted at 00:04.00 and converted to WebP for the design preview."
+    },
+    {
+      "path": "images/peeling-video.webp",
+      "origin": "Customer-supplied video01.mov, extracted at 00:09.25 and converted to WebP for the design preview."
+    }
   ]
 }

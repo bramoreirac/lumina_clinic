@@ -8,12 +8,6 @@ colors:
   stone: "#a89f91"
   green: "#2e4034"
 typography:
-  display:
-    fontFamily: "Playfair Display, Georgia, serif"
-    fontSize: "clamp(3.7rem, 9vw, 6rem)"
-    fontWeight: 400
-    lineHeight: 1.2
-    letterSpacing: "0.08em"
   hero-descriptor:
     fontFamily: "Playfair Display, Georgia, serif"
     fontSize: "clamp(2rem, 3.5vw, 3rem)"
@@ -123,7 +117,7 @@ components:
 
 This is a proposed prototype design system, awaiting user review. It records the implemented local preview in `design/index.html`, `design/preview.css`, and `design/preview.js`; it is not a final approved production system or an approved visual comp. The user requested this clinic-introduction alternative on `feature/optionb` after approving the personal-welcome preview. This branch leads with the clinic name, services, and city, then introduces the doctor. The descriptive North Star names that implemented character rather than a new brand identity.
 
-The supplied identity stays binding: warm ivory space, deep ink copy, restrained gold, stone separators, bottle-green surfaces, Playfair Display and Montserrat. Real approved portrait photography brings the human presence. Thin rules and open layouts keep information calm and readable, with no text laid over the doctor's face. The temporary typographic wordmark awaits the clean logo.
+The supplied identity stays binding: warm ivory space, deep ink copy, restrained gold, stone separators, bottle-green surfaces, Playfair Display and Montserrat. Real approved portrait photography brings the human presence. Thin rules and open layouts keep information calm and readable, with no text laid over the doctor's face. The preview uses the reconstructed logo from `design/brand/`: sampled gold on the dark opening and an ink variant on the light header and footer. Compare it with the original master if supplied later.
 
 **Key Characteristics:**
 
@@ -139,7 +133,7 @@ The palette follows the supplied brand manual; frontmatter records the exact CSS
 ### Primary
 
 - **Deep ink:** principal text, primary controls, and dark section surfaces.
-- **Warm gold:** clinic masthead lettering, its short rule, limited contact-heading emphasis, and contact labels on dark backgrounds.
+- **Warm gold:** masthead rule, limited contact-heading emphasis, and contact labels on dark backgrounds. The reconstructed logo uses a separate sampled gold `#B48F2D` on the dark masthead.
 
 ### Secondary
 
@@ -157,11 +151,11 @@ The palette follows the supplied brand manual; frontmatter records the exact CSS
 **Display Font:** Playfair Display, with Georgia and serif fallbacks.
 **Body Font:** Montserrat, with Arial and sans-serif fallbacks.
 
-The large regular-weight serif clinic name anchors the masthead; bold serif carries section statements; regular Montserrat carries services and logistics. Both families are locally served with OFL licenses. The preview uses upright emphasis, not an italic heading style. Body paragraphs are capped at (65ch); introduction copy narrows further by context.
+The reconstructed logo anchors the masthead; bold serif carries section statements; regular Montserrat carries services and logistics. Both font families are locally served with OFL licenses. The preview uses upright emphasis, not an italic heading style. Body paragraphs are capped at (65ch); introduction copy narrows further by context.
 
 ### Hierarchy
 
-- **Display:** the display role is the large gold clinic name within the centered H1, with regular weight and generous tracking. The H1 also contains a bold ivory service-and-city descriptor using the hero-descriptor role, switching to hero-descriptor-mobile at widths up to (799px).
+- **Display:** the centered H1 contains the gold logo image with an accessible clinic-name alternative, followed by the bold ivory service-and-city descriptor using the hero-descriptor role, switching to hero-descriptor-mobile at widths up to (799px).
 - **Headline:** section headings use the headline role, becoming `clamp(2rem, 6vw, 2.6rem)` on phones.
 - **Title:** Montserrat semibold identifies consultation steps. Service names use (0.96rem), weight (500), line height (1.5).
 - **Body:** the inherited body role is the baseline; rendered section copy uses context-specific sizes from (0.85rem) to (0.94rem), with inherited reading rhythm.
@@ -232,4 +226,4 @@ The green section combines an ivory/gold heading, readable contact information, 
 - **Don't** use gold on ivory, ivory on stone, or stone on green for small text.
 - **Don't** introduce pink UI accents, pure black or white UI surfaces, or large gold-only areas; natural colors in approved photographs remain intact.
 - **Don't** add shadows or generic enclosing cards to the open ruled layouts without a reviewed design change.
-- **Don't** treat the temporary wordmark, draft copy, original-size assets, or local preview as production approval.
+- **Don't** treat the reconstructed logo, draft copy, original-size assets, or local preview as production approval.

@@ -21,7 +21,7 @@ This is a responsive HTML/CSS/JavaScript design prototype for review before Reac
 - Monday–Friday, 8:00 a. m.–5:00 p. m. hours and other hours by appointment.
 - Mobile and desktop spacing and hierarchy.
 
-The name treatment is temporary until the clean logo arrives. Medical and first-person copy are draft text from `PHASE_1.md`, awaiting final review. No exact address, price, map, reviews, or appointment availability has been invented.
+The preview uses the reconstructed logo in `brand/`; compare it with the original master if the customer later provides one. Medical and first-person copy are draft text from `PHASE_1.md`, awaiting final review. No exact address, price, map, reviews, or appointment availability has been invented.
 
 ## Files and assets
 

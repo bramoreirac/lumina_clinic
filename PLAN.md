@@ -2,7 +2,7 @@
 
 Prepared: 27 October 2026.
 
-Status: The personal-welcome preview was reviewed positively. This branch compares a clinic-introduction variant at [design/index.html](design/index.html), with the visual handoff in [DESIGN.md](DESIGN.md) and search strategy in [SEO.md](SEO.md). Review of this alternate layout, React implementation, and deployment remain ahead.
+Status: The clinic-led layout was accepted for React implementation; a preliminary Vercel deployment was requested for doctor review, while Netlify remains the intended final host. The personal-welcome preview was reviewed positively. This branch compares a clinic-introduction variant at [design/index.html](design/index.html), with the visual handoff in [DESIGN.md](DESIGN.md) and search strategy in [SEO.md](SEO.md). The React implementation is ready for preliminary deployment and further review.
 
 ## 1. Objective and agreed constraints
 
@@ -26,7 +26,7 @@ Build a polished, responsive website for an aesthetic medicine doctor that intro
 | `docs/cloudflare_pages_guide.md` | Alternative reviewed for context; Cloudflare Pages deployment is outside the chosen scope. |
 | Existing application | React + Vite starter with `dev`, `build`, `lint`, and `preview` scripts, plus a package lockfile. Replace template content during implementation rather than scaffolding again. |
 
-The deployment guides call the project a dermatologist's website. The customer confirmed the title “Médico general con especialidad en medicina estética”. Use this wording rather than the deployment guides' specialty label.
+The deployment guides call the project a dermatologist's website. The customer confirmed the title “Médico estético / Dermatología clínica”; use the wording in PHASE_1.md.
 
 ## 3. Proposed first-release scope
 
@@ -167,19 +167,19 @@ Source review, asset recommendations, the service catalog, draft copy, and custo
 - [x] Define navigation, service presentation, contact placement, and interaction states.
 - [x] Validate the browser preview at 320, 390, 768, 1024, and 1440 CSS pixels; check fonts, images, overflow, menu/FAQ keyboard behavior, and navigation without JavaScript. Lint passes.
 - [x] Receive positive user review of the personal-welcome preview.
-- [ ] Review the clinic-introduction alternative requested on `feature/optionb` before choosing the composition for React implementation.
+- [x] Review the clinic-introduction alternative on `feature/optionb`; the user accepted this layout for React implementation.
 
-Preview: run the existing Vite server and open `/design/`. See [design/README.md](design/README.md) for instructions and review scope. This is a local HTML/CSS/JavaScript prototype; `/` remains the original React starter and the default production build does not include the prototype. Draft copy and missing logo/address remain tracked dependencies.
+Preview: run the existing Vite server and open `/design/`. See [design/README.md](design/README.md) for instructions and review scope. This is a local HTML/CSS/JavaScript prototype; `/` now contains the React implementation and the production build includes the React site. Draft copy and missing logo/address remain tracked dependencies.
 
 **Complete when:** the layout and contact flow are agreed and the brand rules are reflected consistently.
 
 ### Phase 3 — Build
 
-- [ ] Replace starter/demo content and assets with the clinic site.
-- [ ] Implement sections, responsive styling, menu, FAQ, and confirmed contact links.
+- [x] Replace starter/demo content and assets with the clinic site.
+- [x] Implement sections, responsive styling, menu, FAQ, and confirmed contact links.
 - [ ] Add local JSON only where useful and prepare optimized media.
 - [ ] Add metadata, favicon, and relevant production configuration.
-- [ ] Update README with local setup, content editing, build, and deployment instructions.
+- [x] Update README with local setup, content editing, build, and preliminary deployment instructions.
 
 **Complete when:** the site works locally with approved content and no broken or placeholder interactions.
 
@@ -223,3 +223,7 @@ These do not block creating this plan. Unconfirmed items must be settled before 
 ## 9. Final handoff
 
 Deliver the React + Vite source, optimized approved assets, optional content JSON, Netlify configuration, and an updated README covering setup and maintenance. Record the production URL, validation results, known limitations, account responsibilities, and rollback steps. A release is ready only when the content is approved, contact paths work, and the agreed quality and deployment checks are complete.
+
+### Interim Vercel review deployment
+
+The user requested a preliminary Vercel deployment for the doctor to review. Keep this separate from the intended Netlify launch. The React site is marked `noindex, nofollow` for review; remove that restriction only when preparing the final public launch. Confirm access to the Vercel preview with the doctor before sharing it.
