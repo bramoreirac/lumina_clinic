@@ -148,7 +148,120 @@ function App() {
         <details><summary>¿En qué ciudad está la clínica?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14" /></svg></summary><p>Estamos en León, Nicaragua. <a href="https://wa.me/50558811397">Contáctanos por WhatsApp</a> para consultar cómo llegar.</p></details>
       </div></section>
 
-      <section className="contact-section" id="contacto" aria-labelledby="contact-title"><div className="container contact-layout"><div><h2 id="contact-title">Conversemos sobre<br /><em>tu valoración.</em></h2><p>Contáctanos para consultar nuestros servicios y coordinar tu visita.</p><a className="button button-light" href="https://wa.me/50558811397">Escribir por WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></div><dl className="contact-details"><div><dt><svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Encuéntranos</span></dt><dd>León, Nicaragua</dd></div><div><dt><svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Horario de atención</span></dt><dd>Lunes a viernes<br />8:00 a. m. – 5:00 p. m.<small>Otros horarios con cita previa.</small></dd></div><div><dt><svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3.5 8.8 3l2.1 4.4-2 1.8a14.5 14.5 0 0 0 5.9 5.9l1.8-2L21 15.2l-.5 3.3c-.2 1.2-1.3 2-2.5 1.8C10.5 19.3 4.7 13.5 3.7 6c-.2-1.2.6-2.3 1.8-2.5Z"/></svg><span>Teléfono</span></dt><dd><a href="tel:+50558811397">+505 5881 1397</a></dd></div><div><dt><svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7"/></svg><span>Instagram</span></dt><dd><a href="https://www.instagram.com/dra.steacey_maradiagaurbina/">Conoce nuestro perfil <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></a></dd></div><div className="contact-email-group"><dt><svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span>Correo</span></dt><dd><a className="contact-email" href="mailto:steaceymaradiaga@gmail.com">steaceymaradiaga@gmail.com</a></dd></div></dl></div></section>
+      <section className="contact-section" id="contacto" aria-labelledby="contact-title">
+        <div className="container contact-layout">
+          <div>
+            <h2 id="contact-title">Conversemos sobre<br /><em>tu valoración.</em></h2>
+            <p>Contáctanos para consultar nuestros servicios y coordinar tu visita.</p>
+            <a className="button button-light" href="https://wa.me/50558811397">
+              Escribir por WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+            </a>
+          </div>
+          <dl className="contact-details">
+            <div>
+              <dt>
+                <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="2.5"/>
+                </svg>
+                <span>Encuéntranos</span>
+              </dt>
+              <dd>
+                <a href="https://maps.google.com/?q=Leon,+Nicaragua" target="_blank" rel="noopener noreferrer">
+                  León, Nicaragua <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>
+                <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 7v5l3.5 2"/>
+                </svg>
+                <span>Horario de atención</span>
+              </dt>
+              <dd>Lunes a viernes<br />8:00 a. m. – 5:00 p. m.<small>Otros horarios con cita previa.</small></dd>
+            </div>
+            <div>
+              <dt>
+                <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5.5 3.5 8.8 3l2.1 4.4-2 1.8a14.5 14.5 0 0 0 5.9 5.9l1.8-2L21 15.2l-.5 3.3c-.2 1.2-1.3 2-2.5 1.8C10.5 19.3 4.7 13.5 3.7 6c-.2-1.2.6-2.3 1.8-2.5Z"/>
+                </svg>
+                <span>Teléfono</span>
+              </dt>
+              <dd><a href="tel:+50558811397">+505 5881 1397</a></dd>
+            </div>
+            <div>
+              <dt>
+                <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r=".7"/>
+                </svg>
+                <span>Instagram</span>
+              </dt>
+              <dd>
+                <a href="https://www.instagram.com/dra.steacey_maradiagaurbina/">
+                  Conoce nuestro perfil <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
+                </a>
+              </dd>
+            </div>
+            <div className="contact-email-group">
+              <dt>
+                <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="m4 7 8 6 8-6"/>
+                </svg>
+                <span>Correo</span>
+              </dt>
+              <dd><a className="contact-email" href="mailto:steaceymaradiaga@gmail.com">steaceymaradiaga@gmail.com</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div className="container contact-map-card">
+          <div className="contact-map-header">
+            <div className="contact-map-heading">
+              <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+              <div>
+                <h3>Cómo llegar</h3>
+                <p>Abre la ubicación en tu aplicación preferida para iniciar la ruta en tiempo real.</p>
+              </div>
+            </div>
+            <div className="contact-map-actions">
+              <a
+                className="button-map"
+                href="https://maps.google.com/?q=Leon,+Nicaragua"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Google Maps</span>
+                <svg className="map-external-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
+              </a>
+              <a
+                className="button-map"
+                href="https://waze.com/ul?q=Leon%2C+Nicaragua&navigate=yes"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Waze</span>
+                <svg className="map-external-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
+              </a>
+            </div>
+          </div>
+          <div className="contact-map-frame-wrap">
+            <iframe
+              title="Mapa de ubicación de la clínica en León, Nicaragua"
+              src="https://maps.google.com/maps?q=Leon%2C+Nicaragua&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
     </main>
     <footer className="container site-footer"><a className="wordmark" href="#inicio" aria-label="Lúmina Clínica Estética, volver al inicio"><img src={logoInk} alt="" width="750" height="521" /></a><p>Medicina estética en León, Nicaragua.</p><a className="text-link" href="#inicio">Volver al inicio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg></a></footer>
     </>
