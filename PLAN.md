@@ -153,7 +153,7 @@ Source review, asset recommendations, the service catalog, draft copy, and custo
 - [x] Record supplied brand/doctor identity and confirmed title, city/country, and Spanish-only language.
 - [x] Record confirmed WhatsApp, hours, Instagram, and portrait publication permission; propose WhatsApp as the main contact action.
 - [x] Confirm operating days: Monday–Friday (lunes a viernes).
-- [ ] Obtain street address/map pin; refine audience priorities if needed during design.
+- [x] Obtain the clinic map pin. Street address and audience priorities remain open.
 - [x] Review brand manual and asset quality; record remaining video/audio and patient-image limitations. These assets remain outside the baseline scope.
 - [ ] Prepare the approved service catalog, biography, FAQ, and consultation process.
 - [x] Identify missing logo/portrait files and final-copy dependencies. Customer will provide the clean logo later; use a typographic clinic-name treatment for provisional design.

@@ -18,7 +18,7 @@ This document is the content handoff for design. **Supplied** means explicitly p
 | Telephone link | `tel:+50558811397` | Derived from supplied number. Verify live during implementation. |
 | WhatsApp | `https://wa.me/50558811397` | Customer confirmed that the supplied number accepts WhatsApp. Test link behavior during implementation. |
 | Website language | Spanish only | Confirmed by customer. |
-| Location / service area | León, Nicaragua | City and country confirmed. Street address, map pin, and directions link pending. |
+| Location / service area | León, Nicaragua | City and country confirmed. Customer supplied map coordinates `12.433326721191406,-86.84996795654297`; street address remains pending. |
 | Hours | Monday–Friday, 8:00 a. m.–5:00 p. m.; other hours by appointment | Confirmed by customer. Spanish display: lunes a viernes. |
 | Instagram | `https://www.instagram.com/dra.steacey_maradiagaurbina/` | Customer supplied the profile URL; query string removed for a clean link. Profile not independently browsed. |
 | Email | `steaceymaradiaga@gmail.com` | Supplied by customer for the contact section. |
@@ -147,13 +147,13 @@ Pending operational details: appointment requirements, response times, consultat
 - Hours: “Lunes a viernes, de 8:00 a. m. a 5:00 p. m. Otros horarios con cita previa.”
 - Instagram: `https://www.instagram.com/dra.steacey_maradiagaurbina/`.
 - Email: `steaceymaradiaga@gmail.com`.
-- Street address and map link: pending. No placeholder values should appear in production.
+- Map coordinates: `12.433326721191406,-86.84996795654297` (supplied by customer); street address pending.
 
 ## 6. Remaining customer confirmations
 
 Reply to these in any order; unanswered items stay pending:
 
-1. Supply the street address/map pin. Spanish-only content, León/Nicaragua, and Monday–Friday operating hours are already confirmed.
+1. Supply the street address; the map pin has been supplied. Spanish-only content, León/Nicaragua, and Monday–Friday operating hours are already confirmed.
 2. Confirm whether the short display name should remain “Dra. Steacey Maradiaga”; the longer name is optional. The professional title is already confirmed.
 3. WhatsApp, email, and Instagram have been supplied; confirm any remaining contact preferences.
 4. Provide the clean logo when available. Portrait publication is approved. The customer approved the supplied photos for disclosure, including the treatment frames. Keep before/after images and video/audio optional unless specifically cleared.
@@ -165,7 +165,7 @@ Domain choice and account/maintenance ownership can be settled before deployment
 
 - **Done:** source inventory, full PDF visual review, image measurements and selection, video metadata and visual sampling, source-backed clinic details, normalized service catalog, draft Spanish copy, and missing-content checklist.
 - **Confirmed by customer:** Spanish-only site, León/Nicaragua, professional title, WhatsApp number, Monday–Friday 8:00 a. m.–5:00 p. m. hours with other hours by appointment, Instagram URL, and portrait publication permission. Clean logo will follow later.
-- **Still pending:** street address/map pin, final copy/service descriptions, and eventual clean logo. Before/after and video/audio use remain outside approved baseline scope. Video audio has not been reviewed.
+- **Still pending:** street address, final copy/service descriptions, and eventual clean logo. Before/after and video/audio use remain outside approved baseline scope. Video audio has not been reviewed.
 - **Ready for:** a provisional Phase 2 layout using the supplied brand and candidate portrait, with unknown details held out of production copy.
 - **Discovery inventory complete:** confirmed facts and missing items are distinguished. Remaining dependencies stay open for publication; they do not block provisional design.
 
