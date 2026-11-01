@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { MotionConfig } from 'motion/react'
 import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App isServicesPage={/^\/servicios(?:\/index\.html)?\/?$/.test(window.location.pathname)} />
+    <MotionConfig reducedMotion="user">
+      <App isServicesPage={/^\/servicios(?:\/index\.html)?\/?$/.test(window.location.pathname)} />
+    </MotionConfig>
   </StrictMode>,
 )

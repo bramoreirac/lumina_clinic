@@ -1,3 +1,6 @@
+import Hero from '../components/Hero'
+import Reveal from '../components/Reveal'
+import PressLink from '../components/PressLink'
 import { services } from '../data/services'
 import { serviceGallery } from '../data/serviceGallery'
 import heroImage from '../assets/clinic/service-01.webp'
@@ -5,23 +8,17 @@ import heroImage from '../assets/clinic/service-01.webp'
 export default function ServicesPage() {
   return (
     <>
-      <section className="clinic-hero services-hero" id="inicio" aria-labelledby="services-hero-title">
-        <img className="hero-photo" src={heroImage} alt="" width="1200" height="1200" fetchPriority="high" />
-        <div className="container clinic-hero-inner">
-          <h1 id="services-hero-title">Nuestros servicios</h1>
-          <div className="hero-rule" aria-hidden="true"></div>
-          <p>Medicina estética y dermatología clínica en León, Nicaragua. Conoce las opciones disponibles y consulta por una valoración profesional.</p>
-          <div className="hero-actions">
-            <a className="button button-primary" href="#catalogo">Explorar tratamientos</a>
-            <a className="text-link" href="https://wa.me/50558811397">Consultar por WhatsApp <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </section>
+      <Hero image={heroImage} width={1200} height={1200} titleId="services-hero-title" className="services-hero"
+        title={<>Nuestros servicios</>}
+        description={"Medicina est\u00e9tica y dermatolog\u00eda cl\u00ednica en Le\u00f3n, Nicaragua. Conoce las opciones disponibles y consulta por una valoraci\u00f3n profesional."}
+        actions={<><PressLink className="button button-primary" href="#catalogo">Explorar tratamientos</PressLink>
+            <a className="text-link" href="https://wa.me/50558811397">Consultar por WhatsApp <span aria-hidden="true">↗</span></a></>}
+      />
       <section className="services-section container section-space" id="servicios" aria-labelledby="services-title">
         <div className="section-intro"><h2 id="services-title">Medicina estética.<br />Dermatología clínica.</h2><div className="services-intro-copy"><p>Conoce nuestros servicios. Contáctanos para consultar por una valoración y recibir información sobre las opciones disponibles.</p><p className="services-tagline">CLÍNICA ESTÉTICA LÚMINA - SABIDURÍA EN CADA PROCESO</p></div></div>
         <div className="service-images">
           {serviceGallery.map(({ image, name, alt, width, height }) => (
-            <figure key={name}><img src={image} alt={alt} width={width} height={height} loading="lazy" /><figcaption>{name}</figcaption></figure>
+            <Reveal as="figure" key={name}><img src={image} alt={alt} width={width} height={height} loading="lazy" /><figcaption>{name}</figcaption></Reveal>
           ))}
         </div>
         <h2 className="catalogue-title" id="catalogo">Todos los tratamientos</h2>

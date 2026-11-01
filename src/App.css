@@ -89,7 +89,8 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .featured-visual .visual-accent { stroke: var(--color-ivory); stroke-width: 2; }
 .featured-number { position: absolute; top: 0.7rem; left: 0.9rem; font-size: 0.7rem; }
 .visual-mark { transform-origin: center; transition: transform 500ms var(--ease-out); }
-.featured-card:hover .visual-mark, .featured-card:focus-within .visual-mark { transform: translateY(-4px); }
+@media (hover: hover) and (pointer: fine) { .featured-card:hover .visual-mark { transform: translateY(-4px); } }
+.featured-card:focus-within .visual-mark { transform: translateY(-4px); }
 .featured-card h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 1.6vw, 1.55rem); line-height: 1.25; margin-bottom: 0.8rem; }
 .featured-card p { font-size: 0.86rem; line-height: 1.7; }
 .featured-card a { display: inline-flex; align-items: center; gap: 0.8rem; min-height: 44px; align-self: flex-start; margin-top: auto; padding-top: 1rem; font-size: 0.82rem; font-weight: 600; }
@@ -165,13 +166,12 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .process-list h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
 .process-list p { font-size: 0.85rem; }
 .faq-section { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 5rem; }
-details { border-top: 1px solid var(--line); }
-details:last-child { border-bottom: 1px solid var(--line); }
-summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 84px; padding-block: 1.2rem; cursor: pointer; list-style: none; font-size: 0.9rem; font-weight: 500; line-height: 1.6; }
-summary::-webkit-details-marker { display: none; }
-summary:hover { text-decoration: underline; text-underline-offset: 0.3em; }
-details[open] summary svg { transform: rotate(45deg); }
-details p { padding: 0 2.5rem 1.5rem 0; font-size: 0.86rem; }
+.faq-item { border-top: 1px solid var(--line); }
+.faq-item:last-child { border-bottom: 1px solid var(--line); }
+.faq-question { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 1.5rem; min-height: 84px; padding: 1.2rem 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; font-size: 0.9rem; font-weight: 500; line-height: 1.6; }
+.faq-question:hover { text-decoration: underline; text-underline-offset: 0.3em; }
+.faq-answer { overflow: hidden; }
+.faq-answer p { padding: 0 2.5rem 1.5rem 0; font-size: 0.86rem; }
 .contact-section { background: var(--color-green); color: var(--color-ivory); padding-block: 5rem; }
 .contact-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 6rem; }
 .contact-section em { color: var(--color-gold); }
@@ -207,10 +207,6 @@ details p { padding: 0 2.5rem 1.5rem 0; font-size: 0.86rem; }
 .site-footer p { font-size: 0.75rem; }
 .site-footer .wordmark img { width: 125px; }
 
-@media (min-width: 800px) and (prefers-reduced-motion: no-preference) {
-  .hero-rule { animation: rule-arrive 850ms var(--ease-out) both; }
-  @keyframes rule-arrive { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
-}
 @media (max-width: 1050px) {
   .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
   .container { width: calc(100% - 4rem); }
@@ -235,7 +231,6 @@ details p { padding: 0 2.5rem 1.5rem 0; font-size: 0.86rem; }
   .wordmark img { width: 110px; }
   .menu-toggle { display: inline-flex; align-items: center; gap: 0.8rem; min-height: 44px; padding: 0.5rem 0; border: 0; background: transparent; color: inherit; cursor: pointer; font-size: 0.85rem; }
   nav { width: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-bottom: 1.5rem; }
-  .js nav:not(.is-open) { display: none; }
   nav a { font-size: 0.9rem; padding-block: 0.7rem; }
   .nav-contact { justify-content: space-between; }
   .clinic-hero { min-height: 690px; padding-block: 40px; }
@@ -291,4 +286,6 @@ details p { padding: 0 2.5rem 1.5rem 0; font-size: 0.86rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
+  .featured-card:focus-within .visual-mark, .featured-card:hover .visual-mark { transform: none; }
+  .clinic-hero h1, .clinic-hero p, .hero-actions, .hero-photo, .featured-card, .service-images figure { opacity: 1 !important; transform: none !important; }
 }

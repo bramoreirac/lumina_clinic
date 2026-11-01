@@ -1,4 +1,10 @@
 import { useEffect } from 'react'
+import useMotionPreference from './components/useMotionPreference'
+import Hero from './components/Hero'
+import Reveal from './components/Reveal'
+import FaqItem from './components/FaqItem'
+import SiteHeader from './components/SiteHeader'
+import PressLink from './components/PressLink'
 import logoInk from './assets/clinic/lumina-logo-ink.svg'
 import logoGold from './assets/clinic/lumina-logo-reconstructed.svg'
 import portrait from './assets/clinic/doctor.webp'
@@ -8,82 +14,31 @@ import './App.css'
 
 
 function App({ isServicesPage = false }) {
+  const reducedMotion = useMotionPreference()
   useEffect(() => {
-    document.documentElement.classList.add('js')
-    const button = document.querySelector('.menu-toggle')
-    const nav = document.querySelector('#navigation')
-    const mobile = window.matchMedia('(max-width: 799px)')
-    const setMenu = (open, returnFocus = false) => {
-      button.setAttribute('aria-expanded', String(open))
-      nav.classList.toggle('is-open', open)
-      if (returnFocus) button.focus()
-    }
-    const onClick = () => setMenu(button.getAttribute('aria-expanded') !== 'true')
-    const onNav = (event) => {
-      const link = event.target.closest('a')
-      if (!link || !mobile.matches) return
-      setMenu(false)
-      if (!link.hash || link.pathname !== window.location.pathname) return
-      const target = document.getElementById(decodeURIComponent(link.hash.slice(1)))
-      if (target) { target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true }) }
-    }
-    const onKey = (event) => {
-      if (event.key === 'Escape' && mobile.matches && button.getAttribute('aria-expanded') === 'true') setMenu(false, true)
-    }
-    const onChange = () => setMenu(false)
-    button.addEventListener('click', onClick)
-    nav.addEventListener('click', onNav)
-    document.addEventListener('keydown', onKey)
-    mobile.addEventListener('change', onChange)
-    let observer
     const process = document.querySelector('.process-list')
-    if (process && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-      observer = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) { process.classList.add('is-animated'); observer.disconnect() }
-      }, { threshold: 0.2 })
-      observer.observe(process)
-    }
-    return () => {
-      document.documentElement.classList.remove('js')
-      button.removeEventListener('click', onClick)
-      nav.removeEventListener('click', onNav)
-      document.removeEventListener('keydown', onKey)
-      mobile.removeEventListener('change', onChange)
-      observer?.disconnect()
-    }
-  }, [])
+    if (!process || reducedMotion || !('IntersectionObserver' in window)) return
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        process.classList.add('is-animated')
+        observer.disconnect()
+      }
+    }, { threshold: 0.2 })
+    observer.observe(process)
+    return () => { observer.disconnect(); process.classList.remove('is-animated') }
+  }, [reducedMotion])
   return (
     <>
     <a className="skip-link" href="#contenido">Ir al contenido</a>
-    <header className="site-header">
-      <div className="container header-inner">
-        <a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, inicio">
-          <img src={logoInk} alt="" width="750" height="521" />
-        </a>
-        <button className="menu-toggle" aria-expanded="false" aria-controls="navigation">Menú <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" /></svg></button>
-        <nav id="navigation" aria-label="Navegación principal">
-          <a href="/#clinica">La clínica</a>
-          <a href="/#doctora">La doctora</a>
-          <a href="/servicios/" aria-current={isServicesPage ? 'page' : undefined}>Servicios</a>
-          <a href="/#preguntas">Preguntas frecuentes</a>
-          <a className="nav-contact" href="#contacto">Conversemos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
-        </nav>
-      </div>
-    </header>
+    <SiteHeader isServicesPage={isServicesPage} />
 
     <main id="contenido" tabIndex="-1">
       {isServicesPage ? <ServicesPage /> : <>
-      <section className="clinic-hero" id="inicio" aria-labelledby="hero-title">
-        <img className="hero-photo" src={heroImage} alt="" width="1080" height="1920" fetchPriority="high" />
-        <div className="container clinic-hero-inner">
-          <h1 id="hero-title"><img className="clinic-logo" src={logoGold} alt="Lúmina Clínica Estética" width="750" height="521" /><span className="clinic-description">Medicina estética en<br />León, Nicaragua.</span></h1>
-          <div className="hero-rule" aria-hidden="true"></div>
-          <p>Tratamientos médicos-estéticos y dermatológicos personalizados, guiados por una valoración profesional y enfocados en tu bienestar.</p>
-          <div className="hero-actions">
-          <a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a>
-          </div>
-        </div>
-      </section>
+      <Hero image={heroImage} width={1080} height={1920} titleId="hero-title"
+        title={<><img className="clinic-logo" src={logoGold} alt="Lúmina Clínica Estética" width="750" height="521" /><span className="clinic-description">Medicina estética en<br />León, Nicaragua.</span></>}
+        description={"Tratamientos m\u00e9dicos-est\u00e9ticos y dermatol\u00f3gicos personalizados, guiados por una valoraci\u00f3n profesional y enfocados en tu bienestar."}
+        actions={<><a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a></>}
+      />
 
       <section className="featured-section" id="destacados" aria-labelledby="featured-title">
         <div className="container section-space">
@@ -92,10 +47,10 @@ function App({ isServicesPage = false }) {
             <p>Conoce algunos nuestros tratamientos y evaluemos juntos cuál es la mejor opción para ti.</p>
           </div>
           <div className="featured-grid">
-            <article className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M26 75 42 59m-13 8 5 5m-9-3 5 5m-6 0 3 3M37 54l5 5M31 53v-6m-3 3h6"/></g></svg><span className="featured-number" aria-hidden="true">01</span></div><h3>Microneedling facial</h3><p>Procedimiento que estimula la renovación de la piel y favorece la producción de colágeno, ayudando a mejorar su textura y apariencia.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20microneedling." aria-label="Consultar por WhatsApp sobre microneedling">Consultar <span aria-hidden="true">↗</span></a></article>
-            <article className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M26 43c0-4 3-7 7-7s7 3 7 7-3 7-7 7-7-3-7-7Zm57 17c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5ZM29 58v-8m-4 4h8M86 33v-8m-4 4h8"/></g></svg><span className="featured-number" aria-hidden="true">02</span></div><h3>Higiene facial</h3><p>Limpieza personalizada que elimina impurezas, exceso de grasa y células muertas, ayudando a mantener una piel fresca y saludable.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20limpieza%20facial." aria-label="Consultar por WhatsApp sobre limpieza facial">Consultar <span aria-hidden="true">↗</span></a></article>
-            <article className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M46 15c2 8 3 15 1 22-1 5-5 10-7 16-3 10-1 20 2 30m32-68c-2 8-3 15-1 22 1 5 5 10 7 16 3 10 1 20-2 30"/><path d="M44 52c9 4 23 4 32 0M52 70c5 2 11 2 16 0"/><path className="visual-accent" d="M21 53h14m-5-5 5 5-5 5m69-5H85m5-5-5 5 5 5"/></g></svg><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></article>
-            <article className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M84 27 69 42m11-19 8 8m-5-3 3 3m-12 7 3 3m-8 1-2 5 5-2M34 31v-8m-4 4h8"/></g></svg><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></article>
+            <Reveal className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M26 75 42 59m-13 8 5 5m-9-3 5 5m-6 0 3 3M37 54l5 5M31 53v-6m-3 3h6"/></g></svg><span className="featured-number" aria-hidden="true">01</span></div><h3>Microneedling facial</h3><p>Procedimiento que estimula la renovación de la piel y favorece la producción de colágeno, ayudando a mejorar su textura y apariencia.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20microneedling." aria-label="Consultar por WhatsApp sobre microneedling">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+            <Reveal className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M26 43c0-4 3-7 7-7s7 3 7 7-3 7-7 7-7-3-7-7Zm57 17c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5ZM29 58v-8m-4 4h8M86 33v-8m-4 4h8"/></g></svg><span className="featured-number" aria-hidden="true">02</span></div><h3>Higiene facial</h3><p>Limpieza personalizada que elimina impurezas, exceso de grasa y células muertas, ayudando a mantener una piel fresca y saludable.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20limpieza%20facial." aria-label="Consultar por WhatsApp sobre limpieza facial">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+            <Reveal className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M46 15c2 8 3 15 1 22-1 5-5 10-7 16-3 10-1 20 2 30m32-68c-2 8-3 15-1 22 1 5 5 10 7 16 3 10 1 20-2 30"/><path d="M44 52c9 4 23 4 32 0M52 70c5 2 11 2 16 0"/><path className="visual-accent" d="M21 53h14m-5-5 5 5-5 5m69-5H85m5-5-5 5 5 5"/></g></svg><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+            <Reveal className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M84 27 69 42m11-19 8 8m-5-3 3 3m-12 7 3 3m-8 1-2 5 5-2M34 31v-8m-4 4h8"/></g></svg><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></Reveal>
           </div>
           <a className="text-link featured-all" href="/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a>
         </div>
@@ -141,10 +96,10 @@ function App({ isServicesPage = false }) {
       <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><div className="section-intro"><h2 id="process-title">Empecemos por<br /><em>una conversación.</em></h2><p>Un primer contacto para compartir lo que buscas y consultar tus dudas con la doctora.</p></div><ol className="process-list"><li><div className="process-visual" aria-hidden="true"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="24" y="12" width="32" height="54" rx="5"/><path d="M35 18h10M37 59h6"/><path d="M30 31h20v14H38l-6 5v-5h-2z"/><path d="M35 36h10m-10 4h7"/></svg></div><span>1</span><h3>Contáctanos</h3><p>Escríbenos o llámanos para solicitar información.</p></li><li><div className="process-visual" aria-hidden="true"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="17" y="20" width="46" height="42" rx="4"/><path d="M17 31h46M28 15v10m24-10v10M28 41h5m7 0h5m7 0h1M28 50h5m7 0h5"/><path d="m50 51 3 3 6-7"/></svg></div><span>2</span><h3>Coordina tu valoración</h3><p>Consulta la disponibilidad y los detalles de tu visita.</p></li><li><div className="process-visual" aria-hidden="true"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M16 42c0-11 9-19 20-19s20 8 20 19-9 19-20 19c-3 0-6-.5-9-1.8L18 63l2.5-8C17.6 51.5 16 47 16 42z"/><path d="M47 23c2-5 7-8 13-8 8 0 14 6 14 14 0 3-1 6-3 8l2 6-7-2.5c-2 1-4 1.5-6 1.5h-4"/><path d="M28 41h.1m8 0h.1m8 0h.1" strokeWidth="3"/></svg></div><span>3</span><h3>Conversa con la doctora</h3><p>Comparte tus objetivos y resuelve tus dudas durante la valoración.</p></li></ol></div></section>
 
       <section className="faq-section container section-space" id="preguntas" aria-labelledby="faq-title"><h2 id="faq-title">Antes de<br /><em>tu visita.</em></h2><div className="faq-list">
-        <details><summary>¿Cómo puedo solicitar una valoración?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14" /></svg></summary><p>Puedes <a href="https://wa.me/50558811397">escribirnos por WhatsApp</a> o llamarnos al <a href="tel:+50558811397">+505 5881 1397</a> para consultar disponibilidad.</p></details>
-        <details><summary>¿Cómo sé qué opción es adecuada para mí?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14" /></svg></summary><p>Solicita una valoración para que conversemos sobre lo que buscas y aclarar tus dudas.</p></details>
-        <details><summary>¿Cuál es el horario de atención?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14" /></svg></summary><p>Atendemos de lunes a viernes, de 8:00 a. m. a 5:00 p. m. También atendemos en otros horarios con cita previa.</p></details>
-        <details><summary>¿En qué ciudad está la clínica?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14" /></svg></summary><p>Estamos en León, Nicaragua. <a href="https://wa.me/50558811397">Contáctanos por WhatsApp</a> para consultar cómo llegar.</p></details>
+        <FaqItem question={"\u00bfC\u00f3mo puedo solicitar una valoraci\u00f3n?"}><p>Puedes <a href="https://wa.me/50558811397">escribirnos por WhatsApp</a> o llamarnos al <a href="tel:+50558811397">+505 5881 1397</a> para consultar disponibilidad.</p></FaqItem>
+        <FaqItem question={"\u00bfC\u00f3mo s\u00e9 qu\u00e9 opci\u00f3n es adecuada para m\u00ed?"}><p>Solicita una valoración para que conversemos sobre lo que buscas y aclarar tus dudas.</p></FaqItem>
+        <FaqItem question={"\u00bfCu\u00e1l es el horario de atenci\u00f3n?"}><p>Atendemos de lunes a viernes, de 8:00 a. m. a 5:00 p. m. También atendemos en otros horarios con cita previa.</p></FaqItem>
+        <FaqItem question={"\u00bfEn qu\u00e9 ciudad est\u00e1 la cl\u00ednica?"}><p>Estamos en León, Nicaragua. <a href="https://wa.me/50558811397">Contáctanos por WhatsApp</a> para consultar cómo llegar.</p></FaqItem>
       </div></section>
 
       </>}
@@ -154,9 +109,9 @@ function App({ isServicesPage = false }) {
           <div>
             <h2 id="contact-title">Conversemos sobre<br /><em>tu valoración.</em></h2>
             <p>Contáctanos para consultar nuestros servicios y coordinar tu visita.</p>
-            <a className="button button-light" href="https://wa.me/50558811397">
+            <PressLink className="button button-light" href="https://wa.me/50558811397">
               Escribir por WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
-            </a>
+            </PressLink>
           </div>
           <dl className="contact-details">
             <div>
@@ -234,7 +189,7 @@ function App({ isServicesPage = false }) {
               </div>
             </div>
             <div className="contact-map-actions">
-              <a
+              <PressLink
                 className="button-map"
                 href="https://www.google.com/maps?q=12.433326721191406,-86.84996795654297&z=17&hl=es"
                 target="_blank"
@@ -242,8 +197,8 @@ function App({ isServicesPage = false }) {
               >
                 <span>Google Maps</span>
                 <svg className="map-external-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
-              </a>
-              <a
+              </PressLink>
+              <PressLink
                 className="button-map"
                 href="https://waze.com/ul?ll=12.433326721191406,-86.84996795654297&navigate=yes"
                 target="_blank"
@@ -251,7 +206,7 @@ function App({ isServicesPage = false }) {
               >
                 <span>Waze</span>
                 <svg className="map-external-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
-              </a>
+              </PressLink>
             </div>
           </div>
           <div className="contact-map-frame-wrap">
