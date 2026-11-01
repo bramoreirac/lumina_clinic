@@ -2,65 +2,12 @@ import { useEffect } from 'react'
 import logoInk from './assets/clinic/lumina-logo-ink.svg'
 import logoGold from './assets/clinic/lumina-logo-reconstructed.svg'
 import portrait from './assets/clinic/doctor.webp'
-import service01 from './assets/clinic/service-01.webp'
-import service02 from './assets/clinic/service-02.webp'
-import service03 from './assets/clinic/service-03.webp'
-import service04 from './assets/clinic/service-04.webp'
 import heroImage from './assets/clinic/hero-treatment.webp'
+import ServicesPage from './pages/ServicesPage'
 import './App.css'
 
-const services = [
-  {
-    "name": "Microneedling facial",
-    "description": "Estimula la renovación de la piel y la producción de colágeno, ayudando a mejorar su textura, apariencia y luminosidad."
-  },
-  {
-    "name": "Higiene facial",
-    "description": "Limpieza personalizada que elimina impurezas, exceso de grasa y células muertas para mantener una piel limpia y saludable."
-  },
-  {
-    "name": "Tratamiento de grasa localizada",
-    "description": "Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas del cuerpo, previa valoración médica."
-  },
-  {
-    "name": "Toxina botulínica",
-    "description": "Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos."
-  },
-  {
-    "name": "Bioestimulación con PRP",
-    "description": "Utiliza el plasma rico en plaquetas del propio paciente para favorecer los procesos naturales de regeneración de la piel."
-  },
-  {
-    "name": "Peelings químicos",
-    "description": "Favorecen la renovación cutánea y ayudan a mejorar manchas, textura irregular y otras alteraciones superficiales de la piel."
-  },
-  {
-    "name": "Inductores de colágeno",
-    "description": "Estimulan la producción natural de colágeno, contribuyendo progresivamente a mejorar la firmeza y calidad de la piel."
-  },
-  {
-    "name": "Mesoterapia facial",
-    "description": "Aplicación de activos seleccionados según las necesidades de la piel para complementar su hidratación y mejorar su apariencia."
-  },
-  {
-    "name": "Hydrafacial",
-    "description": "Limpieza facial avanzada que combina exfoliación, extracción de impurezas e hidratación para una piel de aspecto más fresco y luminoso."
-  },
-  {
-    "name": "Microdermoabrasión",
-    "description": "Exfoliación mecánica que ayuda a retirar células superficiales y mejorar la suavidad y textura de la piel."
-  },
-  {
-    "name": "Tratamiento de melasma y manchas",
-    "description": "Protocolos personalizados orientados a mejorar las alteraciones de pigmentación y favorecer un tono de piel más uniforme."
-  },
-  {
-    "name": "Tratamiento dermatológico del acné",
-    "description": "Evaluación y manejo personalizado del acné, enfocado en controlar las lesiones y mejorar la salud de la piel."
-  }
-]
 
-function App() {
+function App({ isServicesPage = false }) {
   useEffect(() => {
     document.documentElement.classList.add('js')
     const button = document.querySelector('.menu-toggle')
@@ -76,7 +23,8 @@ function App() {
       const link = event.target.closest('a')
       if (!link || !mobile.matches) return
       setMenu(false)
-      const target = document.querySelector(link.hash)
+      if (!link.hash || link.pathname !== window.location.pathname) return
+      const target = document.getElementById(decodeURIComponent(link.hash.slice(1)))
       if (target) { target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true }) }
     }
     const onKey = (event) => {
@@ -109,21 +57,22 @@ function App() {
     <a className="skip-link" href="#contenido">Ir al contenido</a>
     <header className="site-header">
       <div className="container header-inner">
-        <a className="wordmark" href="#inicio" aria-label="Lúmina Clínica Estética, inicio">
+        <a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, inicio">
           <img src={logoInk} alt="" width="750" height="521" />
         </a>
         <button className="menu-toggle" aria-expanded="false" aria-controls="navigation">Menú <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" /></svg></button>
         <nav id="navigation" aria-label="Navegación principal">
-          <a href="#clinica">La clínica</a>
-          <a href="#doctora">La doctora</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#preguntas">Preguntas frecuentes</a>
+          <a href="/#clinica">La clínica</a>
+          <a href="/#doctora">La doctora</a>
+          <a href="/servicios/" aria-current={isServicesPage ? 'page' : undefined}>Servicios</a>
+          <a href="/#preguntas">Preguntas frecuentes</a>
           <a className="nav-contact" href="#contacto">Conversemos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
         </nav>
       </div>
     </header>
 
     <main id="contenido" tabIndex="-1">
+      {isServicesPage ? <ServicesPage /> : <>
       <section className="clinic-hero" id="inicio" aria-labelledby="hero-title">
         <img className="hero-photo" src={heroImage} alt="" width="1080" height="1920" fetchPriority="high" />
         <div className="container clinic-hero-inner">
@@ -131,7 +80,7 @@ function App() {
           <div className="hero-rule" aria-hidden="true"></div>
           <p>Tratamientos médicos-estéticos y dermatológicos personalizados, guiados por una valoración profesional y enfocados en tu bienestar.</p>
           <div className="hero-actions">
-          <a className="text-link" href="#servicios">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a>
+          <a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a>
           </div>
         </div>
       </section>
@@ -148,7 +97,7 @@ function App() {
             <article className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M46 15c2 8 3 15 1 22-1 5-5 10-7 16-3 10-1 20 2 30m32-68c-2 8-3 15-1 22 1 5 5 10 7 16 3 10 1 20-2 30"/><path d="M44 52c9 4 23 4 32 0M52 70c5 2 11 2 16 0"/><path className="visual-accent" d="M21 53h14m-5-5 5 5-5 5m69-5H85m5-5-5 5 5 5"/></g></svg><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></article>
             <article className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M84 27 69 42m11-19 8 8m-5-3 3 3m-12 7 3 3m-8 1-2 5 5-2M34 31v-8m-4 4h8"/></g></svg><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></article>
           </div>
-          <a className="text-link featured-all" href="#servicios">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a>
+          <a className="text-link featured-all" href="/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a>
         </div>
       </section>
 
@@ -188,25 +137,6 @@ function App() {
         </div>
       </section>
 
-      <section className="services-section container section-space" id="servicios" aria-labelledby="services-title">
-        <div className="section-intro"><h2 id="services-title">Medicina estética.<br />Dermatología clínica.</h2><div className="services-intro-copy"><p>Conoce nuestros servicios. Contáctanos para consultar por una valoración y recibir información sobre las opciones disponibles.</p><p className="services-tagline">CLÍNICA ESTÉTICA LÚMINA - SABIDURÍA EN CADA PROCESO</p></div></div>
-        <div className="service-images">
-          <figure><img src={service01} alt="Aplicación de microneedling facial" width="1200" height="1200" loading="lazy" /><figcaption>Microneedling facial</figcaption></figure>
-          <figure><img src={service02} alt="Comparación antes y después de un tratamiento de grasa localizada" width="820" height="820" loading="lazy" /><figcaption>Tratamiento de grasa localizada</figcaption></figure>
-          <figure><img src={service03} alt="Examen del cuero cabelludo con vista ampliada" width="1200" height="1200" loading="lazy" /><figcaption>Tratamiento de alopecias</figcaption></figure>
-          <figure><img src={service04} alt="La doctora en su consultorio" width="1200" height="1200" loading="lazy" /><figcaption>Consultas dermatológicas</figcaption></figure>
-        </div>
-        <ul className="service-list">
-          {services.map(({ name, description }) => (
-            <li key={name}>
-              <div className="service-copy"><h3>{name}</h3><p>{description}</p></div>
-              <a href={`https://wa.me/50558811397?text=${encodeURIComponent(`Hola, quisiera informaci?n sobre ${name}.`)}`} aria-label={`Consultar por WhatsApp sobre ${name}`}>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
 
       <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><div className="section-intro"><h2 id="process-title">Empecemos por<br /><em>una conversación.</em></h2><p>Un primer contacto para compartir lo que buscas y consultar tus dudas con la doctora.</p></div><ol className="process-list"><li><div className="process-visual" aria-hidden="true"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="24" y="12" width="32" height="54" rx="5"/><path d="M35 18h10M37 59h6"/><path d="M30 31h20v14H38l-6 5v-5h-2z"/><path d="M35 36h10m-10 4h7"/></svg></div><span>1</span><h3>Contáctanos</h3><p>Escríbenos o llámanos para solicitar información.</p></li><li><div className="process-visual" aria-hidden="true"><svg viewBox="0 0 80 80" aria-hidden="true"><rect x="17" y="20" width="46" height="42" rx="4"/><path d="M17 31h46M28 15v10m24-10v10M28 41h5m7 0h5m7 0h1M28 50h5m7 0h5"/><path d="m50 51 3 3 6-7"/></svg></div><span>2</span><h3>Coordina tu valoración</h3><p>Consulta la disponibilidad y los detalles de tu visita.</p></li><li><div className="process-visual" aria-hidden="true"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M16 42c0-11 9-19 20-19s20 8 20 19-9 19-20 19c-3 0-6-.5-9-1.8L18 63l2.5-8C17.6 51.5 16 47 16 42z"/><path d="M47 23c2-5 7-8 13-8 8 0 14 6 14 14 0 3-1 6-3 8l2 6-7-2.5c-2 1-4 1.5-6 1.5h-4"/><path d="M28 41h.1m8 0h.1m8 0h.1" strokeWidth="3"/></svg></div><span>3</span><h3>Conversa con la doctora</h3><p>Comparte tus objetivos y resuelve tus dudas durante la valoración.</p></li></ol></div></section>
 
@@ -216,6 +146,8 @@ function App() {
         <details><summary>¿Cuál es el horario de atención?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14" /></svg></summary><p>Atendemos de lunes a viernes, de 8:00 a. m. a 5:00 p. m. También atendemos en otros horarios con cita previa.</p></details>
         <details><summary>¿En qué ciudad está la clínica?<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7v14" /></svg></summary><p>Estamos en León, Nicaragua. <a href="https://wa.me/50558811397">Contáctanos por WhatsApp</a> para consultar cómo llegar.</p></details>
       </div></section>
+
+      </>}
 
       <section className="contact-section" id="contacto" aria-labelledby="contact-title">
         <div className="container contact-layout">
@@ -333,7 +265,7 @@ function App() {
         </div>
       </section>
     </main>
-    <footer className="container site-footer"><a className="wordmark" href="#inicio" aria-label="Lúmina Clínica Estética, volver al inicio"><img src={logoInk} alt="" width="750" height="521" /></a><p>Medicina estética en León, Nicaragua.</p><a className="text-link" href="#inicio">Volver al inicio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg></a></footer>
+    <footer className="container site-footer"><a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, volver al inicio"><img src={logoInk} alt="" width="750" height="521" /></a><p>Medicina estética en León, Nicaragua.</p><a className="text-link" href="/#inicio">Volver al inicio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg></a></footer>
     </>
   )
 }
