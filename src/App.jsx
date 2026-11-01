@@ -2,8 +2,11 @@ import { useEffect } from 'react'
 import logoInk from './assets/clinic/lumina-logo-ink.svg'
 import logoGold from './assets/clinic/lumina-logo-reconstructed.svg'
 import portrait from './assets/clinic/doctor.webp'
-import microneedlingImage from './assets/clinic/microneedling-video.webp'
-import peelingImage from './assets/clinic/peeling-video.webp'
+import service01 from './assets/clinic/service-01.webp'
+import service02 from './assets/clinic/service-02.webp'
+import service03 from './assets/clinic/service-03.webp'
+import service04 from './assets/clinic/service-04.webp'
+import heroImage from './assets/clinic/hero-treatment.webp'
 import './App.css'
 
 const services = [
@@ -122,6 +125,7 @@ function App() {
 
     <main id="contenido" tabIndex="-1">
       <section className="clinic-hero" id="inicio" aria-labelledby="hero-title">
+        <img className="hero-photo" src={heroImage} alt="" width="1080" height="1920" fetchPriority="high" />
         <div className="container clinic-hero-inner">
           <h1 id="hero-title"><img className="clinic-logo" src={logoGold} alt="Lúmina Clínica Estética" width="750" height="521" /><span className="clinic-description">Medicina estética en<br />León, Nicaragua.</span></h1>
           <div className="hero-rule" aria-hidden="true"></div>
@@ -187,8 +191,10 @@ function App() {
       <section className="services-section container section-space" id="servicios" aria-labelledby="services-title">
         <div className="section-intro"><h2 id="services-title">Medicina estética.<br />Dermatología clínica.</h2><div className="services-intro-copy"><p>Conoce nuestros servicios. Contáctanos para consultar por una valoración y recibir información sobre las opciones disponibles.</p><p className="services-tagline">CLÍNICA ESTÉTICA LÚMINA - SABIDURÍA EN CADA PROCESO</p></div></div>
         <div className="service-images">
-          <figure><img src={microneedlingImage} alt="Tratamiento de microneedling en el rostro" width="900" height="1600" loading="lazy" /><figcaption>Microneedling</figcaption></figure>
-          <figure><img src={peelingImage} alt="Aplicación de un tratamiento facial con brocha" width="900" height="1600" loading="lazy" /><figcaption>Peeling químico</figcaption></figure>
+          <figure><img src={service01} alt="Aplicación de microneedling facial" width="1200" height="1200" loading="lazy" /><figcaption>Microneedling facial</figcaption></figure>
+          <figure><img src={service02} alt="Comparación antes y después de un tratamiento de grasa localizada" width="820" height="820" loading="lazy" /><figcaption>Tratamiento de grasa localizada</figcaption></figure>
+          <figure><img src={service03} alt="Examen del cuero cabelludo con vista ampliada" width="1200" height="1200" loading="lazy" /><figcaption>Tratamiento de alopecias</figcaption></figure>
+          <figure><img src={service04} alt="La doctora en su consultorio" width="1200" height="1200" loading="lazy" /><figcaption>Consultas dermatológicas</figcaption></figure>
         </div>
         <ul className="service-list">
           {services.map(({ name, description }) => (
