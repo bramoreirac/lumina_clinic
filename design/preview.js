@@ -32,3 +32,16 @@ document.addEventListener('keydown', (event) => {
 })
 
 mobileQuery.addEventListener('change', () => setMenu(false))
+
+const processList = document.querySelector('.process-list')
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+if (processList && !reducedMotion.matches && 'IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      processList.classList.add('is-animated')
+      observer.disconnect()
+    }
+  }, { threshold: 0.2 })
+  observer.observe(processList)
+}

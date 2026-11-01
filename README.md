@@ -1,16 +1,19 @@
-# React + Vite
+# Lúmina Clínica Estética
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite website for the clinic, in Spanish. The application is a static site and does not use a backend or database.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Install dependencies with `npm ci`, then start the development server with `npm run dev`. On PowerShell, use `npm.cmd` if execution policy blocks `npm`.
 
-## React Compiler
+Run `npm run lint` and `npm run build` to validate; use `npm run preview` to inspect the built site locally. The earlier design prototype is still available at `/design/` in the development server.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Preliminary review on Vercel
 
-## Expanding the ESLint configuration
+The current build is for preliminary review and is marked `noindex, nofollow` in both the HTML and `vercel.json`. This discourages indexing; it does not make a deployment private. Check the Vercel project's deployment protection and share access with the doctor as appropriate. A protected preview may require a shareable link or an invitation.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+After authenticating to Vercel and linking the project, run `vercel deploy` from the project root for a preview deployment. Do not use `--prod` for this review. Vite uses `npm run build` and the `dist` output directory. The final hosting target remains Netlify unless the customer chooses otherwise. Remove the preview indexing restrictions only when preparing the final public launch.
+
+## Content and assets
+
+The current site content lives in `src/App.jsx`, styling in `src/App.css`, and deployable media in `src/assets/clinic`. The logo is reconstructed from customer video and should be replaced with the clean master when available. Review treatment descriptions and the peeling image label with the doctor before launch; the street address is still pending. See `PHASE_1.md`, `PLAN.md`, `DESIGN.md`, and `SEO.md` for the project notes.

@@ -14,13 +14,14 @@ This is a responsive HTML/CSS/JavaScript design prototype for review before Reac
 
 ## What to review
 
-- Doctor introduction, portrait crop, typography, and overall brand treatment.
+- Clinic-led opening: Lúmina identity, medicine/service location heading, and direct WhatsApp action.
+- Clinic approach followed by the doctor's introduction and approved portrait.
 - Services presented as ten readable entries, each with a WhatsApp inquiry link.
 - Mobile menu, FAQ expansion, section navigation, and contact placement.
 - Monday–Friday, 8:00 a. m.–5:00 p. m. hours and other hours by appointment.
 - Mobile and desktop spacing and hierarchy.
 
-The name treatment is temporary until the clean logo arrives. Medical and first-person copy are draft text from `PHASE_1.md`, awaiting final review. No exact address, price, map, reviews, or appointment availability has been invented.
+The preview uses the reconstructed logo in `brand/`; compare it with the original master if the customer later provides one. Medical and first-person copy are draft text from `PHASE_1.md`, awaiting final review. No exact address, price, map, reviews, or appointment availability has been invented.
 
 ## Files and assets
 

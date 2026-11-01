@@ -13,7 +13,7 @@ This document is the content handoff for design. **Supplied** means explicitly p
 | Public clinic name | Lúmina Clínica Estética | Supplied: `customer_files/servicios_ofrecidos.txt`; consistent with brand manual. |
 | Doctor's display name | Dra. Steacey Maradiaga | Supplied: services file. Use this spelling as the working display name. |
 | Longer name | Dra. Steacey Kareliz Maradiaga Urbina | Observed in `snapgram.io_2q0gb5dw5ek9.jpg`; confirm spelling and whether the longer version is wanted. |
-| Professional title | Médico general con especialidad en medicina estética | Confirmed by customer. Preserve this wording; do not substitute “dermatóloga”. |
+| Professional title | Médico estético / Dermatología clínica | Confirmed by customer. Preserve this wording; do not substitute “dermatóloga”. |
 | Telephone | +505 5881 1397 | Supplied: services file; local number also appears in `snapgram.io_cj6psylj1nn8.jpg`. |
 | Telephone link | `tel:+50558811397` | Derived from supplied number. Verify live during implementation. |
 | WhatsApp | `https://wa.me/50558811397` | Customer confirmed that the supplied number accepts WhatsApp. Test link behavior during implementation. |
@@ -21,7 +21,7 @@ This document is the content handoff for design. **Supplied** means explicitly p
 | Location / service area | León, Nicaragua | City and country confirmed. Street address, map pin, and directions link pending. |
 | Hours | Monday–Friday, 8:00 a. m.–5:00 p. m.; other hours by appointment | Confirmed by customer. Spanish display: lunes a viernes. |
 | Instagram | `https://www.instagram.com/dra.steacey_maradiagaurbina/` | Customer supplied the profile URL; query string removed for a clean link. Profile not independently browsed. |
-| Email | Not supplied | Optional; omit unless supplied. |
+| Email | `steaceymaradiaga@gmail.com` | Supplied by customer for the contact section. |
 | Primary action | WhatsApp inquiry to request a consultation, with telephone as an alternative | Proposed flow using the confirmed channel. No appointment is reserved by opening a link. |
 | Audience | People exploring aesthetic medicine and skin-care services in León, Nicaragua | Geography confirmed; audience priorities proposed from supplied catalog. |
 | Pricing / promotions | No approved price list | Omit prices, discounts, and session packages until supplied. |
@@ -43,7 +43,7 @@ The existing portraits include pink clothing. The manual's no-pink rule applies 
 
 ## 3. Asset inventory
 
-Paths below are relative to `customer_files/content/`. Dimensions are pixels, measured from the originals. File sizes are rounded decimal kB. All eleven JPGs were visually reviewed. Customer approved publication of the supplied portraits; patient before/after imagery and video/audio remain outside that confirmation.
+Paths below are relative to `customer_files/content/`. Dimensions are pixels, measured from the originals. File sizes are rounded decimal kB. Customer approved disclosure of the supplied photos, including the two extracted treatment frames used in the preview. Before/after images and video/audio remain outside that confirmation.
 
 | File | Dimensions | Size | Observed content | Recommendation |
 | --- | --- | --- | --- | --- |
@@ -57,7 +57,7 @@ Paths below are relative to `customer_files/content/`. Dimensions are pixels, me
 | `snapgram.io_fc2390dcv4ex.jpg` | 1080 × 1350 | 197 kB | Dark branded commitment statement and doctor name/title. | Voice and dark-section reference; recreate selected approved wording as HTML. |
 | `snapgram.io_m7dyb3nhhuok.jpg` | 1080 × 1350 | 152 kB | Individualized-care statement and small seated portrait. | Biography/approach reference. Request the original seated portrait if needed. |
 | `snapgram.io_vd3qjuml4aqr.jpg` | 1088 × 1344 | 125 kB | Body-contouring goals and line illustration. | Reference only; advertised outcomes are not approved website claims. |
-| `xti794.jpg` | 1088 × 1344 | 180 kB | Educational lipoenzyme post with anatomical illustration. | Reference only. Lipoenzymes are not in the supplied ten-service catalog. |
+| `xti794.jpg` | 1088 × 1344 | 180 kB | Educational lipoenzyme post with anatomical illustration. | Reference only. Lipoenzymes were subsequently confirmed by the client as a featured treatment. |
 | `snapgram.io_axzxmf9fcd2m.mp4` | 716 × 1272 | 168 kB | 4.15-second vertical portrait clip at the desk, pink jacket. | Optional About media, not needed for launch. Sampled at one frame per second across the clip; nearly static portrait framing. H.264, 30 fps, AAC stereo audio track present. Audio content was not listened to or transcribed; speech/music and audio rights remain unverified. |
 
 ### Asset decisions for design
@@ -90,7 +90,11 @@ Proposed section introduction, draft for review:
 
 > Conoce nuestros servicios de cuidado facial y medicina estética. Contáctanos para consultar por una valoración y recibir información sobre las opciones disponibles.
 
-If descriptions remain unavailable for the design review, use service names alone with a clearly labeled contact link. Do not manufacture filler benefits. Lipoenzymes/body-contouring services seen in social posts remain outside this catalog unless added by the doctor.
+If descriptions remain unavailable for the design review, use service names alone with a clearly labeled contact link. Do not manufacture filler benefits. Lipoenzimas was subsequently confirmed by the client as a featured service; the doctor should review the proposed description and clinic-specific details before publication.
+
+### Featured treatments update
+
+The client selected microneedling (including ojeras and vitamin treatments), limpieza facial, lipoenzimas, and toxina botulínica as the four featured treatments. The preview now includes brief draft descriptions and WhatsApp links. The doctor should review the copy and the precise products and protocols, particularly for lipoenzimas and treatments around the eyes, before publication.
 
 ## 5. Spanish copy deck — draft, not publication-approved
 
@@ -107,7 +111,7 @@ Voice: warm, clear, professional, and respectful. Source themes: listening, indi
 
 ### About the doctor
 
-> Soy la Dra. Steacey Maradiaga, médico general con especialidad en medicina estética. En Lúmina, mi enfoque parte de escucharte y comprender lo que buscas. Creo en una atención cercana, con empatía, honestidad y respeto por cada persona.
+> Soy la Dra. Steacey Maradiaga, médico estético / dermatología clínica. En Lúmina, mi enfoque parte de escucharte y comprender lo que buscas. Creo en una atención cercana, con empatía, honestidad y respeto por cada persona.
 
 This is proposed first-person copy adapted from social-post themes, not an attributed quotation. Obtain the doctor's review. The professional title is customer-confirmed; add further training details only if supplied and do not invent years of experience.
 
@@ -142,7 +146,8 @@ Pending operational details: appointment requirements, response times, consultat
 - City: León, Nicaragua.
 - Hours: “Lunes a viernes, de 8:00 a. m. a 5:00 p. m. Otros horarios con cita previa.”
 - Instagram: `https://www.instagram.com/dra.steacey_maradiagaurbina/`.
-- Street address, map link, and optional email: pending. No placeholder values should appear in production.
+- Email: `steaceymaradiaga@gmail.com`.
+- Street address and map link: pending. No placeholder values should appear in production.
 
 ## 6. Remaining customer confirmations
 
@@ -150,8 +155,8 @@ Reply to these in any order; unanswered items stay pending:
 
 1. Supply the street address/map pin. Spanish-only content, León/Nicaragua, and Monday–Friday operating hours are already confirmed.
 2. Confirm whether the short display name should remain “Dra. Steacey Maradiaga”; the longer name is optional. The professional title is already confirmed.
-3. Provide an email only if one should be displayed. WhatsApp and Instagram are already confirmed.
-4. Provide the clean logo when available. Portrait publication is approved. Keep before/after images and the MP4 optional unless explicitly requested and cleared for website use.
+3. WhatsApp, email, and Instagram have been supplied; confirm any remaining contact preferences.
+4. Provide the clean logo when available. Portrait publication is approved. The customer approved the supplied photos for disclosure, including the treatment frames. Keep before/after images and video/audio optional unless specifically cleared.
 5. Review the ten service names and the draft biography/FAQ/process. Supply final service descriptions and confirm whether prices should be shown or omitted.
 
 Domain choice and account/maintenance ownership can be settled before deployment; they do not prevent initial design.
