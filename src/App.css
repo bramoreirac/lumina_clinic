@@ -47,6 +47,7 @@ p { max-width: 65ch; }
 .skip-link { position: absolute; top: -100px; left: 1rem; padding: 1rem; z-index: 10; background: var(--color-ink); color: var(--color-ivory); }
 .skip-link:focus { top: 1rem; }
 .site-header { border-bottom: 1px solid var(--line); }
+.site-header nav a { text-transform: uppercase; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 112px; }
 .wordmark { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; flex-shrink: 0; padding-block: 0.5rem; }
 .wordmark img { display: block; width: 130px; height: auto; }
@@ -70,6 +71,10 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .button-primary { background: var(--color-ink); color: var(--color-ivory); }
 .button-primary:hover { background: var(--color-ivory); color: var(--color-ink); border-color: var(--color-ink); }
 .button-primary:active { background: var(--color-stone); }
+.button-gold { background: var(--color-gold); color: var(--color-ink); }
+.button-gold:hover { background: var(--color-ivory); color: var(--color-ink); }
+.button-gold:active { background: var(--color-stone); }
+.button-gold svg { width: 24px; height: 24px; flex-shrink: 0; }
 .text-link { display: inline-flex; align-items: center; gap: 1rem; min-height: 44px; font-size: 0.85rem; font-weight: 500; }
 .text-link:hover { text-decoration-thickness: 2px; }
 .clinic-hero .button-primary { background: var(--color-ivory); color: var(--color-ink); }
@@ -115,7 +120,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .doctor-section .doctor-layout { position: relative; display: grid; grid-template-columns: 50% minmax(0, 1fr); gap: 6rem; align-items: center; }
 .doctor-layout::before { content: ''; position: absolute; top: 0; left: calc(-1 * max(3rem, (100vw - var(--content-width)) / 2)); right: 0; border-top: 1px solid var(--line); z-index: 1; }
 .doctor-portrait { position: relative; min-width: 0; width: calc(100% + max(3rem, (100vw - var(--content-width)) / 2)); margin-left: calc(-1 * max(3rem, (100vw - var(--content-width)) / 2)); }
-.doctor-portrait img { display: block; width: 100%; height: 470px; object-fit: cover; object-position: 50% 37%; }
+.doctor-portrait img { display: block; width: 100%; height: 470px; object-fit: cover; object-position: 50% 12%; }
 .doctor-portrait figcaption { position: absolute; bottom: 0; left: 0; padding: 0.5rem 1rem; background: var(--color-ink); color: var(--color-ivory); font-size: 0.75rem; }
 .doctor-copy h2 { margin-bottom: 1.75rem; }
 .doctor-copy .doctor-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
@@ -138,6 +143,12 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .service-images figure { display: flex; flex-direction: column; min-width: 0; }
 .service-images img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
 .service-images figcaption { flex: 1; padding: 1.1rem 1.2rem; background: var(--color-gold); color: var(--color-ink); font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; line-height: 1.35; }
+.service-images { align-items: start; }
+.service-images figcaption:has(.service-card-details) { padding: 0 1.2rem; }
+.service-card-details.faq-item { border: 0; }
+.service-card-details .faq-question { gap: 0.75rem; min-height: 88px; font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; line-height: 1.35; }
+.service-card-details .faq-question svg { width: 24px; height: 24px; flex: 0 0 24px; }
+.service-card-details .faq-answer p { padding: 0 0 1.2rem; font-family: var(--font-body); font-size: 0.86rem; font-weight: 400; line-height: 1.65; }
 @media (min-width: 600px) { .service-images { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1051px) { .service-images { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .service-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 4rem; list-style: none; padding: 0; margin: 0; }
@@ -243,7 +254,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
   .clinic-faith { grid-template-columns: 1fr; gap: 2rem; }
   .doctor-section .doctor-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .doctor-portrait { width: calc(100% + 3rem); margin-left: -1.5rem; }
-  .doctor-portrait img { height: auto; aspect-ratio: 1 / 1.05; object-position: center 32%; }
+  .doctor-portrait img { height: auto; aspect-ratio: 1 / 1.05; object-position: center 20%; }
   .doctor-layout::before { left: -1.5rem; right: -1.5rem; }
   .clinic-intro, .doctor-layout, .section-intro, .faq-section, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
   .doctor-section { padding-bottom: 3.5rem; }
