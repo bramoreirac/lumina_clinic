@@ -3,12 +3,12 @@ import { useId, useState } from 'react'
 import { motion } from 'motion/react'
 import { easeOut } from './motionSettings'
 
-export default function FaqItem({ question, children }) {
+export default function FaqItem({ question, children, className = '' }) {
   const [open, setOpen] = useState(false)
   const id = useId()
   const reducedMotion = useMotionPreference()
   return (
-    <div className="faq-item">
+    <div className={`faq-item ${className}`}>
       <button className="faq-question" id={`${id}-question`} aria-expanded={open} aria-controls={`${id}-answer`} onClick={() => setOpen(!open)}>
         {question}
         <motion.svg viewBox="0 0 24 24" aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: reducedMotion ? 0 : 0.2 }}><path d="M5 12h14m-7-7v14" /></motion.svg>

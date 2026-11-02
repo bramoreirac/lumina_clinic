@@ -37,7 +37,7 @@ function App({ isServicesPage = false }) {
       <Hero image={heroImage} width={1080} height={1920} titleId="hero-title"
         title={<><img className="clinic-logo" src={logoGold} alt="Lúmina Clínica Estética" width="750" height="521" /><span className="clinic-description">Medicina estética en<br />León, Nicaragua.</span></>}
         description={"Tratamientos m\u00e9dicos-est\u00e9ticos y dermatol\u00f3gicos personalizados, guiados por una valoraci\u00f3n profesional y enfocados en tu bienestar."}
-        actions={<><a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a></>}
+        actions={<a className="button button-gold" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>}
       />
 
       <section className="featured-section" id="destacados" aria-labelledby="featured-title">
@@ -52,7 +52,7 @@ function App({ isServicesPage = false }) {
             <Reveal className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M46 15c2 8 3 15 1 22-1 5-5 10-7 16-3 10-1 20 2 30m32-68c-2 8-3 15-1 22 1 5 5 10 7 16 3 10 1 20-2 30"/><path d="M44 52c9 4 23 4 32 0M52 70c5 2 11 2 16 0"/><path className="visual-accent" d="M21 53h14m-5-5 5 5-5 5m69-5H85m5-5-5 5 5 5"/></g></svg><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></Reveal>
             <Reveal className="featured-card"><div className="featured-visual"><svg viewBox="0 0 120 100" aria-hidden="true"><g className="visual-mark"><path d="M50 19c0-6 4-10 10-10s10 4 10 10M42 43c0-16 7-25 18-25s18 9 18 25v10c0 15-9 25-18 25S42 68 42 53V43Z"/><path d="M42 42c9-1 16-5 21-14 3 7 8 11 15 13M47 53c2 2 5 2 7 0m12 0c2 2 5 2 7 0M56 65c2 2 6 2 8 0M53 76v5c-3 3-7 4-11 5m25-10v5c3 3 7 4 11 5"/><path className="visual-accent" d="M84 27 69 42m11-19 8 8m-5-3 3 3m-12 7 3 3m-8 1-2 5 5-2M34 31v-8m-4 4h8"/></g></svg><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></Reveal>
           </div>
-          <a className="text-link featured-all" href="/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></a>
+          <a className="button button-gold featured-all" href="/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
         </div>
       </section>
 
@@ -79,14 +79,18 @@ function App({ isServicesPage = false }) {
       <section className="doctor-section" id="doctora" aria-labelledby="doctor-title">
         <div className="container doctor-layout">
           <figure className="doctor-portrait">
-            <img src={portrait} alt="Dra. Steacey Maradiaga sonriendo en su consultorio" width="1200" height="1600" loading="lazy" />
+            <img src={portrait} alt="Dra. Steacey Maradiaga sonriendo en su consultorio" width="1067" height="1600" loading="lazy" />
             <figcaption>Dra. Steacey Maradiaga, Lúmina Clínica Estética.</figcaption>
           </figure>
           <div className="doctor-copy">
             <h2 id="doctor-title">La doctora detrás<br />de <em>Lúmina.</em></h2>
             <p className="doctor-name">Dra. Steacey Maradiaga</p>
             <p>Médico estético / Dermatología clínica.</p>
-            <p>Mi enfoque parte de escucharte y comprender lo que buscas. Creo en una atención cercana, con empatía, honestidad y respeto por cada persona.</p>
+            <p><strong>Para mí, cada paciente es único. </strong>No creo en fórmulas universales.</p>
+            <div className="doctor-belief">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" /><path d="M24 34 14.5 25c-6-6 2-13 7.5-7.5l2 2 2-2C31.5 12 39.5 19 33.5 25L24 34Z" /></svg>
+              <p>Creo en escuchar, valorar y comprender a cada persona para ofrecer un tratamiento personalizado, seguro y basado en ciencia.</p>
+            </div>
             <a className="text-link" href="#contacto">Conversemos sobre tu valoración <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
           </div>
         </div>
