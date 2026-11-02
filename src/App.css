@@ -125,6 +125,8 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .doctor-copy h2 { margin-bottom: 1.75rem; }
 .doctor-copy .doctor-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
 .doctor-copy p { font-size: 0.91rem; margin-bottom: 1.3rem; }
+.doctor-belief { display: flex; align-items: flex-start; gap: 1rem; }
+.doctor-belief svg { width: 42px; height: 42px; flex: 0 0 42px; fill: none; stroke: var(--color-gold); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .doctor-copy .text-link { margin-top: 0.4rem; }
 @media (min-width: 800px) {
   .doctor-layout::before, .doctor-layout::after { left: calc(-1 * max(3rem, (100vw - var(--content-width)) / 2)); right: calc(-1 * max(3rem, (100vw - var(--content-width)) / 2)); }

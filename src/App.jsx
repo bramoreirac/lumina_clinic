@@ -86,7 +86,11 @@ function App({ isServicesPage = false }) {
             <h2 id="doctor-title">La doctora detrás<br />de <em>Lúmina.</em></h2>
             <p className="doctor-name">Dra. Steacey Maradiaga</p>
             <p>Médico estético / Dermatología clínica.</p>
-            <p>Mi enfoque parte de escucharte y comprender lo que buscas. Creo en una atención cercana, con empatía, honestidad y respeto por cada persona.</p>
+            <p><strong>Para mí, cada paciente es único. </strong>No creo en fórmulas universales.</p>
+            <div className="doctor-belief">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" /><path d="M24 34 14.5 25c-6-6 2-13 7.5-7.5l2 2 2-2C31.5 12 39.5 19 33.5 25L24 34Z" /></svg>
+              <p>Creo en escuchar, valorar y comprender a cada persona para ofrecer un tratamiento personalizado, seguro y basado en ciencia.</p>
+            </div>
             <a className="text-link" href="#contacto">Conversemos sobre tu valoración <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
           </div>
         </div>
