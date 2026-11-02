@@ -98,7 +98,7 @@ function App({ isServicesPage = false }) {
       <section className="faq-section container section-space" id="preguntas" aria-labelledby="faq-title"><h2 id="faq-title">Antes de<br /><em>tu visita.</em></h2><div className="faq-list">
         <FaqItem question={"\u00bfC\u00f3mo puedo solicitar una valoraci\u00f3n?"}><p>Puedes <a href="https://wa.me/50558811397">escribirnos por WhatsApp</a> o llamarnos al <a href="tel:+50558811397">+505 5881 1397</a> para consultar disponibilidad.</p></FaqItem>
         <FaqItem question={"\u00bfC\u00f3mo s\u00e9 qu\u00e9 opci\u00f3n es adecuada para m\u00ed?"}><p>Solicita una valoración para que conversemos sobre lo que buscas y aclarar tus dudas.</p></FaqItem>
-        <FaqItem question={"\u00bfCu\u00e1l es el horario de atenci\u00f3n?"}><p>Atendemos de lunes a viernes, de 8:00 a. m. a 5:00 p. m. También atendemos en otros horarios con cita previa.</p></FaqItem>
+        <FaqItem question={"\u00bfCu\u00e1l es el horario de atenci\u00f3n?"}><p>Atendemos de lunes a viernes, de 9:00 am a 6:00 pm. Sábados, de 9:00 am a 5:00 pm. También atendemos en otros horarios con cita previa.</p></FaqItem>
         <FaqItem question={"\u00bfEn qu\u00e9 ciudad est\u00e1 la cl\u00ednica?"}><p>Estamos en León, Nicaragua. <a href="https://wa.me/50558811397">Contáctanos por WhatsApp</a> para consultar cómo llegar.</p></FaqItem>
       </div></section>
 
@@ -126,7 +126,7 @@ function App({ isServicesPage = false }) {
                 <a href="https://www.google.com/maps?q=12.433326721191406,-86.84996795654297&z=17&hl=es" target="_blank" rel="noopener noreferrer">
                   León, Nicaragua <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
                 </a>
-                <small>Reparto Mariana Sampson, del cuerpo de bomberos 9 cuadras al norte</small>
+                <small>Reparto Mariana Sanson, del cuerpo de bomberos 9 cuadras al norte</small>
               </dd>
             </div>
             <div>
