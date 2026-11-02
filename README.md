@@ -8,11 +8,11 @@ Install dependencies with `npm ci`, then start the development server with `npm 
 
 Run `npm run lint` and `npm run build` to validate; use `npm run preview` to inspect the built site locally. The earlier design prototype is still available at `/design/` in the development server.
 
-## Preliminary review on Vercel
+## Netlify deployment
 
-The current build is for preliminary review and is marked `noindex, nofollow` in both the HTML and `vercel.json`. This discourages indexing; it does not make a deployment private. Check the Vercel project's deployment protection and share access with the doctor as appropriate. A protected preview may require a shareable link or an invitation.
+Connect the repository to Netlify and select the intended production branch. `netlify.toml` configures Node 24, `npm run build`, and the `dist` publish directory. Verify the homepage and `/servicios/` on the Netlify URL before connecting the final domain.
 
-After authenticating to Vercel and linking the project, run `vercel deploy` from the project root for a preview deployment. Do not use `--prod` for this review. Vite uses `npm run build` and the `dist` output directory. The final hosting target remains Netlify unless the customer chooses otherwise. Remove the preview indexing restrictions only when preparing the final public launch.
+Both page entry points currently include `noindex, nofollow` for review. Remove those tags when the site is ready for search indexing. They discourage indexing but do not make a deployment private. Review Netlify's preview protection and indexing settings before sharing non-production deploys.
 
 ## Content and assets
 
