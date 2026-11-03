@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import useMotionPreference from './components/useMotionPreference'
 import Hero from './components/Hero'
 import Reveal from './components/Reveal'
+import ServicesStrip from './components/ServicesStrip'
 import TreatmentIcon from './components/TreatmentIcon'
 import FaqItem from './components/FaqItem'
 import SiteHeader from './components/SiteHeader'
@@ -42,6 +43,7 @@ function App({ isServicesPage = false }) {
       />
 
       <section className="featured-section" id="destacados" aria-labelledby="featured-title">
+        <ServicesStrip />
         <div className="container section-space">
           <div className="featured-heading">
             <div><p className="featured-eyebrow">Nuestros tratamientos destacados</p><h2 id="featured-title">El cuidado de tu piel comienza con una valoración profesional.</h2></div>
