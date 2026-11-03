@@ -5,7 +5,7 @@ Implemented from `docs/site_motion_guidelines.md` after approval of the five-ste
 ## Behavior
 
 - `Hero`: both page heroes use a brief photo fade followed by heading, description, and actions. Text moves 16px over 450ms, with delays of 80ms, 180ms, and 280ms. The image starts partially visible and fades over 400ms.
-- `Reveal`: featured treatment cards and service gallery figures reveal once when 15% enters the viewport. Keyboard focus makes a card visible immediately. The catalogue remains static for straightforward reading.
+- `Reveal`: featured treatment cards, service gallery figures, and the doctor section's portrait and copy reveal once when 15% enters the viewport. Keyboard focus makes content visible immediately. The catalogue remains static for straightforward reading.
 - `SiteHeader`: mobile navigation fades and moves 8px over 220ms. Closing makes its links inert immediately. Escape returns focus to the menu button; same-page links focus their destination. Resizing resets the mobile menu.
 - `FaqItem`: answer height and opacity transition over 250ms. Buttons expose expanded state and answer relationships. Closed answers are inert and hidden from assistive technology, including during the closing animation. Rapid toggles use the current requested state.
 - `PressLink`: primary buttons and map actions scale to 98% while pressed. Existing color feedback and visible focus outlines remain. Decorative card hover movement is restricted to a fine pointer that supports hover.

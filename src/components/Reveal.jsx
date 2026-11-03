@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { entrance, revealViewport } from './motionSettings'
 
-const elements = { article: motion.article, figure: motion.figure }
+const elements = { article: motion.article, div: motion.div, figure: motion.figure }
 
 export default function Reveal({ as = 'article', children, ...props }) {
   const Element = elements[as]

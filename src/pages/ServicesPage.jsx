@@ -14,7 +14,7 @@ export default function ServicesPage() {
       <Hero image={heroImage} width={1200} height={1200} titleId="services-hero-title" className="services-hero"
         title={<>Nuestros servicios</>}
         description={"Medicina est\u00e9tica y dermatolog\u00eda cl\u00ednica en Le\u00f3n, Nicaragua. Conoce las opciones disponibles y consulta por una valoraci\u00f3n profesional."}
-        actions={<a className="text-link" href="https://wa.me/50558811397">Consultar por WhatsApp <span aria-hidden="true">↗</span></a>}
+        actions={<a className="button button-gold" href="https://wa.me/50558811397">Consultar por WhatsApp <span aria-hidden="true">↗</span></a>}
       />
       <section className="services-section container section-space" id="servicios" aria-labelledby="services-title">
         <div className="section-intro"><h2 id="services-title">Medicina estética.<br />Dermatología clínica.</h2><div className="services-intro-copy"><p>Conoce nuestros servicios. Contáctanos para consultar por una valoración y recibir información sobre las opciones disponibles.</p><p className="services-tagline">CLÍNICA ESTÉTICA LÚMINA - SABIDURÍA EN CADA PROCESO</p></div></div>

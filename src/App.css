@@ -91,7 +91,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 }
 .featured-visual { position: relative; display: grid; place-items: center; height: 160px; margin-bottom: 1.5rem; background: var(--color-gold); color: var(--color-green); overflow: hidden; }
 .featured-visual svg { width: 120px; height: 100px; stroke-width: 1.5; }
-.featured-visual .visual-accent { stroke: var(--color-ivory); stroke-width: 2; }
+.featured-visual .visual-accent { stroke: #fff; stroke-width: 1.7; }
 .featured-number { position: absolute; top: 0.7rem; left: 0.9rem; font-size: 0.7rem; }
 .visual-mark { transform-origin: center; transition: transform 500ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .featured-card:hover .visual-mark { transform: translateY(-4px); } }
@@ -116,7 +116,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .clinic-faith blockquote { margin: 0; padding: 1.5rem 2rem; border: 1px solid var(--color-gold); border-radius: 6px; background: #ede6d7; }
 .clinic-faith blockquote p { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.7rem); font-style: italic; line-height: 1.3; }
 .clinic-faith cite { display: block; margin-top: 0.8rem; color: #795d32; font-size: 0.85rem; font-style: normal; font-weight: 600; }
-.doctor-section { padding-block: 0 5rem; }
+.doctor-section { padding-block: 0; }
 .doctor-section .doctor-layout { position: relative; display: grid; grid-template-columns: 50% minmax(0, 1fr); gap: 6rem; align-items: center; }
 .doctor-layout::before { content: ''; position: absolute; top: 0; left: calc(-1 * max(3rem, (100vw - var(--content-width)) / 2)); right: 0; border-top: 1px solid var(--line); z-index: 1; }
 .doctor-portrait { position: relative; min-width: 0; width: calc(100% + max(3rem, (100vw - var(--content-width)) / 2)); margin-left: calc(-1 * max(3rem, (100vw - var(--content-width)) / 2)); }
@@ -161,7 +161,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .service-copy p { font-size: 0.83rem; line-height: 1.6; }
 .service-list a { display: flex; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 50%; transition: background var(--duration-ui), color var(--duration-ui); }
 .service-list a:hover { background: var(--color-ink); color: var(--color-ivory); border-color: var(--color-ink); }
-.process-section { border-block: 1px solid var(--line); }
+.process-section { border-block: 1px solid var(--line); background: radial-gradient(ellipse at 85% 15%, rgba(46, 64, 52, 0.12), transparent 55%), linear-gradient(135deg, var(--color-ivory), #dce3da); }
 @media (min-width: 800px) { .process-section { border-top: 0; } }
 .process-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; list-style: none; margin: 0; padding: 0; }
 .process-list li { position: relative; padding-top: 1.5rem; }
@@ -179,6 +179,9 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .process-list h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
 .process-list p { font-size: 0.85rem; }
 .faq-section { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 5rem; }
+.faq-illustration { display: block; width: min(180px, 100%); height: auto; margin-top: 2rem; color: var(--color-green); stroke-width: 1.8; }
+.faq-illustration-halo { fill: rgba(201, 166, 107, 0.14); stroke: none; }
+.faq-illustration-accent { stroke: #a47c3c; }
 .faq-item { border-top: 1px solid var(--line); }
 .faq-item:last-child { border-bottom: 1px solid var(--line); }
 .faq-question { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 1.5rem; min-height: 84px; padding: 1.2rem 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; font-size: 0.9rem; font-weight: 500; line-height: 1.6; }
@@ -259,7 +262,8 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
   .doctor-portrait img { height: auto; aspect-ratio: 1 / 1.05; object-position: center 20%; }
   .doctor-layout::before { left: -1.5rem; right: -1.5rem; }
   .clinic-intro, .doctor-layout, .section-intro, .faq-section, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
-  .doctor-section { padding-bottom: 3.5rem; }
+  .faq-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .faq-illustration { width: clamp(90px, 27vw, 130px); margin-top: 0; }
   .contact-section { padding-block: 3.5rem; }
   .section-space { padding-block: 3.5rem; }
   h2 { font-size: clamp(2rem, 6vw, 2.6rem); }
