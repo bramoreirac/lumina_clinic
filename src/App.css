@@ -106,7 +106,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
   .featured-card { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
 }
 .featured-visual { position: relative; display: grid; place-items: center; height: 160px; margin-bottom: 1.5rem; border-bottom: 1px solid #b99961; background: linear-gradient(135deg, #d7ba88, var(--color-gold) 65%, #bc975c); color: var(--color-green); overflow: hidden; }
-.featured-visual svg { width: 120px; height: 100px; stroke-width: 1.5; }
+.featured-visual svg { width: 148px; height: auto; stroke-width: 1.5; }
 .featured-visual .visual-accent { stroke: #fff; stroke-width: 1.7; }
 .featured-number { position: absolute; top: 0.7rem; left: 0.9rem; font-size: 0.7rem; }
 .visual-mark { transform-origin: center; transition: transform 500ms var(--ease-out); }
@@ -331,4 +331,5 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .featured-card:focus-within .visual-mark, .featured-card:hover .visual-mark { transform: none; }
   .clinic-hero h1, .clinic-hero p, .hero-actions, .hero-photo, .featured-card, .service-images figure { opacity: 1 !important; transform: none !important; }
+  .section-entrance { opacity: 1 !important; transform: none !important; }
 }

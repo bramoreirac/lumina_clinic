@@ -30,6 +30,8 @@ docs/
 # agent skills
 .agents/
 .impeccable/
+.playwright-cli/
+.taste-skill/
 
 # Vercel project credentials and local configuration
 .vercel/

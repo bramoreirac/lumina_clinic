@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
+import { motion } from 'motion/react'
 import useMotionPreference from './components/useMotionPreference'
+import { sectionEntrance } from './components/motionSettings'
 import Hero from './components/Hero'
 import Reveal from './components/Reveal'
 import ServicesStrip from './components/ServicesStrip'
@@ -47,7 +49,7 @@ function App({ isServicesPage = false }) {
         <div className="container section-space">
           <div className="featured-heading">
             <div><p className="featured-eyebrow">Nuestros tratamientos destacados</p><h2 id="featured-title">El cuidado de tu piel comienza con una valoración profesional.</h2></div>
-            <p>Conoce algunos nuestros tratamientos y evaluemos juntos cuál es la mejor opción para ti.</p>
+            <p>Conoce algunos de nuestros tratamientos y evaluemos juntos cuál es la mejor opción para ti.</p>
           </div>
           <div className="featured-grid">
             <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="microneedling" /><span className="featured-number" aria-hidden="true">01</span></div><h3>Microneedling facial</h3><p>Procedimiento que estimula la renovación de la piel y favorece la producción de colágeno, ayudando a mejorar su textura y apariencia.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20microneedling." aria-label="Consultar por WhatsApp sobre microneedling">Consultar <span aria-hidden="true">↗</span></a></Reveal>
@@ -61,21 +63,21 @@ function App({ isServicesPage = false }) {
 
       <section className="clinic-intro-section" id="clinica" aria-labelledby="clinic-title">
         <div className="clinic-intro container">
-          <div className="clinic-principles-heading">
+          <motion.div className="clinic-principles-heading section-entrance" {...sectionEntrance(reducedMotion)}>
             <p className="clinic-eyebrow">Lo que me guía</p>
             <h2 id="clinic-title">Mi profesión tiene principios. Mi vida también.</h2>
-          </div>
+          </motion.div>
           <ul className="clinic-values" aria-label="Principios de atención">
-            <li><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7v32M14 40h20M10 14h28M14 14 7 27h14l-7-13Zm20 0-7 13h14l-7-13ZM7 27c1 6 13 6 14 0m6 0c1 6 13 6 14 0" /></svg></span><span>Ética.</span></li>
-            <li><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39 9 25C-1 15 12 5 21 14l3 3 3-3C36 5 49 15 39 25L24 39Z" /></svg></span><span>Honestidad.</span></li>
-            <li><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m4 18 20-9 20 9-20 9L4 18Zm8 4v10c7 6 17 6 24 0V22m6-2v12" /></svg></span><span>Preparación constante.</span></li>
-            <li><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="15" cy="12" r="5"/><circle cx="33" cy="12" r="5"/><path d="M19 23c-3-5-9-5-12-1s-1 9 5 14l5 4m12-17c3-5 9-5 12-1s1 9-5 14l-5 4"/><path d="M24 39 16 31c-5-5 2-11 6-6l2 2 2-2c4-5 11 1 6 6l-8 8Z" /></svg></span><span>Empatía.</span></li>
-            <li><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7c6 4 11 5 16 6v9c0 10-6 16-16 20C14 38 8 32 8 22v-9c5-1 10-2 16-6Z"/><path d="m17 24 5 5 10-11" /></svg></span><span>Seguridad.</span></li>
+            <motion.li className="section-entrance" {...sectionEntrance(reducedMotion)}><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7v32M14 40h20M10 14h28M14 14 7 27h14l-7-13Zm20 0-7 13h14l-7-13ZM7 27c1 6 13 6 14 0m6 0c1 6 13 6 14 0" /></svg></span><span>Ética.</span></motion.li>
+            <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.06)}><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39 9 25C-1 15 12 5 21 14l3 3 3-3C36 5 49 15 39 25L24 39Z" /></svg></span><span>Honestidad.</span></motion.li>
+            <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.12)}><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m4 18 20-9 20 9-20 9L4 18Zm8 4v10c7 6 17 6 24 0V22m6-2v12" /></svg></span><span>Preparación constante.</span></motion.li>
+            <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.18)}><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="15" cy="12" r="5"/><circle cx="33" cy="12" r="5"/><path d="M19 23c-3-5-9-5-12-1s-1 9 5 14l5 4m12-17c3-5 9-5 12-1s1 9-5 14l-5 4"/><path d="M24 39 16 31c-5-5 2-11 6-6l2 2 2-2c4-5 11 1 6 6l-8 8Z" /></svg></span><span>Empatía.</span></motion.li>
+            <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.24)}><span className="clinic-value-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7c6 4 11 5 16 6v9c0 10-6 16-16 20C14 38 8 32 8 22v-9c5-1 10-2 16-6Z"/><path d="m17 24 5 5 10-11" /></svg></span><span>Seguridad.</span></motion.li>
           </ul>
-          <div className="clinic-faith">
+          <motion.div className="clinic-faith section-entrance" {...sectionEntrance(reducedMotion)}>
             <div className="clinic-faith-message"><span className="clinic-faith-ornament" aria-hidden="true">✦</span><p>Y una fe que me recuerda que Dios me ha permitido caminar por este camino con un propósito.</p></div>
             <blockquote><p>“Todo lo que hagan, háganlo de corazón.”</p><cite>Colosenses 3:23</cite></blockquote>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -148,19 +150,19 @@ function App({ isServicesPage = false }) {
         </div>
       </section>
 
-      <section className="faq-section container section-space" id="preguntas" aria-labelledby="faq-title"><div className="faq-heading"><h2 id="faq-title">Antes de<br /><em>tu visita.</em></h2>
+      <section className="faq-section container section-space" id="preguntas" aria-labelledby="faq-title"><motion.div className="faq-heading section-entrance" {...sectionEntrance(reducedMotion)}><h2 id="faq-title">Antes de<br /><em>tu visita.</em></h2>
         <svg className="faq-illustration" viewBox="0 0 180 140" aria-hidden="true">
           <circle className="faq-illustration-halo" cx="82" cy="70" r="59" />
           <path d="M37 56c0-22 20-39 45-39s45 17 45 39-20 39-45 39c-5 0-10-.7-14-2l-17 9 4-16c-11-7-18-18-18-30Z" />
           <path d="M72 46c1-6 6-10 13-10 7 0 12 4 12 10 0 5-3 8-8 11-4 3-6 6-6 10m0 9v1" />
           <path className="faq-illustration-accent" d="M126 76c13 3 22 12 22 23 0 7-4 14-11 19l3 11-13-6c-4 1-8 2-12 2-13 0-24-5-29-13M109 99h.1m10 0h.1m10 0h.1" />
         </svg>
-      </div><div className="faq-list">
+      </motion.div><motion.div className="faq-list section-entrance" {...sectionEntrance(reducedMotion, 0.08)}>
         <FaqItem question={"\u00bfC\u00f3mo puedo solicitar una valoraci\u00f3n?"}><p>Puedes <a href="https://wa.me/50558811397">escribirnos por WhatsApp</a> o llamarnos al <a href="tel:+50558811397">+505 5881 1397</a> para consultar disponibilidad.</p></FaqItem>
         <FaqItem question={"\u00bfC\u00f3mo s\u00e9 qu\u00e9 opci\u00f3n es adecuada para m\u00ed?"}><p>Solicita una valoración para que conversemos sobre lo que buscas y aclarar tus dudas.</p></FaqItem>
         <FaqItem question={"\u00bfCu\u00e1l es el horario de atenci\u00f3n?"}><p>Atendemos de lunes a viernes, de 9:00 am a 6:00 pm. Sábados, de 9:00 am a 5:00 pm. También atendemos en otros horarios con cita previa.</p></FaqItem>
         <FaqItem question={"\u00bfEn qu\u00e9 ciudad est\u00e1 la cl\u00ednica?"}><p>Estamos en León, Nicaragua. <a href="https://wa.me/50558811397">Contáctanos por WhatsApp</a> para consultar cómo llegar.</p></FaqItem>
-      </div></section>
+      </motion.div></section>
 
       </>}
 
