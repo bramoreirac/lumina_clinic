@@ -171,6 +171,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
 .service-card-details .faq-question { gap: 0.75rem; min-height: 88px; font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; line-height: 1.35; }
 .service-card-details .faq-question svg { width: 24px; height: 24px; flex: 0 0 24px; }
 .service-card-details .faq-answer p { padding: 0 0 1.2rem; font-family: var(--font-body); font-size: 0.86rem; font-weight: 400; line-height: 1.65; }
+.service-card-contact { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; margin-bottom: 1rem; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; line-height: 1.4; }
 @media (min-width: 600px) { .service-images { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1051px) { .service-images { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .service-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 4rem; list-style: none; padding: 0; margin: 0; }
@@ -278,6 +279,7 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
   .clinic-values { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.5rem; }
   .clinic-faith { grid-template-columns: 1fr; gap: 2rem; }
   .doctor-section .doctor-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .doctor-copy { padding-bottom: 2rem; }
   .doctor-portrait { width: calc(100% + 3rem); margin-left: -1.5rem; }
   .doctor-portrait img { height: auto; aspect-ratio: 1 / 1.05; object-position: center 20%; }
   .doctor-layout::before { left: -1.5rem; right: -1.5rem; }
@@ -309,6 +311,10 @@ nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; }
   .site-footer .text-link { margin-left: auto; font-size: 0.75rem; }
 }
 @keyframes process-line-vertical { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (max-width: 599px) {
+  .featured-grid { grid-template-columns: 1fr; }
+  .featured-card p { font-size: 1rem; }
+}
 @media (max-width: 374px) {
   .section-intro .services-tagline { font-size: clamp(0.55rem, calc(4.08vw - 1.31px), 1rem); }
   .doctor-portrait { width: calc(100% + 2rem); margin-left: -1rem; }

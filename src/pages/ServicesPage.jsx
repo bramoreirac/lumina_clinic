@@ -25,6 +25,9 @@ export default function ServicesPage() {
               <figcaption>
                 <FaqItem question={name} className="service-card-details">
                   <p>{description ?? services.find((service) => service.name === name)?.description}</p>
+                  <a className="service-card-contact" href={`https://wa.me/50558811397?text=${encodeURIComponent(`Hola, quisiera información sobre ${name}.`)}`} aria-label={`Consultar por WhatsApp sobre ${name}`}>
+                    Consultar por WhatsApp <span aria-hidden="true">↗</span>
+                  </a>
                 </FaqItem>
               </figcaption>
             </Reveal>

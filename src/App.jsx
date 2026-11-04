@@ -39,7 +39,7 @@ function App({ isServicesPage = false }) {
       <Hero image={heroImage} width={1080} height={1920} titleId="hero-title"
         title={<><img className="clinic-logo" src={logoGold} alt="Lúmina Clínica Estética" width="750" height="521" /><span className="clinic-description">Medicina estética en<br />León, Nicaragua.</span></>}
         description={"Tratamientos m\u00e9dicos-est\u00e9ticos y dermatol\u00f3gicos personalizados, guiados por una valoraci\u00f3n profesional y enfocados en tu bienestar."}
-        actions={<a className="button button-gold" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>}
+        actions={<><a className="button button-gold" href="https://wa.me/50558811397">Consultar por WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a><a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></>}
       />
 
       <section className="featured-section" id="destacados" aria-labelledby="featured-title">
