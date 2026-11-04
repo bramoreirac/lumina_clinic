@@ -13,6 +13,8 @@ import logoInk from './assets/clinic/lumina-logo-ink.svg'
 import logoGold from './assets/clinic/lumina-logo-reconstructed.svg'
 import portrait from './assets/clinic/doctor.webp'
 import heroImage from './assets/clinic/hero-treatment.webp'
+import featuredTreatment from './assets/clinic/featured-treatment.webp'
+import consultationPortrait from './assets/clinic/consultation-portrait.webp'
 import ServicesPage from './pages/ServicesPage'
 import './App.css'
 
@@ -45,21 +47,21 @@ function App({ isServicesPage = false }) {
       />
 
       <section className="featured-section" id="destacados" aria-labelledby="featured-title">
-        <ServicesStrip />
-        <div className="container section-space">
-          <div className="featured-heading">
-            <div><p className="featured-eyebrow">Nuestros tratamientos destacados</p><h2 id="featured-title">El cuidado de tu piel comienza con una valoración profesional.</h2></div>
-            <p>Conoce algunos de nuestros tratamientos y evaluemos juntos cuál es la mejor opción para ti.</p>
-          </div>
-          <div className="featured-grid">
-            <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="microneedling" /><span className="featured-number" aria-hidden="true">01</span></div><h3>Microneedling facial</h3><p>Procedimiento que estimula la renovación de la piel y favorece la producción de colágeno, ayudando a mejorar su textura y apariencia.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20microneedling." aria-label="Consultar por WhatsApp sobre microneedling">Consultar <span aria-hidden="true">↗</span></a></Reveal>
-            <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="cleansing" /><span className="featured-number" aria-hidden="true">02</span></div><h3>Higiene facial</h3><p>Limpieza personalizada que elimina impurezas, exceso de grasa y células muertas, ayudando a mantener una piel fresca y saludable.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20limpieza%20facial." aria-label="Consultar por WhatsApp sobre limpieza facial">Consultar <span aria-hidden="true">↗</span></a></Reveal>
-            <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="body" /><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></Reveal>
-            <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="botulinum" /><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></Reveal>
-          </div>
-          <a className="button featured-all" href="/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
-        </div>
-      </section>
+            <ServicesStrip />
+            <div className="container section-space">
+              <div className="featured-heading">
+                <div><p className="featured-eyebrow">Nuestros tratamientos destacados</p><h2 id="featured-title">El cuidado de tu piel comienza con una valoración profesional.</h2></div>
+                <p>Conoce algunos de nuestros tratamientos y evaluemos juntos cuál es la mejor opción para ti.</p>
+              </div>
+              <div className="featured-photo-layout"><motion.figure className="featured-photo section-entrance" {...sectionEntrance(reducedMotion)}><img src={featuredTreatment} alt="La doctora realizando un tratamiento facial en la clínica" width="1200" height="1178" loading="lazy" /></motion.figure><div className="featured-grid">
+                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="microneedling" /><span className="featured-number" aria-hidden="true">01</span></div><h3>Microneedling facial</h3><p>Procedimiento que estimula la renovación de la piel y favorece la producción de colágeno, ayudando a mejorar su textura y apariencia.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20microneedling." aria-label="Consultar por WhatsApp sobre microneedling">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="cleansing" /><span className="featured-number" aria-hidden="true">02</span></div><h3>Higiene facial</h3><p>Limpieza personalizada que elimina impurezas, exceso de grasa y células muertas, ayudando a mantener una piel fresca y saludable.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20limpieza%20facial." aria-label="Consultar por WhatsApp sobre limpieza facial">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="body" /><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="botulinum" /><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+              </div>
+              </div><a className="button featured-all" href="/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+            </div>
+          </section>
 
       <section className="clinic-intro-section" id="clinica" aria-labelledby="clinic-title">
         <div className="clinic-intro container">
@@ -102,53 +104,54 @@ function App({ isServicesPage = false }) {
       </section>
 
 
-      <section className="process-section" aria-labelledby="process-title">
-        <div className="container section-space">
-          <div className="section-intro">
-            <h2 id="process-title">Empecemos por<br /><em>una conversación.</em></h2>
-            <p>Un primer contacto para compartir lo que buscas y consultar tus dudas con la doctora.</p>
-          </div>
-          <ol className="process-list">
-            <li>
-              <div className="process-visual" aria-hidden="true">
-                <svg viewBox="0 0 80 80" aria-hidden="true">
-                  <rect x="24" y="12" width="32" height="54" rx="5" />
-                  <path d="M35 18h10M37 59h6" />
-                  <path d="M30 31h20v14H38l-6 5v-5h-2z" />
-                  <path d="M35 36h10m-10 4h7" />
-                </svg>
-              </div>
-              <span>1</span>
-              <h3>Contáctanos</h3>
-              <p>Escríbenos o llámanos para solicitar información.</p>
-            </li>
-            <li>
-              <div className="process-visual" aria-hidden="true">
-                <svg viewBox="0 0 80 80" aria-hidden="true">
-                  <rect x="17" y="20" width="46" height="42" rx="4" />
-                  <path d="M17 31h46M28 15v10m24-10v10M28 41h5m7 0h5m7 0h1M28 50h5m7 0h5" />
-                  <path d="m50 51 3 3 6-7" />
-                </svg>
-              </div>
-              <span>2</span>
-              <h3>Coordina tu valoración</h3>
-              <p>Consulta la disponibilidad y los detalles de tu visita.</p>
-            </li>
-            <li>
-              <div className="process-visual" aria-hidden="true">
-                <svg viewBox="0 0 80 80" aria-hidden="true">
-                  <path d="M16 42c0-11 9-19 20-19s20 8 20 19-9 19-20 19c-3 0-6-.5-9-1.8L18 63l2.5-8C17.6 51.5 16 47 16 42z" />
-                  <path d="M47 23c2-5 7-8 13-8 8 0 14 6 14 14 0 3-1 6-3 8l2 6-7-2.5c-2 1-4 1.5-6 1.5h-4" />
-                  <path d="M28 41h.1m8 0h.1m8 0h.1" strokeWidth="3" />
-                </svg>
-              </div>
-              <span>3</span>
-              <h3>Conversa con la doctora</h3>
-              <p>Comparte tus objetivos y resuelve tus dudas durante la valoración.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
+      <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><div className="process-companion"><div className="process-copy"><div className="section-intro">
+                              <motion.h2 id="process-title" className="section-entrance" {...sectionEntrance(reducedMotion)}>Empecemos por<br /><em>una conversación.</em></motion.h2>
+                              <motion.p className="section-entrance" {...sectionEntrance(reducedMotion, 0.08)}>Un primer contacto para compartir lo que buscas y consultar tus dudas con la doctora.</motion.p>
+                            </div>
+                            <ol className="process-list">
+                              <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.12)}>
+                                <div className="process-visual" aria-hidden="true">
+                                  <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <rect x="24" y="12" width="32" height="54" rx="5" />
+                                    <path d="M35 18h10M37 59h6" />
+                                    <path d="M30 31h20v14H38l-6 5v-5h-2z" />
+                                    <path d="M35 36h10m-10 4h7" />
+                                  </svg>
+                                </div>
+                                <span>1</span>
+                                <h3>Contáctanos</h3>
+                                <p>Escríbenos o llámanos para solicitar información.</p>
+                              </motion.li>
+                              <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.20)}>
+                                <div className="process-visual" aria-hidden="true">
+                                  <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <rect x="17" y="20" width="46" height="42" rx="4" />
+                                    <path d="M17 31h46M28 15v10m24-10v10M28 41h5m7 0h5m7 0h1M28 50h5m7 0h5" />
+                                    <path d="m50 51 3 3 6-7" />
+                                  </svg>
+                                </div>
+                                <span>2</span>
+                                <h3>Coordina tu valoración</h3>
+                                <p>Consulta la disponibilidad y los detalles de tu visita.</p>
+                              </motion.li>
+                              <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.28)}>
+                                <div className="process-visual" aria-hidden="true">
+                                  <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <path d="M16 42c0-11 9-19 20-19s20 8 20 19-9 19-20 19c-3 0-6-.5-9-1.8L18 63l2.5-8C17.6 51.5 16 47 16 42z" />
+                                    <path d="M47 23c2-5 7-8 13-8 8 0 14 6 14 14 0 3-1 6-3 8l2 6-7-2.5c-2 1-4 1.5-6 1.5h-4" />
+                                    <path d="M28 41h.1m8 0h.1m8 0h.1" strokeWidth="3" />
+                                  </svg>
+                                </div>
+                                <span>3</span>
+                                <h3>Conversa con la doctora</h3>
+                                <p>Comparte tus objetivos y resuelve tus dudas durante la valoración.</p>
+                              </motion.li>
+                            </ol>
+                          </div>
+                          <motion.figure className="process-photo section-entrance" {...sectionEntrance(reducedMotion)}><img src={consultationPortrait} alt="Dra. Steacey Maradiaga en su escritorio de consulta" width="1000" height="1500" loading="lazy" /></motion.figure>
+                        </div>
+                      </div>
+                    </section>
 
       <section className="faq-section container section-space" id="preguntas" aria-labelledby="faq-title"><motion.div className="faq-heading section-entrance" {...sectionEntrance(reducedMotion)}><h2 id="faq-title">Antes de<br /><em>tu visita.</em></h2>
         <svg className="faq-illustration" viewBox="0 0 180 140" aria-hidden="true">
