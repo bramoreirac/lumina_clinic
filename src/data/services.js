@@ -46,5 +46,25 @@ export const services = [
   {
     "name": "Tratamiento dermatológico del acné",
     "description": "Evaluación y manejo personalizado del acné, enfocado en controlar las lesiones y mejorar la salud de la piel."
+  },
+  {
+    "name": "Tratamiento médico de estrías",
+    "description": "Procedimiento orientado a mejorar la apariencia de las estrías mediante técnicas de estimulación de colágeno y regeneración cutánea. Ayuda a mejorar la textura, elasticidad y uniformidad de la piel, según el tipo y evolución de las estrías."
+  },
+  {
+    "name": "Escleroterapia de várices y arañas vasculares",
+    "description": "Tratamiento médico mínimamente invasivo que consiste en aplicar una solución esclerosante en vasos sanguíneos superficiales seleccionados, favoreciendo su cierre progresivo y mejorando la apariencia de arañas vasculares y pequeñas venas dilatadas."
+  },
+  {
+    "name": "Tratamientos despigmentantes corporales",
+    "description": "Protocolos especializados para mejorar manchas e hiperpigmentaciones en diferentes zonas del cuerpo, mediante activos despigmentantes y técnicas dermatológicas que favorecen una piel más uniforme y luminosa."
+  },
+  {
+    "name": "Tratamiento para eliminación de papada",
+    "description": "Procedimiento médico estético dirigido a reducir la acumulación de grasa localizada en la región submentoniana (debajo del mentón), buscando mejorar el contorno mandibular y la definición del perfil facial. La técnica se selecciona según la valoración anatómica del paciente."
+  },
+  {
+    "name": "Electrocauterización de verrugas y lesiones cutáneas benignas",
+    "description": "Procedimiento médico que utiliza energía eléctrica para tratar determinadas lesiones superficiales de la piel, como algunas verrugas y otras lesiones benignas. Requiere valoración previa para establecer el diagnóstico y determinar si la cauterización es el tratamiento adecuado."
   }
 ]
