@@ -52,11 +52,11 @@
   display: flex;
   align-items: center;
   min-width: 0;
-  padding: .9rem 1rem;
+  padding: .9rem 1.5rem;
   min-height: 66px;
   background: transparent;
   border: 0;
-  border-radius: 0;
+  border-radius: 9999px;
   color: var(--color-ink);
   font: inherit;
   text-align: left;
@@ -299,7 +299,7 @@
     gap: .5rem;
   }
   .results-treatment {
-    padding: .8rem;
+    padding: .8rem 1.2rem;
     background: var(--color-ivory);
     min-height: 80px;
   }

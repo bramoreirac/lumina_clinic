@@ -26,7 +26,7 @@ export default function TreatmentResults() {
       <div className="container section-space">
         <div className="results-intro">
           <motion.h2 id="results-title" className="section-entrance" {...sectionEntrance(reducedMotion)}>Antes y después</motion.h2>
-          <motion.p className="section-entrance" {...sectionEntrance(reducedMotion, 0.08)}>Explora las comparaciones de nuestros tratamientos. Cada persona requiere una valoración individual.</motion.p>
+          <motion.p className="section-entrance" {...sectionEntrance(reducedMotion, 0.08)}>Explora los resultados de nuestros tratamientos. Cada persona requiere una valoración individual.</motion.p>
         </div>
         <div className="results-layout">
           <motion.div className="results-treatments section-entrance" role="group" aria-label="Elegir tratamiento" {...sectionEntrance(reducedMotion, 0.08)}>

@@ -1,0 +1,79 @@
+/* Two isolated hero explorations; production components are reused below. */
+.concept-following .services-hero { display: none; }
+.concept-hero { --concept-gutter: max(3rem, calc((100vw - 1200px) / 2)); }
+.concept-hero h1 { margin: 0; text-wrap: balance; letter-spacing: -.04em; }
+.concept-hero p { font-size: 1rem; line-height: 1.75; max-width: 40ch; }
+.concept-action { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 56px; padding: .9rem 1.3rem; background: var(--color-gold); color: var(--color-ink); text-decoration: none; font-size: .9rem; font-weight: 500; }
+.concept-action svg, .concept-explore svg { transition: transform 220ms ease-out; }
+.concept-action:hover svg { transform: translateX(4px); }
+.concept-action:hover { background: var(--color-stone); }
+.concept-action:active { transform: translateY(1px); }
+.concept-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+.concept-explore { display: inline-flex; align-items: center; gap: 1rem; min-height: 44px; font-size: .9rem; }
+.concept-explore:hover svg { transform: translateY(3px); }
+.editorial-hero { display: grid; grid-template-columns: 1fr 1fr; background: var(--color-ivory); color: var(--color-green); }
+.editorial-copy { padding: clamp(3rem, 5vw, 5rem) 3rem clamp(3rem, 5vw, 5rem) var(--concept-gutter); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.editorial-copy h1 { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 6.6vw, 6rem); font-weight: 400; line-height: 1.02; }
+.editorial-copy > p { margin-block: 2rem; }
+.editorial-photo { position: relative; overflow: hidden; min-height: 650px; background: var(--color-stone); }
+.editorial-photo img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: 50% 60%; }
+.editorial-photo figcaption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.15rem 2rem; background: var(--color-green); color: var(--color-ivory); font-size: .9rem; }
+.atlas-hero { padding: 3.5rem var(--concept-gutter) 3rem; background: var(--color-green); color: var(--color-ivory); }
+.atlas-heading { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 3rem; }
+.atlas-heading h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(3rem, 6.2vw, 6rem); font-weight: 500; line-height: 1.05; }
+.atlas-down { display: grid; place-items: center; flex: 0 0 64px; height: 64px; background: var(--color-gold); color: var(--color-ink); border-radius: 50%; }
+.atlas-down svg { width: 30px; height: 30px; }
+.atlas-down:hover { background: var(--color-ivory); }
+.atlas-body { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.65fr); gap: 3rem; align-items: start; }
+.atlas-copy { padding-top: .25rem; }
+.atlas-copy > p { margin-bottom: 2rem; }
+.atlas-gallery { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: .75rem; }
+.atlas-photo { display: flex; flex-direction: column; gap: 0; padding: 0; border: 0; color: var(--color-ivory); background: transparent; cursor: pointer; min-width: 0; text-align: left; }
+.atlas-photo img { display: block; width: 100%; height: 285px; object-fit: cover; }
+.atlas-photo span { display: flex; align-items: center; min-height: 68px; padding: .8rem .7rem; font-size: .9rem; line-height: 1.4; }
+.atlas-photo[aria-pressed="true"] span { background: var(--color-gold); color: var(--color-ink); }
+.atlas-photo:hover span { background: var(--color-ivory); color: var(--color-ink); }
+.atlas-inquiry { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 48px; font-size: .9rem; }
+.atlas-photo:focus-visible { outline-color: var(--color-gold); }
+.concept-contact { background: var(--color-green); color: var(--color-ivory); padding: 4rem max(1.5rem, calc((100vw - 1200px) / 2)); display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; }
+.concept-switch { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: center; padding: 2rem 1.5rem; background: var(--color-ink); color: var(--color-ivory); }
+.concept-switch a { min-height: 44px; display: inline-flex; align-items: center; }
+.concept-switch [aria-current] { color: var(--color-gold); }
+@media (prefers-reduced-motion: no-preference) {
+  .editorial-copy > *, .atlas-heading, .atlas-copy, .atlas-gallery { animation: concept-arrive 700ms cubic-bezier(.16,1,.3,1) both; }
+  .editorial-copy > p, .atlas-copy { animation-delay: 80ms; }
+  .editorial-copy > .concept-actions, .atlas-gallery { animation-delay: 160ms; }
+  .editorial-photo img { animation: concept-photo 1100ms cubic-bezier(.16,1,.3,1) both; }
+  @keyframes concept-arrive { from { opacity: .7; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes concept-photo { from { transform: scale(1.045); } to { transform: scale(1); } }
+}
+@media (max-width: 1100px) {
+  .concept-hero { --concept-gutter: 2rem; }
+  .editorial-copy { padding-right: 2rem; }
+  .editorial-copy h1 { font-size: clamp(3.5rem, 7vw, 5rem); }
+  .atlas-body { grid-template-columns: 1fr 1.6fr; gap: 2rem; }
+  .atlas-photo img { height: 250px; }
+}
+@media (max-width: 799px) {
+  .concept-hero { --concept-gutter: 1.5rem; }
+  .editorial-hero { grid-template-columns: 1fr; }
+  .editorial-copy { padding: 2.5rem var(--concept-gutter); }
+  .editorial-copy h1 { font-size: clamp(3.25rem, 10vw, 5rem); }
+  .editorial-copy > p { margin-block: 1.5rem; max-width: 50ch; }
+  .editorial-photo { min-height: 390px; }
+  .editorial-photo img { object-position: 50% 55%; }
+  .editorial-photo figcaption { padding: 1rem 1.5rem; }
+  .atlas-hero { padding-block: 2.5rem; }
+  .atlas-heading { margin-bottom: 2rem; }
+  .atlas-heading h1 { font-size: clamp(2.65rem, 8vw, 4.5rem); max-width: 12ch; }
+  .atlas-down { display: none; }
+  .atlas-body { grid-template-columns: 1fr; gap: 2rem; }
+  .atlas-copy p { max-width: 50ch; }
+  .atlas-gallery { gap: .5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .atlas-photo img { height: clamp(155px, 34vw, 260px); }
+  .atlas-photo span { font-size: .8125rem; padding: .65rem .4rem; min-height: 72px; overflow-wrap: anywhere; }
+  .atlas-inquiry { font-size: .85rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .concept-action, .concept-action svg, .concept-explore svg { transition: none; transform: none !important; }
+}
