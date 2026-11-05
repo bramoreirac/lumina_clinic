@@ -54,6 +54,7 @@ export default function SiteHeader({ isServicesPage }) {
           <a href="/#clinica">La clínica</a>
           <a href="/#doctora">La doctora</a>
           <a href="/servicios/" aria-current={isServicesPage ? 'page' : undefined}>Servicios</a>
+          <a href="/#resultados">Resultados</a>
           <a href="/#preguntas">Preguntas frecuentes</a>
           <a className="button button-gold nav-contact" href="#contacto">Conversemos</a>
         </motion.nav>

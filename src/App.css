@@ -137,11 +137,11 @@ nav a.nav-contact:hover { text-decoration: none; }
 .clinic-faith blockquote { margin: 0; padding: 1.5rem 2rem; border: 1px solid var(--color-gold); border-radius: 6px; background: #ede6d7; }
 .clinic-faith blockquote p { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.7rem); font-style: italic; line-height: 1.3; }
 .clinic-faith cite { display: block; margin-top: 0.8rem; color: #795d32; font-size: 0.85rem; font-style: normal; font-weight: 600; }
-.doctor-section { padding-block: 3rem; }
+.doctor-section { padding-block: 5rem; }
 .doctor-section .doctor-layout { position: relative; display: grid; grid-template-columns: 50% minmax(0, 1fr); gap: 6rem; align-items: center; }
 .doctor-portrait { position: relative; min-width: 0; width: calc(100% + max(3rem, (100vw - var(--content-width)) / 2)); margin-left: calc(-1 * max(3rem, (100vw - var(--content-width)) / 2)); }
-@media (min-width: 800px) { .doctor-portrait { align-self: end; margin-bottom: -3rem; } }
-.doctor-portrait img { display: block; width: 100%; height: 470px; object-fit: cover; object-position: 50% 12%; border-top-right-radius: 2rem; }
+@media (min-width: 800px) { .doctor-portrait { align-self: end; margin-bottom: -5rem; } }
+.doctor-portrait img { display: block; width: 100%; height: 550px; object-fit: cover; object-position: 50% 12%; border-top-right-radius: 2rem; }
 .doctor-portrait figcaption { position: absolute; bottom: 0; left: 0; padding: 0.5rem 1rem; background: var(--color-ink); color: var(--color-ivory); font-size: 0.75rem; }
 .doctor-copy h2 { margin-bottom: 1.75rem; }
 .doctor-copy .doctor-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
@@ -251,7 +251,7 @@ nav a.nav-contact:hover { text-decoration: none; }
   nav { gap: 1.2rem; }
   nav a { font-size: 0.74rem; }
   .doctor-portrait { width: calc(100% + 2rem); margin-left: -2rem; }
-  .doctor-portrait img { height: 420px; }
+  .doctor-portrait img { height: 500px; }
   .doctor-section .doctor-layout { gap: 3rem; }
   .clinic-intro, .doctor-layout, .section-intro, .faq-section, .contact-layout { gap: 3rem; }
   .contact-details { grid-template-columns: 1fr; gap: 1.4rem; }
@@ -277,7 +277,7 @@ nav a.nav-contact:hover { text-decoration: none; }
   .clinic-values { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.5rem; }
   .clinic-faith { grid-template-columns: 1fr; gap: 2rem; }
   .doctor-section .doctor-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-  .doctor-section { padding-block: 0 3rem; }
+  .doctor-section { padding-block: 0 3.5rem; }
   .doctor-portrait { width: calc(100% + 3rem); margin-left: -1.5rem; }
   .doctor-portrait img { height: auto; aspect-ratio: 1 / 1.05; object-position: center 20%; }
   .clinic-intro, .doctor-layout, .section-intro, .faq-section, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
