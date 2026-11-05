@@ -6,6 +6,7 @@ import Hero from './components/Hero'
 import Reveal from './components/Reveal'
 import ServicesStrip from './components/ServicesStrip'
 import TreatmentIcon from './components/TreatmentIcon'
+import TreatmentResults from './components/TreatmentResults'
 import FaqItem from './components/FaqItem'
 import SiteHeader from './components/SiteHeader'
 import PressLink from './components/PressLink'
@@ -43,7 +44,7 @@ function App({ isServicesPage = false }) {
       <Hero image={heroImage} width={1080} height={1920} titleId="hero-title"
         title={<><img className="clinic-logo" src={logoGold} alt="Lúmina Clínica Estética" width="750" height="521" /><span className="clinic-description">Medicina estética en<br />León, Nicaragua.</span></>}
         description={"Tratamientos m\u00e9dicos-est\u00e9ticos y dermatol\u00f3gicos personalizados, guiados por una valoraci\u00f3n profesional y enfocados en tu bienestar."}
-        actions={<><a className="button button-gold" href="https://wa.me/50558811397">Consultar por WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a><a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></>}
+        actions={<><a className="button button-gold" href="https://wa.me/50558811397">Consultar por WhatsApp</a><a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></>}
       />
 
       <section className="featured-section" id="destacados" aria-labelledby="featured-title">
@@ -59,7 +60,7 @@ function App({ isServicesPage = false }) {
                 <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="body" /><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></Reveal>
                 <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="botulinum" /><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></Reveal>
               </div>
-              </div><a className="button featured-all" href="/servicios/">Ver todos los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+              </div><a className="button featured-all" href="/servicios/">Ver todos los servicios</a>
             </div>
           </section>
 
@@ -98,11 +99,13 @@ function App({ isServicesPage = false }) {
               <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" /><path d="M24 34 14.5 25c-6-6 2-13 7.5-7.5l2 2 2-2C31.5 12 39.5 19 33.5 25L24 34Z" /></svg>
               <p>Creo en escuchar, valorar y comprender a cada persona para ofrecer un tratamiento personalizado, seguro y basado en ciencia.</p>
             </div>
-            <a className="text-link" href="#contacto">Conversemos sobre tu valoración <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+            <a className="button button-gold" href="#contacto">Conversemos sobre tu valoración</a>
           </Reveal>
         </div>
       </section>
 
+
+      <TreatmentResults />
 
       <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><div className="process-companion"><div className="process-copy"><div className="section-intro">
                               <motion.h2 id="process-title" className="section-entrance" {...sectionEntrance(reducedMotion)}>Empecemos por<br /><em>una conversación.</em></motion.h2>
@@ -175,7 +178,7 @@ function App({ isServicesPage = false }) {
             <h2 id="contact-title">Conversemos sobre<br /><em>tu valoración.</em></h2>
             <p>Contáctanos para consultar nuestros servicios y coordinar tu visita.</p>
             <PressLink className="button button-light" href="https://wa.me/50558811397">
-              Escribir por WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+              Escribir por WhatsApp
             </PressLink>
           </div>
           <dl className="contact-details">
@@ -261,7 +264,6 @@ function App({ isServicesPage = false }) {
                 rel="noopener noreferrer"
               >
                 <span>Google Maps</span>
-                <svg className="map-external-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
               </PressLink>
               <PressLink
                 className="button-map"
@@ -270,7 +272,6 @@ function App({ isServicesPage = false }) {
                 rel="noopener noreferrer"
               >
                 <span>Waze</span>
-                <svg className="map-external-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
               </PressLink>
             </div>
           </div>
@@ -285,7 +286,7 @@ function App({ isServicesPage = false }) {
         </div>
       </section>
     </main>
-    <footer className="container site-footer"><a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, volver al inicio"><img src={logoInk} alt="" width="750" height="521" /></a><p>Medicina estética en León, Nicaragua.</p><a className="text-link" href="/#inicio">Volver al inicio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg></a></footer>
+    <footer className="container site-footer"><a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, volver al inicio"><img src={logoInk} alt="" width="750" height="521" /></a><p>Medicina estética en León, Nicaragua.</p><a className="button button-gold" href="/#inicio">Volver al inicio</a></footer>
     </>
   )
 }

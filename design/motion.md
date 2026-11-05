@@ -16,6 +16,8 @@ Implemented from `docs/site_motion_guidelines.md` after approval of the five-ste
 
 ## Accessibility and maintenance
 
+The before-and-after gallery uses the shared once-only entrances for its heading, introduction, treatment selector and viewer. Choosing a treatment or image gives a short opacity transition without moving, cropping or scaling the comparison itself. Native buttons expose pressed states, the current image is announced politely, and reduced motion removes the image transition and press travel. The gallery never advances automatically.
+
 `MotionConfig` respects user preferences globally. `useMotionPreference` combines Motion's initial preference with a live media-query subscription so changes apply to mounted components. Reduced motion uses immediate states; a CSS safeguard ensures hero and treatment content remains visible during preference changes.
 
 Shared entrance timing is in `src/components/motionSettings.js`. Avoid adding repeated reveals to every catalogue row or using scroll event handlers for animation. The only layout animation is the user-requested expansion of FAQ answers.

@@ -1,3 +1,4 @@
+import { useId, useState } from 'react'
 import Hero from '../components/Hero'
 import Reveal from '../components/Reveal'
 import FaqItem from '../components/FaqItem'
@@ -7,6 +8,28 @@ import heroImage from '../assets/clinic/service-01.webp'
 
 const galleryTreatmentNames = new Set(serviceGallery.map(({ name }) => name))
 const remainingServices = services.filter(({ name }) => !galleryTreatmentNames.has(name))
+
+function ServiceCard({ image, name, alt, width, height, description }) {
+  const [open, setOpen] = useState(false)
+  const answerId = useId()
+
+  return (
+    <Reveal as="figure">
+      <button type="button" className="service-image-toggle" aria-label={`Descripción de ${name}`}
+        aria-expanded={open} aria-controls={answerId} onClick={() => setOpen((value) => !value)}>
+        <img src={image} alt={alt} width={width} height={height} loading="lazy" />
+      </button>
+      <figcaption>
+        <FaqItem question={name} className="service-card-details" open={open} onOpenChange={setOpen} answerId={answerId}>
+          <p>{description ?? services.find((service) => service.name === name)?.description}</p>
+          <a className="service-card-contact" href={`https://wa.me/50558811397?text=${encodeURIComponent(`Hola, quisiera información sobre ${name}.`)}`} aria-label={`Consultar por WhatsApp sobre ${name}`}>
+            Consultar por WhatsApp <span aria-hidden="true">↗</span>
+          </a>
+        </FaqItem>
+      </figcaption>
+    </Reveal>
+  )
+}
 
 export default function ServicesPage() {
   return (
@@ -19,19 +42,7 @@ export default function ServicesPage() {
       <section className="services-section container section-space" id="servicios" aria-labelledby="services-title">
         <div className="section-intro"><h2 id="services-title">Medicina estética.<br />Dermatología clínica.</h2><div className="services-intro-copy"><p>Conoce nuestros servicios. Contáctanos para consultar por una valoración y recibir información sobre las opciones disponibles.</p><p className="services-tagline">CLÍNICA ESTÉTICA LÚMINA - SABIDURÍA EN CADA PROCESO</p></div></div>
         <div className="service-images">
-          {serviceGallery.map(({ image, name, alt, width, height, description }) => (
-            <Reveal as="figure" key={name}>
-              <img src={image} alt={alt} width={width} height={height} loading="lazy" />
-              <figcaption>
-                <FaqItem question={name} className="service-card-details">
-                  <p>{description ?? services.find((service) => service.name === name)?.description}</p>
-                  <a className="service-card-contact" href={`https://wa.me/50558811397?text=${encodeURIComponent(`Hola, quisiera información sobre ${name}.`)}`} aria-label={`Consultar por WhatsApp sobre ${name}`}>
-                    Consultar por WhatsApp <span aria-hidden="true">↗</span>
-                  </a>
-                </FaqItem>
-              </figcaption>
-            </Reveal>
-          ))}
+          {serviceGallery.map((service) => <ServiceCard key={service.name} {...service} />)}
         </div>
         <h2 className="catalogue-title" id="catalogo">Más Tratamientos</h2>
         <ul className="service-list" aria-labelledby="catalogo">

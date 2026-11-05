@@ -55,7 +55,7 @@ export default function SiteHeader({ isServicesPage }) {
           <a href="/#doctora">La doctora</a>
           <a href="/servicios/" aria-current={isServicesPage ? 'page' : undefined}>Servicios</a>
           <a href="/#preguntas">Preguntas frecuentes</a>
-          <a className="nav-contact" href="#contacto">Conversemos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+          <a className="button button-gold nav-contact" href="#contacto">Conversemos</a>
         </motion.nav>
       </div>
     </header>
