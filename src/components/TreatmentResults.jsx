@@ -1,4 +1,4 @@
-﻿import { useId, useState } from 'react'
+import { useId, useState } from 'react'
 import { motion } from 'motion/react'
 import { treatmentResults } from '../data/treatmentResults'
 import useMotionPreference from './useMotionPreference'
@@ -48,7 +48,7 @@ export default function TreatmentResults() {
                 <p className="results-caption">{treatment.name}</p>
                 <div className="results-pagination">
                   <button type="button" onClick={() => changeImage(-1)} aria-label="Imagen anterior"><Arrow previous /></button>
-                  <span role="status" aria-live="polite" aria-atomic="true"><span className="results-sr-only">{treatment.name}. </span>Imagen {selection.image + 1} de {treatment.images.length}</span>
+                  <span role="status" aria-live="polite" aria-atomic="true"><span className="results-sr-only">{treatment.name}. </span>{selection.image + 1} de {treatment.images.length}</span>
                   <button type="button" onClick={() => changeImage(1)} aria-label="Imagen siguiente"><Arrow /></button>
                 </div>
               </figcaption>
@@ -62,7 +62,7 @@ export default function TreatmentResults() {
                 </button>
               ))}
             </div>
-            <a className="results-enlarge button button-gold" href={image.src} target="_blank" rel="noopener noreferrer">Ampliar imagen<span className="results-sr-only"> (nueva pestaña)</span></a>
+            <a className="results-enlarge" href={image.src} target="_blank" rel="noopener noreferrer">Ampliar imagen<span className="results-sr-only"> (nueva pestaña)</span></a>
           </motion.div>
         </div>
         <div className="results-footer">

@@ -182,7 +182,7 @@ nav a.nav-contact:hover { text-decoration: none; }
 .service-list a { display: flex; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 50%; transition: background var(--duration-ui), color var(--duration-ui); }
 .service-list a:hover { background: var(--color-ink); color: var(--color-ivory); border-color: var(--color-ink); }
 .process-section { position: relative; isolation: isolate; border: 0; background: var(--color-ivory); }
-.process-section::before { content: ''; position: absolute; z-index: -1; pointer-events: none; right: 0; top: 0; bottom: 0; width: 34%; background: #aab7a4; }
+.process-section::before { content: ''; position: absolute; z-index: -1; pointer-events: none; right: 0; top: 0; bottom: 0; width: 34%; background: #e9dac0; }
 .process-section .process-visual { background: var(--color-ivory); }
 @media (max-width: 799px) { .process-section::before { top: auto; height: 40%; width: 85%; } }
 .process-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; list-style: none; margin: 0; padding: 0; }

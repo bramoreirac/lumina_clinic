@@ -12,7 +12,7 @@ import toxin02 from '../assets/clinic/results/before_after_tox_bot_02.webp'
 
 // Preserve each supplied comparison's complete composition and original labels.
 export const treatmentResults = [
-  { id: 'alopecia', name: 'Alopecia', images: [
+  { id: 'alopecia', name: 'Tratamiento de alopecia', images: [
     { src: alopecia01, width: 977, height: 572, alt: 'Antes y después de alopecia: vista superior del cabello' },
     { src: alopecia02, width: 1118, height: 548, alt: 'Antes y después de alopecia: vista frontal del cabello' },
     { src: alopecia03, width: 976, height: 579, alt: 'Antes y después de alopecia: comparación de la coronilla' },
