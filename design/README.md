@@ -1,42 +1,26 @@
-# Phase 2 design preview
+﻿# Lúmina alternative website
 
-Start the existing Vite server from the repository root:
+This folder is a self-contained React and Vite landing page intended to live at `/design/` beside the original site. It contains the header, hero, and featured treatments section.
+
+## Run locally
+
+From this folder:
 
 ```sh
+npm ci
 npm run dev
 ```
 
-On Windows PowerShell, use `npm.cmd run dev` if execution policy blocks `npm.ps1`.
+Open the URL shown by Vite at `/design/`.
 
-Open **http://localhost:5173/design/** (use the port shown by Vite if different). The local review server may also be available at **http://127.0.0.1:5173/design/**.
+On PowerShell, use `npm.cmd` if execution policy blocks `npm.ps1`.
 
-This is a responsive HTML/CSS/JavaScript design prototype for review before React implementation. The root Vite starter is still at `/`; the default production build does not include this prototype as an entry point.
+## Build and integrate
 
-## What to review
+Run `npm run lint` and `npm run build`. The build writes `dist/design/`, so the contents of `dist/` can be merged into the main site's published directory without replacing its root pages. The site's links and assets use `/design/` as their base path.
 
-- Clinic-led opening: Lúmina identity, medicine/service location heading, and direct WhatsApp action.
-- Clinic approach followed by the doctor's introduction and approved portrait.
-- Services presented as ten readable entries, each with a WhatsApp inquiry link.
-- Mobile menu, FAQ expansion, section navigation, and contact placement.
-- Monday–Friday, 8:00 a. m.–5:00 p. m. hours and other hours by appointment.
-- Mobile and desktop spacing and hierarchy.
+The folder can also be zipped and copied into another project as `design/`. Run its own `npm ci` after extraction. The generated `dist/` folder may be omitted from the ZIP because `npm run build` recreates it. Dependencies are installed with `npm ci` after extraction.
 
-The preview uses the reconstructed logo in `brand/`; compare it with the original master if the customer later provides one. Medical and first-person copy are draft text from `PHASE_1.md`, awaiting final review. No exact address, price, map, reviews, or appointment availability has been invented.
+`netlify.toml` publishes this folder's `dist/` if it is deployed on its own. The HTML page includes `noindex, nofollow` while the layout is under review.
 
-## Files and assets
-
-- `index.html`: proposed structure and Spanish copy.
-- `preview.css`: brand tokens, responsive rules, and component styling.
-- `preview.js`: progressive mobile navigation behavior.
-- `fonts/`: locally served brand fonts and their OFL licenses.
-- `assets.json`: source/provenance references. The portrait is read directly from `customer_files/content/` for this local prototype. That source folder is currently ignored by Git, so a fresh checkout needs the supplied customer files. Production asset copies and optimization belong to Phase 3.
-- `../DESIGN.md`: visual-system handoff.
-- `../PRODUCT.md`: confirmed product facts.
-
-External WhatsApp, telephone, and Instagram links are real destinations. No message is sent automatically. No backend, forms, tracking, or remote font calls are included.
-
-## Validation boundary
-
-Chrome preview checks cover 320, 390, 768, 1024, and 1440 CSS pixels, loaded imagery/fonts, overflow, anchor targets, menu behavior, keyboard FAQ operation, and navigation without JavaScript. Reduced motion is respected. Brand foreground/background contrast was calculated separately.
-
-This is not a production accessibility certification or browser-compatibility signoff. Final React integration, optimized media/fonts, SEO, full browser checks, and Netlify release remain in later phases.
+Project notes and content references are included alongside the source files.

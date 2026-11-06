@@ -6,7 +6,7 @@ React + Vite website for the clinic, in Spanish. The application is a static sit
 
 Install dependencies with `npm ci`, then start the development server with `npm run dev`. On PowerShell, use `npm.cmd` if execution policy blocks `npm`.
 
-Run `npm run lint` and `npm run build` to validate; use `npm run preview` to inspect the built site locally. The earlier design prototype is still available at `/design/` in the development server.
+Run `npm run lint` and `npm run build` to validate; use `npm run preview` to inspect the built site locally. The maintained pages are `/` and `/servicios/`.
 
 ## Netlify deployment
 

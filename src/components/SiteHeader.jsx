@@ -41,7 +41,7 @@ export default function SiteHeader({ isServicesPage }) {
   }
 
   return (
-    <header className="site-header" onKeyDown={closeOnEscape}>
+    <header className="site-header home-header" onKeyDown={closeOnEscape}>
       <div className="container header-inner">
         <a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, inicio"><img src={logoInk} alt="" width="750" height="521" /></a>
         <button ref={button} className="menu-toggle" aria-expanded={open} aria-controls="navigation" onClick={() => setOpen(!open)}>
@@ -51,12 +51,12 @@ export default function SiteHeader({ isServicesPage }) {
           initial={false} animate={visible ? 'open' : 'closed'}
           variants={{ open: { display: 'flex', opacity: 1, y: 0 }, closed: { opacity: 0, y: reducedMotion ? 0 : -8, transitionEnd: { display: 'none' } } }}
           transition={{ duration: reducedMotion || !mobile ? 0 : 0.22, ease: easeOut }}>
-          <a href="/#clinica">La clínica</a>
           <a href="/#doctora">La doctora</a>
+          <a href="/#clinica">La clínica</a>
           <a href="/servicios/" aria-current={isServicesPage ? 'page' : undefined}>Servicios</a>
           <a href="/#resultados">Resultados</a>
           <a href="/#preguntas">Preguntas frecuentes</a>
-          <a className="button button-gold nav-contact" href="#contacto">Conversemos</a>
+          <a className="button button-primary nav-contact" href={isServicesPage ? '/#contacto' : '#contacto'}>Conversemos</a>
         </motion.nav>
       </div>
     </header>

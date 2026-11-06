@@ -1,12 +1,11 @@
-import { useEffect } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import useMotionPreference from './components/useMotionPreference'
 import { sectionEntrance } from './components/motionSettings'
 import Hero from './components/Hero'
 import Reveal from './components/Reveal'
-import ServicesStrip from './components/ServicesStrip'
 import TreatmentIcon from './components/TreatmentIcon'
-import TreatmentResults from './components/TreatmentResults'
+import ResultsGallery from './components/ResultsGallery'
 import FaqItem from './components/FaqItem'
 import SiteHeader from './components/SiteHeader'
 import PressLink from './components/PressLink'
@@ -19,21 +18,41 @@ import consultationPortrait from './assets/clinic/consultation-portrait.webp'
 import ServicesPage from './pages/ServicesPage'
 import './App.css'
 
+const heroTreatmentNames = [
+  'Higiene facial',
+  'Microneedling facial',
+  'Tratamiento de grasa localizada',
+  'Toxina botulínica',
+]
+
 
 function App({ isServicesPage = false }) {
   const reducedMotion = useMotionPreference()
-  useEffect(() => {
-    const process = document.querySelector('.process-list')
-    if (!process || reducedMotion || !('IntersectionObserver' in window)) return
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        process.classList.add('is-animated')
-        observer.disconnect()
-      }
-    }, { threshold: 0.2 })
-    observer.observe(process)
-    return () => { observer.disconnect(); process.classList.remove('is-animated') }
-  }, [reducedMotion])
+  const featuredTrack = useRef(null)
+  const [featuredCurrent, setFeaturedCurrent] = useState(0)
+  const featuredCount = 4
+
+  const moveFeaturedTo = (index) => {
+    const next = Math.max(0, Math.min(featuredCount - 1, index))
+    const track = featuredTrack.current
+    const card = track?.children[next]
+    if (!card) return
+    track.scrollTo({ left: card.offsetLeft - track.firstElementChild.offsetLeft, behavior: 'instant' })
+    setFeaturedCurrent(next)
+  }
+
+  const onFeaturedScroll = () => {
+    const track = featuredTrack.current
+    if (!track) return
+    const trackLeft = track.getBoundingClientRect().left
+    let nearest = 0
+    let distance = Infinity
+    Array.from(track.children).forEach((card, index) => {
+      const delta = Math.abs(card.getBoundingClientRect().left - trackLeft)
+      if (delta < distance) { nearest = index; distance = delta }
+    })
+    setFeaturedCurrent(nearest)
+  }
   return (
     <>
     <a className="skip-link" href="#contenido">Ir al contenido</a>
@@ -41,28 +60,79 @@ function App({ isServicesPage = false }) {
 
     <main id="contenido" tabIndex="-1">
       {isServicesPage ? <ServicesPage /> : <>
-      <Hero image={heroImage} width={1080} height={1920} titleId="hero-title"
-        title={<><img className="clinic-logo" src={logoGold} alt="Lúmina Clínica Estética" width="750" height="521" /><span className="clinic-description">Medicina estética en<br />León, Nicaragua.</span></>}
-        description={"Tratamientos m\u00e9dicos-est\u00e9ticos y dermatol\u00f3gicos personalizados, guiados por una valoraci\u00f3n profesional y enfocados en tu bienestar."}
-        actions={<><a className="button button-gold" href="https://wa.me/50558811397">Consultar por WhatsApp</a><a className="text-link" href="/servicios/">Explorar los servicios <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></>}
+      <Hero
+        image={heroImage}
+        width={1080}
+        height={1920}
+        titleId="hero-title"
+        className="home-hero photo-hero"
+        badge={logoGold}
+        rotatingItems={heroTreatmentNames}
+        eyebrow="Lúmina Clínica Estética"
+        title={<>Medicina estética <em>en León, Nicaragua.</em></>}
+        description="Tratamientos médicos-estéticos y dermatológicos personalizados, guiados por una valoración profesional y enfocados en tu bienestar."
+        byline={<>Con la <strong>Dra. Steacey Maradiaga</strong></>}
+        actions={<>
+          <a className="button button-primary" href="https://wa.me/50558811397">Consultar por WhatsApp</a>
+          <a className="text-link" href="/servicios/">Explorar los servicios</a>
+        </>}
       />
 
       <section className="featured-section" id="destacados" aria-labelledby="featured-title">
-            <ServicesStrip />
             <div className="container section-space">
               <div className="featured-heading">
                 <div><p className="featured-eyebrow">Nuestros tratamientos destacados</p><h2 id="featured-title">El cuidado de tu piel comienza con una valoración profesional.</h2></div>
                 <p>Conoce algunos de nuestros tratamientos y evaluemos juntos cuál es la mejor opción para ti.</p>
               </div>
-              <div className="featured-photo-layout"><motion.figure className="featured-photo section-entrance" {...sectionEntrance(reducedMotion)}><img src={featuredTreatment} alt="La doctora realizando un tratamiento facial en la clínica" width="1200" height="1178" loading="lazy" /></motion.figure><div className="featured-grid">
-                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="microneedling" /><span className="featured-number" aria-hidden="true">01</span></div><h3>Microneedling facial</h3><p>Procedimiento que estimula la renovación de la piel y favorece la producción de colágeno, ayudando a mejorar su textura y apariencia.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20microneedling." aria-label="Consultar por WhatsApp sobre microneedling">Consultar <span aria-hidden="true">↗</span></a></Reveal>
-                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="cleansing" /><span className="featured-number" aria-hidden="true">02</span></div><h3>Higiene facial</h3><p>Limpieza personalizada que elimina impurezas, exceso de grasa y células muertas, ayudando a mantener una piel fresca y saludable.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20limpieza%20facial." aria-label="Consultar por WhatsApp sobre limpieza facial">Consultar <span aria-hidden="true">↗</span></a></Reveal>
-                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="body" /><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas">Consultar <span aria-hidden="true">↗</span></a></Reveal>
-                <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="botulinum" /><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica">Consultar <span aria-hidden="true">↗</span></a></Reveal>
+              <div className="featured-photo-layout">
+                <motion.figure className="featured-photo section-entrance" {...sectionEntrance(reducedMotion)}>
+                  <img src={featuredTreatment} alt="La doctora realizando un tratamiento facial en la clínica" width="1200" height="1178" loading="lazy" />
+                </motion.figure>
+                <div className="featured-cards">
+                  <div className="featured-grid" ref={featuredTrack} id="featured-treatments" role="region" aria-label="Tratamientos destacados" tabIndex="0" onScroll={onFeaturedScroll}
+                    onKeyDown={(event) => {
+                      if (!window.matchMedia('(max-width: 599px)').matches) return
+                      if (event.key === 'ArrowRight') { event.preventDefault(); moveFeaturedTo(featuredCurrent + 1) }
+                      if (event.key === 'ArrowLeft') { event.preventDefault(); moveFeaturedTo(featuredCurrent - 1) }
+                    }}>
+                    <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="microneedling" /><span className="featured-number" aria-hidden="true">01</span></div><h3>Microneedling facial</h3><p>Procedimiento que estimula la renovación de la piel y favorece la producción de colágeno, ayudando a mejorar su textura y apariencia.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20microneedling." aria-label="Consultar por WhatsApp sobre microneedling"><span>Consultar</span><span className="featured-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12" /></svg></span></a></Reveal>
+                    <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="cleansing" /><span className="featured-number" aria-hidden="true">02</span></div><h3>Higiene facial</h3><p>Limpieza personalizada que elimina impurezas, exceso de grasa y células muertas, ayudando a mantener una piel fresca y saludable.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20limpieza%20facial." aria-label="Consultar por WhatsApp sobre limpieza facial"><span>Consultar</span><span className="featured-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12" /></svg></span></a></Reveal>
+                    <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="body" /><span className="featured-number" aria-hidden="true">03</span></div><h3>Tratamiento de grasa localizada</h3><p>Alternativas médico-estéticas dirigidas a tratar depósitos de grasa en zonas específicas, previa valoración médica.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20lipoenzimas." aria-label="Consultar por WhatsApp sobre lipoenzimas"><span>Consultar</span><span className="featured-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12" /></svg></span></a></Reveal>
+                    <Reveal className="featured-card"><div className="featured-visual"><TreatmentIcon treatment="botulinum" /><span className="featured-number" aria-hidden="true">04</span></div><h3>Armonización con toxina botulínica</h3><p>Tratamiento que suaviza temporalmente las líneas de expresión mediante la relajación controlada de músculos específicos.</p><a href="https://wa.me/50558811397?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20toxina%20botul%C3%ADnica." aria-label="Consultar por WhatsApp sobre toxina botulínica"><span>Consultar</span><span className="featured-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12" /></svg></span></a></Reveal>
+                  </div>
+                  <div className="featured-navigation">
+                    <span role="status" aria-live="polite">{featuredCurrent + 1} de {featuredCount} <span className="featured-swipe-hint">· Desliza para explorar</span></span>
+                    <div>
+                      <button type="button" aria-label="Tratamiento destacado anterior" aria-controls="featured-treatments" disabled={featuredCurrent === 0} onClick={() => moveFeaturedTo(featuredCurrent - 1)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg></button>
+                      <button type="button" aria-label="Tratamiento destacado siguiente" aria-controls="featured-treatments" disabled={featuredCurrent === featuredCount - 1} onClick={() => moveFeaturedTo(featuredCurrent + 1)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              </div><a className="button featured-all" href="/servicios/">Ver todos los servicios</a>
+              <a className="button featured-all" href="/servicios/">Ver todos los servicios</a>
             </div>
           </section>
+
+      <section className="doctor-section" id="doctora" aria-labelledby="doctor-title">
+        <div className="container doctor-layout">
+          <Reveal as="figure" className="doctor-portrait">
+            <img src={portrait} alt="Dra. Steacey Maradiaga sonriendo en su consultorio" width="1067" height="1600" loading="lazy" />
+            <figcaption>Dra. Steacey Maradiaga, Lúmina Clínica Estética.</figcaption>
+          </Reveal>
+          <Reveal as="div" className="doctor-copy">
+            <h2 id="doctor-title">La doctora detrás<br />de <em>Lúmina.</em></h2>
+            <p className="doctor-name">Dra. Steacey Maradiaga</p>
+            <p>Médico estético / Dermatología clínica.</p>
+            <p><strong>Para mí, cada paciente es único. </strong>No creo en fórmulas universales.</p>
+            <div className="doctor-belief">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" /><path d="M24 34 14.5 25c-6-6 2-13 7.5-7.5l2 2 2-2C31.5 12 39.5 19 33.5 25L24 34Z" /></svg>
+              <p>Creo en escuchar, valorar y comprender a cada persona para ofrecer un tratamiento personalizado, seguro y basado en ciencia.</p>
+            </div>
+            <a className="button button-primary" href="#contacto">Conversemos sobre tu valoración</a>
+          </Reveal>
+        </div>
+      </section>
+
 
       <section className="clinic-intro-section" id="clinica" aria-labelledby="clinic-title">
         <div className="clinic-intro container">
@@ -84,30 +154,10 @@ function App({ isServicesPage = false }) {
         </div>
       </section>
 
-      <section className="doctor-section" id="doctora" aria-labelledby="doctor-title">
-        <div className="container doctor-layout">
-          <Reveal as="figure" className="doctor-portrait">
-            <img src={portrait} alt="Dra. Steacey Maradiaga sonriendo en su consultorio" width="1067" height="1600" loading="lazy" />
-            <figcaption>Dra. Steacey Maradiaga, Lúmina Clínica Estética.</figcaption>
-          </Reveal>
-          <Reveal as="div" className="doctor-copy">
-            <h2 id="doctor-title">La doctora detrás<br />de <em>Lúmina.</em></h2>
-            <p className="doctor-name">Dra. Steacey Maradiaga</p>
-            <p>Médico estético / Dermatología clínica.</p>
-            <p><strong>Para mí, cada paciente es único. </strong>No creo en fórmulas universales.</p>
-            <div className="doctor-belief">
-              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" /><path d="M24 34 14.5 25c-6-6 2-13 7.5-7.5l2 2 2-2C31.5 12 39.5 19 33.5 25L24 34Z" /></svg>
-              <p>Creo en escuchar, valorar y comprender a cada persona para ofrecer un tratamiento personalizado, seguro y basado en ciencia.</p>
-            </div>
-            <a className="button button-gold" href="#contacto">Conversemos sobre tu valoración</a>
-          </Reveal>
-        </div>
-      </section>
+      <ResultsGallery />
 
-
-      <TreatmentResults />
-
-      <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><div className="process-companion"><div className="process-copy"><div className="section-intro">
+      <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><div className="process-companion">
+                          <div className="process-copy"><div className="section-intro">
                               <motion.h2 id="process-title" className="section-entrance" {...sectionEntrance(reducedMotion)}>Empecemos por<br /><em>una conversación.</em></motion.h2>
                               <motion.p className="section-entrance" {...sectionEntrance(reducedMotion, 0.08)}>Un primer contacto para compartir lo que buscas y consultar tus dudas con la doctora.</motion.p>
                             </div>
@@ -286,7 +336,7 @@ function App({ isServicesPage = false }) {
         </div>
       </section>
     </main>
-    <footer className="container site-footer"><a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, volver al inicio"><img src={logoInk} alt="" width="750" height="521" /></a><p>Medicina estética en León, Nicaragua.</p><a className="button button-gold" href="/#inicio">Volver al inicio</a></footer>
+    <footer className="container site-footer"><a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, volver al inicio"><img src={logoInk} alt="" width="750" height="521" /></a><p>Medicina estética en León, Nicaragua.</p><a className="button button-primary" href="/#inicio">Volver al inicio</a><p className="site-credits">Fondo Colorful Stingrays de <a href="https://www.svgbackgrounds.com/">SVGBackgrounds.com</a>. Colores y trazos adaptados.</p></footer>
     </>
   )
 }
