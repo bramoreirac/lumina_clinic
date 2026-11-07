@@ -3,8 +3,8 @@ import { useId, useState } from 'react'
 import { motion } from 'motion/react'
 import { easeOut } from './motionSettings'
 
-export default function FaqItem({ id: itemId, question, children, className = '', open: controlledOpen, onOpenChange, answerId }) {
-  const [internalOpen, setInternalOpen] = useState(false)
+export default function FaqItem({ id: itemId, question, children, className = '', open: controlledOpen, onOpenChange, answerId, defaultOpen = false }) {
+  const [internalOpen, setInternalOpen] = useState(defaultOpen)
   const open = controlledOpen ?? internalOpen
   const toggle = () => {
     if (controlledOpen === undefined) setInternalOpen(!open)
@@ -14,7 +14,7 @@ export default function FaqItem({ id: itemId, question, children, className = ''
   const regionId = answerId ?? `${id}-answer`
   const reducedMotion = useMotionPreference()
   return (
-    <div id={itemId} className={`faq-item ${className}`}>
+    <div id={itemId} className={`faq-item ${className}`} data-open={open}>
       <button className="faq-question" id={`${id}-question`} aria-expanded={open} aria-controls={regionId} onClick={toggle}>
         {question}
         <motion.svg viewBox="0 0 24 24" aria-hidden="true" animate={{ rotate: open ? 45 : 0 }} transition={{ duration: reducedMotion ? 0 : 0.2 }}><path d="M5 12h14m-7-7v14" /></motion.svg>
