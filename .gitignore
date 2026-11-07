@@ -35,6 +35,3 @@ docs/
 
 # Vercel project credentials and local configuration
 .vercel/
-
-# Design sources
-dermato_design.md

@@ -1,229 +1,96 @@
 ---
 name: Lúmina Clínica Estética
-description: Proposed visual system extracted from the Phase 2 local responsive preview; awaiting user review.
+description: Current root React visual system, updated 7 November 2026 after user-reviewed refinements.
 colors:
-  ink: "#17181a"
-  gold: "#c9a66b"
-  ivory: "#f2efe6"
-  stone: "#a89f91"
+  coffee: "#49352c"
+  beige: "#e9d8c4"
+  ivory: "#faf8f2"
+  warm-surface: "#f7ecdf"
+  card: "#ffffff"
+  cta: "#8c6b58"
+  cta-hover: "#80604e"
+  cta-text: "#faf8f2"
   green: "#2e4034"
+  gold: "#c9a66b"
 typography:
-  hero-descriptor:
-    fontFamily: "Playfair Display, Georgia, serif"
-    fontSize: "clamp(2rem, 3.5vw, 3rem)"
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: "-0.035em"
-  hero-descriptor-mobile:
-    fontFamily: "Playfair Display, Georgia, serif"
-    fontSize: "clamp(1.8rem, 5.5vw, 2.6rem)"
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: "-0.035em"
-  headline:
-    fontFamily: "Playfair Display, Georgia, serif"
-    fontSize: "clamp(2rem, 3.4vw, 3rem)"
-    fontWeight: 700
-    lineHeight: 1.15
-    letterSpacing: "-0.035em"
-  title:
-    fontFamily: "Montserrat, Arial, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 600
-    lineHeight: 1.75
-  body:
-    fontFamily: "Montserrat, Arial, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.75
-  label:
-    fontFamily: "Montserrat, Arial, sans-serif"
-    fontSize: "0.85rem"
-    fontWeight: 500
-    lineHeight: 1.5
+  display: "Montserrat, Arial, sans-serif"
+  body: "Montserrat, Arial, sans-serif"
 rounded:
-  control: "4px"
-  circle: "50%"
-  portrait: "140px 140px 0 0"
-  portrait-mobile: "130px 130px 0 0"
-spacing:
-  space-1: "0.5rem"
-  space-2: "1rem"
-  space-3: "1.5rem"
-  space-4: "2rem"
-  space-6: "3rem"
-  space-8: "4rem"
-  space-12: "6rem"
-components:
-  button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.ivory}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
-    padding: "0.9rem 1.5rem"
-  button-primary-hover:
-    backgroundColor: "{colors.ivory}"
-    textColor: "{colors.ink}"
-  button-primary-active:
-    backgroundColor: "{colors.stone}"
-    textColor: "{colors.ink}"
-  button-hero:
-    backgroundColor: "{colors.ivory}"
-    textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
-    padding: "0.9rem 1.5rem"
-  button-hero-hover:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.ivory}"
-  button-hero-active:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.ink}"
-  portrait:
-    rounded: "{rounded.portrait}"
-    height: "470px"
-  portrait-tablet:
-    rounded: "{rounded.portrait}"
-    height: "420px"
-  portrait-mobile:
-    rounded: "{rounded.portrait-mobile}"
-    width: "100%"
-  button-light:
-    backgroundColor: "{colors.ivory}"
-    textColor: "{colors.green}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
-    padding: "0.9rem 1.5rem"
-  button-light-hover:
-    backgroundColor: "{colors.green}"
-    textColor: "{colors.ivory}"
-  button-light-active:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.green}"
-  service-action:
-    textColor: "{colors.ink}"
-    rounded: "{rounded.circle}"
-    size: "44px"
-  service-action-hover:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.ivory}"
+  card: "16px"
+  media: "24px"
+  pill: "999px"
+  shell: "0px"
 ---
 
-# Design System: Lúmina Clínica Estética
+# Current design system
 
-## Overview
+Updated: **7 November 2026**. This replaces the early prototype specification. The source of implementation truth is `src/App.css`, component styles, and the running root application. User-approved changes supersede original brand-manual/prototype defaults where they differ.
 
-**Creative North Star: "A clinic introduction"**
+## Direction and composition
 
-These are historical design notes from the clinic-introduction prototype. The standalone preview has been removed; the maintained design lives in `src/App.jsx`, `src/App.css`, and their components. Check the running React site for current layout and behavior.
+Warm beige and ivory surfaces, brown typography, natural clinic photography, and direct consultation actions. Montserrat now carries headings and body text; Playfair Display is no longer used for the site's headings. Preserve the approved Spanish copy and natural photo colors.
 
-The supplied identity stays binding: warm ivory space, deep ink copy, restrained gold, stone separators, bottle-green surfaces, Playfair Display and Montserrat. Real approved portrait photography brings the human presence. The maintained logo asset is in `src/assets/clinic/`; compare it with the original master if supplied later.
+The homepage presents hero → featured → doctor → clinic principles → before/after → process → FAQ → contact → footer. Services is a separate page with a matching hero, image carousel, expandable category directory, and shared contact/footer. Results remain a homepage anchor. The old standalone moving strip is not rendered.
 
-**Key Characteristics:**
+The header stays in normal document flow. Desktop navigation is inline; the mobile menu is a disclosure. Main content uses a centered 1200px maximum-width container, responsive gutters, and stacked layouts on smaller screens. Existing component-specific breakpoints remain authoritative; featured switches to a carousel below 600px, while the header/hero layout changes below 800px.
 
-- Supplied brand identity with restrained accents.
-- Bold serif headings and regular sans-serif reading text.
-- Open sections, thin separators, and simple outline controls.
-- Natural portrait photography and direct contact actions.
+## Color and typography
 
-## Colors
+| Use | Current value |
+| --- | --- |
+| Headings and main brown text | `#49352C` |
+| Header and hero background | `#E9D8C4` |
+| Featured, doctor, and results section backgrounds | `#FAF8F2` |
+| Process, contact, and footer section backgrounds | `#F7ECDF` |
+| Featured/results cards and joined doctor/process content | `#FFFFFF` |
+| Services image-card caption | `#EFDDC6` |
+| Featured, doctor, Services-results, contact WhatsApp, and footer CTA | `#8C6B58` with `#FAF8F2` text |
+| Those CTA hover states | `#80604E` with `#FAF8F2` text |
+| Header/hero CTA | Coffee background with beige text |
+| Supporting icons and restrained accents | Bottle green and gold, according to component rules |
 
-The palette follows the supplied brand manual; frontmatter records the exact CSS primitives.
+The shared lighter CTA pair has a calculated normal-text contrast of approximately 4.54:1. Recheck contrast before further lightening its background or darkening its text.
 
-### Primary
+Montserrat is locally served with `font-display: swap`. Roboto Condensed remains declared in CSS; original font files/licenses are retained. Headings use responsive sizes and component-specific weights, including the uppercase/italic hero treatment. Do not restore historical serif headings or make every label match the large hero typography.
 
-- **Deep ink:** principal text, primary controls, and dark section surfaces.
-- **Warm gold:** masthead rule, limited contact-heading emphasis, and contact labels on dark backgrounds. The reconstructed logo uses a separate sampled gold `#B48F2D` on the dark masthead.
+## Shape and surface rules
 
-### Secondary
+- Header, hero, hero photo/actions, and footer action keep their sharp rectangular treatment. The round hero logo is an intentional exception.
+- Featured photo: 24px corners. Featured and before/after card outer corners: 16px.
+- Featured cards clip the upper icon panel to the outer curve. Its internal horizontal edge remains straight; the circular consultation arrow stays circular.
+- Featured, doctor, Services-results, contact WhatsApp, and directions actions are pill-shaped. Footer action shares their lighter color but remains rectangular.
+- Joined doctor/process compositions round their exposed outer corners and keep adjoining edges flush. They stack without a gap on mobile.
+- Services image cards retain 24px outer corners and solid warm captions. Caption top edges remain straight. The moving Services cards do not use frosted glass.
+- FAQ rows and support cards retain their component-specific rounded geometry. Fine borders and restrained shadows are already part of the implementation.
 
-- **Bottle green:** alternate dark surface anchoring contact information; also the text on the light contact button.
+Use the declared `--radius-card`, `--radius-media`, and `--radius-pill` tokens for new matching treatments. Do not round every internal seam or apply one radius indiscriminately.
 
-### Neutral
+## Hero and imagery
 
-- **Ivory:** principal canvas and readable foreground on dark surfaces.
-- **Stone:** separators and circular control outlines; not small text on ivory.
+Both pages use `Hero.jsx`, with separate approved photos and the shared beige/brown layout. On desktop the photo fills the right half; on mobile it sits below the text. The logo badge straddles the photo's top edge on mobile. The main mobile photo uses `center top`; Services retains its own crop. Services has only the WhatsApp hero CTA; the homepage also links to Services.
 
-**The Readable Pairing Rule.** Keep small text on verified contrasting pairs. Computed brand contrast ratios are ink/ivory (15.45:1), ink/gold (7.74:1), ink/stone (6.80:1), gold/green (4.82:1), and ivory/green (9.62:1). Gold/ivory (2.00:1) and ivory/stone (2.27:1) are unsuitable for small text; stone/green (4.23:1) also falls below the 4.5:1 threshold for normal text. Decorative rules do not establish safe text pairings.
+The clinic-intro background currently uses `pressed-flowers-pattern.jpg` at low opacity. The original AI/EPS/JPG sources are in `source-assets/pressed-flowers/`. Additional unused SVG sources are preserved outside the application bundle. Keep the distinction between permission to publish people in photos and licensing of third-party artwork.
 
-## Typography
+## Interaction and motion
 
-**Display Font:** Playfair Display, with Georgia and serif fallbacks.
-**Body Font:** Montserrat, with Arial and sans-serif fallbacks.
+| Element | Current behavior |
+| --- | --- |
+| Section entrance | Once-only 300ms fade from 0.94 opacity to 1; starts 48px before entering view; no vertical translation or opacity reset on entry. Some elements retain short stagger delays. |
+| Doctor/process joined card | One parent fade, with static photo/text children. |
+| Hero introduction | Photo opacity animation over 400ms; text/actions use 450ms entrances with 16px movement and staggered delays. |
+| Hero treatment names | CSS vertical rotation through a 16-second cycle. |
+| Featured cards | Desktop grid; continuous mobile carousel. SVG face/icon hover movement remains. |
+| Results and Services image cards | Continuous carousel on desktop/mobile, free dragging, no navigation arrows or pagination, pause/resume control. |
+| Carousel playback | Auto Scroll speed 0.35; paused offscreen, in hidden tabs, on hover/focus, or under reduced motion. Opening result/service details suspends the appropriate carousel. |
+| FAQ/service tree | 250ms height/opacity expansion; plus icon rotates. Mobile navigation animates over 220ms. |
+| Reduced motion | Disables automatic CSS/carousel movement and section/hero entrance motion while keeping content readable and controls usable. |
 
-The reconstructed logo anchors the masthead; bold serif carries section statements; regular Montserrat carries services and logistics. Both font families are locally served with OFL licenses. The preview uses upright emphasis, not an italic heading style. Body paragraphs are capped at (65ch); introduction copy narrows further by context.
+The current pause-on-touch and mobile-anchor caveats are recorded in [PLAN.md](PLAN.md); they were not solved by the section-fade adjustment. Do not describe all scroll behavior as fully resolved.
 
-### Hierarchy
+## Accessibility and content
 
-- **Display:** the centered H1 contains the gold logo image with an accessible clinic-name alternative, followed by the bold ivory service-and-city descriptor using the hero-descriptor role, switching to hero-descriptor-mobile at widths up to (799px).
-- **Headline:** section headings use the headline role, becoming `clamp(2rem, 6vw, 2.6rem)` on phones.
-- **Title:** Montserrat semibold identifies consultation steps. Service names use (0.96rem), weight (500), line height (1.5).
-- **Body:** the inherited body role is the baseline; rendered section copy uses context-specific sizes from (0.85rem) to (0.94rem), with inherited reading rhythm.
-- **Label:** buttons use the label role. Navigation is (0.82rem) on desktop, (0.74rem) at the intermediate breakpoint, and (0.9rem) on mobile. Captions use (0.75rem). Contact labels use (0.73rem).
+Preserve semantic headings, skip navigation, focus indicators, labeled controls, `aria-expanded`, collapsed-region `inert`, and keyboard-accessible disclosure/dialog behavior. The results dialog locks background scrolling and restores the prior position on close. Manual browser checks are not a claim of complete WCAG certification.
 
-## Layout
+Keep treatment descriptions and patient collages intact unless the user requests changes. Do not add credentials, outcomes, statistics, prices, or testimonials. The footer contains a centered location description and the 2026 copyright notice, without a decorative-source credit line.
 
-The main desktop container is centered and capped at (1200px), with a width of `min(1200px, calc(100% - 6rem))`. At widths up to (1050px), the observed CSS switches to `calc(100% - 4rem)`. At (799px), it uses `calc(100% - 3rem)`; at (374px), `calc(100% - 2rem)`. The declared spacing scale is in frontmatter; actual component rules also use optical adjustments rather than a rigid multiple-only grid.
-
-The full-width ink masthead centers its content, with (4rem 4.5rem) vertical padding and a (5rem) gold rule. Its supporting copy is capped at (48ch), followed by wrapping actions. The ivory clinic introduction has equal columns, a (5rem) gap, and (5rem) vertical padding. The ivory doctor section uses portrait/copy columns of (0.85fr / 1.15fr), a (6rem) gap, and a top rule with (4rem) inset. Other desktop content retains equal section-introduction columns, two service columns, a narrower FAQ title beside its list, and a slightly wider contact introduction. Process steps form three columns. Sections generally use (6rem) vertical spacing; the ivory doctor and green contact sections use their own spacing. At (1050px), column gaps tighten and contact details form one column. At (799px), main layouts, service rows, and process steps become single-column; contact details return to two columns until (374px), where they stack. Major mobile sections use (3.5rem) vertical padding.
-
-The header is a normal-flow row, not sticky. Its mobile disclosure sits above the page content. The masthead remains centered on mobile with (3rem) vertical padding and stacked actions. The portrait is in the doctor section after the clinic introduction, preceding doctor copy when stacked; it never becomes a background behind copy. The preview has been checked at (320px), (390px), (768px), (1024px), and (1440px); this is prototype evidence, not a production browser certification.
-
-## Elevation & Depth
-
-No box shadows are implemented. Depth comes from alternating ivory, ink, and green section surfaces, fine borders, and the real photograph. Controls change foreground, background, and border on interaction. Their state transition lasts (180ms); the masthead rule has a restrained horizontal reveal from `scaleX(0.25)` to `scaleX(1)` lasting (850ms), enabled only from (800px) when reduced motion is not requested. Reduced motion disables animation and transitions and restores automatic scrolling.
-
-**The Flat Surface Rule.** Use tonal separation and fine rules for this system's depth; do not add unsupported shadow tokens.
-
-## Shapes
-
-Controls have gently curved corners using the control radius. Service actions and process numerals are circular. Most content containers have no enclosing card or rounded panel. Separators use a single-pixel stone border. The portrait alone uses an architectural arch: desktop top corners (140px), then mobile top corners (130px), with square lower corners. Its crop is (470px) high on desktop, (420px) at the intermediate breakpoint, and an aspect ratio of (1 / 1.05) on mobile; mobile maximum width is (520px). Keep the face visible in any future crop.
-
-## Components
-
-### Buttons and text links
-
-Buttons are quiet rectangular contact actions with an inline outline arrow. The primary and light variants are defined in frontmatter; both have a minimum height of (56px), a (1.75rem) icon gap, and a transparent single-pixel border at rest. Hover inverts the foreground and background with a contrasting border. The generic primary active state uses stone; the actual dark-masthead override uses ivory with ink text, inverts to ink/ivory with an ivory border on hover, and uses gold/ink when active. The light contact variant also uses gold when active. At the narrowest breakpoint, horizontal padding becomes (1.1rem) and the gap (1rem). Text links keep an underline, a minimum height of (44px), and a thicker underline on hover.
-
-All links, buttons, FAQ summaries, and the main focus target use a visible current-color outline (3px) with an offset of (5px). A focus-revealed skip link precedes navigation.
-
-### Navigation
-
-Desktop navigation includes a clinic-introduction anchor and is an inline row with (44px) minimum-height links and an underlined contact action. The menu toggle appears up to (799px). With JavaScript, it controls navigation visibility through `aria-expanded`; Escape closes it and returns focus to the toggle. Choosing a section closes it and focuses the destination. Breakpoint changes reset the disclosure. Without JavaScript, mobile navigation remains visible. There is no active-section tracking or dialog overlay.
-
-### Service directory
-
-Services are ruled rows, not cards: names on the left, a circular inline SVG action on the right. Rows are at least (95px) high on desktop and (84px) on mobile. Actions retain a minimum (44px) target and invert to ink/ivory on hover. Each action is an accessible, service-specific WhatsApp inquiry link. The list contains ten supplied service names without invented descriptions.
-
-### Consultation steps
-
-Three unboxed, top-ruled items use circular number markers (40px), semibold titles, and concise body text. On mobile, the numeral sits beside the title and paragraph rather than above them.
-
-### FAQ disclosure
-
-Native `details` and `summary` provide keyboard-operable disclosure without custom JavaScript. Ruled summaries have a minimum height of (84px); the inline plus rotates (45deg) when open. Hover underlines the question; focus uses the shared outline. Answers retain normal links and reading text.
-
-### Portrait and caption
-
-The doctor portrait used by the maintained site is in `src/assets/clinic/doctor.webp`. See the React doctor section for its current crop, caption, and accessible text.
-
-### Contact surface
-
-The green section combines an ivory/gold heading, readable contact information, and the light action variant. Contact values use tabular numerals where applicable. No form, input, booking widget, chip, tooltip, or generic card is implemented; do not infer their styles from this prototype.
-
-## Do's and Don'ts
-
-### Do:
-
-- **Do** preserve the supplied palette and Playfair Display/Montserrat pairing.
-- **Do** use verified contrasting pairs for reading text and keep gold restrained.
-- **Do** retain visible focus, native FAQ semantics, and reduced-motion behavior.
-- **Do** preserve natural portrait colors and review the face crop at each layout width.
-- **Do** treat this document as historical design context and verify current choices in the React site.
-
-### Don't:
-
-- **Don't** use gold on ivory, ivory on stone, or stone on green for small text.
-- **Don't** introduce pink UI accents, pure black or white UI surfaces, or large gold-only areas; natural colors in approved photographs remain intact.
-- **Don't** add shadows or generic enclosing cards to the open ruled layouts without a reviewed design change.
-- **Don't** treat the reconstructed logo, draft copy, original-size assets, or local preview as production approval.
+External template analysis is reference material, not the current site's specification or evidence that template assets are licensed. Use this document for current choices and [PLAN.md](PLAN.md) for pending release work.

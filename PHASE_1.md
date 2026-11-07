@@ -1,5 +1,7 @@
 # Phase 1 — Content and asset discovery
 
+> **Historical record — annotated 7 November 2026.** The inventory below preserves the 27 October discovery and its original assumptions; it is not the current implementation checklist. Use [README.md](README.md), [PLAN.md](PLAN.md), [PRODUCT.md](PRODUCT.md), and [DESIGN.md](DESIGN.md) for current status. The site now has two React pages, an expanded service directory, a before/after gallery, address/email/map/contact details, and user-confirmed permission to publish the people in the photos. Current typography, layout, hours, and social destination differ from this early copy. Third-party asset licensing and final launch verification remain separate tasks. The original unanswered questions below are historical, not a new request to the customer.
+
 Prepared: 27 October 2026. Status: discovery inventory prepared and core customer details confirmed; remaining publication dependencies are listed below.
 
 This document is the content handoff for design. **Supplied** means explicitly present in customer files; **observed** means visible in an asset; **draft** means proposed website copy; **pending** means not established. Supplied or observed material is not automatically final publication approval.

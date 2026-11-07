@@ -1,43 +1,50 @@
-# Search visibility strategy
+# Search visibility and launch status
 
-Scope: planning for the final Spanish-language React + Vite website on Netlify. This is not a ranking report or keyword-volume study. The local design preview intentionally remains `noindex, nofollow`.
+Updated: **7 November 2026**. This records the current local implementation and remaining production work, not search rankings or a hosted audit.
 
-## How the three openings compare
+## Current implementation
 
-These are content/visitor-intent judgments, not claims that Google prefers one visual layout:
+| Item | Status |
+| --- | --- |
+| Language | Both HTML entry points declare `lang="es"`. |
+| Homepage title | Lúmina \| Medicina estética en León, Nicaragua |
+| Services title | Servicios \| Lúmina Clínica Estética en León, Nicaragua |
+| Descriptions | Separate Spanish meta descriptions in `index.html` and `servicios/index.html`. |
+| Basic metadata | Viewport, UTF-8, theme color, and SVG favicon are present. |
+| Robots meta | Both pages still specify `noindex, nofollow` for review. |
+| Routes | `/` and `/servicios/` have Vite HTML entry points. Results use `/#resultados`, not a standalone page. |
+| Main content | Rendered client-side by React into an initially empty `#root`; no static prerendering is configured. |
+| Local details | Visible address/map, phone, email, Instagram, and current hours are implemented; see [PRODUCT.md](PRODUCT.md). |
+| Canonical, Open Graph, social image metadata | Not implemented. |
+| Sitemap and robots.txt | Not present in `public/`. |
+| Structured data | Not implemented. |
+| Production `.com` domain, Search Console, rankings | Not verified or configured by this documentation update. |
 
-| Opening | Useful emphasis | SEO implication |
-| --- | --- | --- |
-| Doctor introduction | Professional identity, approach, and searches for the doctor's name. | Retain a descriptive service/location heading and useful clinic/service content. A portrait-first arrangement is not inherently a ranking benefit. |
-| Services first | Visitors looking for a particular treatment. | Makes treatment information easy to find. It still needs substantive approved content; a list of treatment names is not a complete service-content strategy. |
-| Clinic introduction | Lúmina's brand and local practice identity. | A good fit for a clinic homepage if the opening also says what it offers and where. The doctor and services remain important further down. |
+`noindex` is an indexing instruction, not access protection. Removing it does not guarantee indexing, and retaining it would prevent the intended production pages from being eligible for normal indexing by compliant search engines.
 
-Recommended direction for this branch: **clinic introduction with clear service/location wording**, retaining the doctor introduction and all supplied services. This balances brand clarity and local relevance without claiming a ranking advantage over an equally useful doctor-led page.
+## Launch checklist
 
-## Applied to the branch preview
+- [ ] Confirm the final HTTPS domain and preferred root/`www` hostname, then verify redirects.
+- [ ] Remove review-only `noindex, nofollow` from both authorized production entry points. Keep preview protection/indexing controls separate so review deployments do not become competing public copies.
+- [ ] Add absolute, page-specific canonical URLs and social sharing metadata using the final domain and approved imagery.
+- [ ] Add `sitemap.xml` for the actual maintained public pages and an intentional `robots.txt` policy. Do not add a removed results page to the sitemap.
+- [ ] Verify page titles/descriptions, meaningful rendered headings, image alternatives, direct `/servicios/` loads, and contact destinations on the hosted build.
+- [ ] Consider appropriate business structured data only after confirming the clinic details. Do not fabricate ratings, reviews, credentials, opening hours, or medical claims.
+- [ ] Evaluate static prerendering if discoverability/rendering checks justify it; React remains client-rendered today.
+- [ ] Measure hosted performance/accessibility and inspect rendered output. No current Lighthouse/Core Web Vitals score is claimed.
+- [ ] With owner authorization, verify Search Console, submit the sitemap, inspect indexing, and review any existing Google Business Profile details and website link. None of those account actions is implied by this checklist.
 
-- Title: “Lúmina | Medicina estética en León, Nicaragua”.
-- One visible H1 combining “Lúmina” and “Medicina estética en León, Nicaragua”.
-- A descriptive Spanish meta description.
-- Visible clinic approach, doctor identity/title, ten services, contact details, and confirmed hours.
-- Navigation and content remain real HTML with working anchors; important content is not hidden in promotional images.
-- Preview stays out of indexing. The default React production entry is still the starter; these prototype changes do not implement production SEO.
+## Content maintenance
 
-## Priorities for the production implementation
+Use readable, original Spanish treatment information and natural service/location headings. The current directory combines eight image cards with twelve additional categorized entries; the old ten-item discovery list is not the current directory. Treatment descriptions and professional wording require clinic review, without promises of universal suitability or guaranteed results.
 
-1. **Useful approved content.** Complete clinic-specific service descriptions and doctor-reviewed copy. Do not invent qualifications, results, reviews, prices, or treatment claims. Use readable names and headings naturally rather than repeating keywords.
-2. **Clear clinic details.** Use the confirmed business name, phone, city, and Monday–Friday hours consistently. Add the precise address/map pin once supplied.
-3. **Google Business Profile.** Confirm whether the clinic already has a profile. With the owner's authorization, verify/update its address, category, hours, website, and genuine photos. Profile access/changes are a separate task; none have been made here. Google identifies relevance, distance, and prominence as main local-ranking factors, not homepage layout.
-4. **Crawlable React output.** During implementation, evaluate static prerendering for primary marketing content and metadata while retaining React + Vite and static Netlify hosting. Google can render JavaScript, but prerendering can make content available without waiting for client rendering. Verify the final HTML and Search Console rendering rather than assuming the development preview represents the production build.
-5. **Appropriate technical metadata.** Add final-domain canonical URLs, sitemap, robots policy, meaningful titles/descriptions, social preview metadata, and suitable business structured data containing only verified information. Structured data is not a ranking guarantee. Do not generate an incomplete local-business address or fabricated reviews.
-6. **Performance and accessibility.** Optimize imagery and fonts, preserve readable contrast and mobile behavior, and check actual production loading. A design preference alone is not evidence of SEO performance.
-7. **Indexing and measurement.** Keep staging/previews excluded; make intended production pages indexable at launch. Connect Search Console with authorization, submit the sitemap, and monitor actual queries, indexing, and clicks before judging search outcomes.
+Keep contact/FAQ hours and externally maintained clinic profiles aligned. Do not treat a visual layout, carousel, corner radius, or structured-data addition as evidence of ranking improvement. Additional treatment-specific pages would need useful original content and are outside the current two-page scope.
 
-If treatment-specific searches become a priority, consider separate static service pages with useful original, doctor-reviewed information. This is a potential scope extension, not a requirement to create ten thin pages. No search volume, competition, or position estimates have been established.
+## Reference documents
 
-## Primary references
+These are reference links retained for implementation-time verification, not a claim they were rechecked during this documentation-only update.
 
-- [Google Search Central: SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) — clear content, titles, crawling, indexing, and site structure; no guaranteed first-place ranking.
-- [Google Business Profile: local ranking guidance](https://support.google.com/business/answer/7091?hl=en) — accurate profile information and relevance, distance, prominence.
-- [Google Search Central: JavaScript SEO basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics) — JavaScript rendering, indexable content, and server-side/prerendered output.
-- [Google Search Central: local business structured data](https://developers.google.com/search/docs/appearance/structured-data/local-business) — supported business data and feature requirements.
+- [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+- [Google JavaScript SEO basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+- [Google local business structured data](https://developers.google.com/search/docs/appearance/structured-data/local-business)
+- [Google Business Profile local ranking guidance](https://support.google.com/business/answer/7091?hl=en)
