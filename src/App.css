@@ -414,7 +414,7 @@ nav a.nav-contact:hover { text-decoration: none; }
   .featured-photo { height: 340px; }
 }
 
-/* Alternate header and home banner from design/ */
+/* Header and home banner */
 .site-header .header-inner { min-height: 100px; }
 .site-header .wordmark img { width: 112px; }
 .site-header nav { gap: 1.5rem; }
@@ -446,7 +446,7 @@ nav a.nav-contact:hover { text-decoration: none; }
 .home-hero .text-link { justify-content: center; min-height: 52px; padding: .9rem 1.35rem; border: 1px solid var(--color-green); border-radius: 999px; color: var(--color-green); font-size: .875rem; font-weight: 600; line-height: 1.5; text-decoration: none; }
 .home-hero .text-link:hover { background: var(--color-green); color: var(--color-ivory); }
 
-/* Root hero: redesigned photo-hero from design/ */
+/* Shared home and services photo hero */
 .home-hero.photo-hero {
   width: 100%;
   min-height: 650px;

@@ -16,4 +16,6 @@ Both page entry points currently include `noindex, nofollow` for review. Remove 
 
 ## Content and assets
 
+The root application is the only maintained version. Additional SVG patterns are preserved in `source-assets/svg-patterns/`, icon variants in `source-assets/icons/`, and original flower artwork in `source-assets/pressed-flowers/`. These source files are tracked but are not published unless imported into the application.
+
 The current site content lives in `src/App.jsx`, styling in `src/App.css`, and deployable media in `src/assets/clinic`. The logo is reconstructed from customer video and should be replaced with the clean master when available. Review treatment descriptions and the peeling image label with the doctor before launch; the street address is still pending. See `PHASE_1.md`, `PLAN.md`, `DESIGN.md`, and `SEO.md` for the project notes.
