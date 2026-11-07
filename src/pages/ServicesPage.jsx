@@ -75,7 +75,6 @@ export default function ServicesPage({ badge, rotatingItems }) {
         byline={<>Con la <strong>Dra. Steacey Maradiaga</strong></>}
         actions={<>
           <a className="button button-primary" href="https://wa.me/50558811397">Consultar por WhatsApp</a>
-          <a className="text-link" href="#servicios">Explorar los servicios</a>
         </>}
       />
       <section className="services-section container section-space" id="servicios" aria-labelledby="services-title">

@@ -78,11 +78,11 @@ function App({ isServicesPage = false }) {
           </section>
 
       <section className="doctor-section" id="doctora" aria-labelledby="doctor-title">
-        <div className="container doctor-layout">
-          <Reveal as="figure" className="doctor-portrait">
+        <Reveal as="div" className="container doctor-layout">
+          <figure className="doctor-portrait">
             <img src={portrait} alt="Dra. Steacey Maradiaga sonriendo en su consultorio" width="1067" height="1600" loading="lazy" />
-          </Reveal>
-          <Reveal as="div" className="doctor-copy">
+          </figure>
+          <div className="doctor-copy">
             <h2 id="doctor-title">La doctora detrás<br />de <em>Lúmina.</em></h2>
             <div className="doctor-credentials">
               <p className="doctor-name">Dra. Steacey Maradiaga</p>
@@ -95,8 +95,8 @@ function App({ isServicesPage = false }) {
               <p>Creo en escuchar, valorar y comprender a cada persona para ofrecer un tratamiento personalizado, seguro y basado en ciencia.</p>
             </div>
             <a className="button button-primary" href="#contacto">Conversemos sobre tu valoración</a>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </section>
 
 
@@ -122,13 +122,13 @@ function App({ isServicesPage = false }) {
 
       <ResultsGallery />
 
-      <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><div className="process-companion">
+      <section className="process-section" aria-labelledby="process-title"><div className="container section-space"><Reveal as="div" className="process-companion">
                           <div className="process-copy"><div className="section-intro">
-                              <motion.h2 id="process-title" className="section-entrance" {...sectionEntrance(reducedMotion)}>Empecemos por<br /><em>una conversación.</em></motion.h2>
-                              <motion.p className="section-entrance" {...sectionEntrance(reducedMotion, 0.08)}>Un primer contacto para compartir lo que buscas y consultar tus dudas con la doctora.</motion.p>
+                              <h2 id="process-title">Empecemos por<br /><em>una conversación.</em></h2>
+                              <p>Un primer contacto para compartir lo que buscas y consultar tus dudas con la doctora.</p>
                             </div>
                             <ol className="process-list">
-                              <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.12)}>
+                              <li>
                                 <div className="process-visual" aria-hidden="true">
                                   <svg viewBox="0 0 80 80" aria-hidden="true">
                                     <rect x="24" y="12" width="32" height="54" rx="5" />
@@ -140,8 +140,8 @@ function App({ isServicesPage = false }) {
                                 <span>1</span>
                                 <h3>Contáctanos</h3>
                                 <p>Escríbenos o llámanos para solicitar información.</p>
-                              </motion.li>
-                              <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.20)}>
+                              </li>
+                              <li>
                                 <div className="process-visual" aria-hidden="true">
                                   <svg viewBox="0 0 80 80" aria-hidden="true">
                                     <rect x="17" y="20" width="46" height="42" rx="4" />
@@ -152,8 +152,8 @@ function App({ isServicesPage = false }) {
                                 <span>2</span>
                                 <h3>Coordina tu valoración</h3>
                                 <p>Consulta la disponibilidad y los detalles de tu visita.</p>
-                              </motion.li>
-                              <motion.li className="section-entrance" {...sectionEntrance(reducedMotion, 0.28)}>
+                              </li>
+                              <li>
                                 <div className="process-visual" aria-hidden="true">
                                   <svg viewBox="0 0 80 80" aria-hidden="true">
                                     <path d="M16 42c0-11 9-19 20-19s20 8 20 19-9 19-20 19c-3 0-6-.5-9-1.8L18 63l2.5-8C17.6 51.5 16 47 16 42z" />
@@ -164,11 +164,11 @@ function App({ isServicesPage = false }) {
                                 <span>3</span>
                                 <h3>Conversa con la doctora</h3>
                                 <p>Comparte tus objetivos y resuelve tus dudas durante la valoración.</p>
-                              </motion.li>
+                              </li>
                             </ol>
                           </div>
-                          <motion.figure className="process-photo section-entrance" {...sectionEntrance(reducedMotion)}><img src={consultationPortrait} alt="Dra. Steacey Maradiaga en su escritorio de consulta" width="1000" height="1500" loading="lazy" /></motion.figure>
-                        </div>
+                          <figure className="process-photo"><img src={consultationPortrait} alt="Dra. Steacey Maradiaga en su escritorio de consulta" width="1000" height="1500" loading="lazy" /></figure>
+                        </Reveal>
                       </div>
                     </section>
 
