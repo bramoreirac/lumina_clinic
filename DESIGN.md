@@ -115,9 +115,9 @@ components:
 
 **Creative North Star: "A clinic introduction"**
 
-This is a proposed prototype design system, awaiting user review. It records the implemented local preview in `design/index.html`, `design/preview.css`, and `design/preview.js`; it is not a final approved production system or an approved visual comp. The user requested this clinic-introduction alternative on `feature/optionb` after approving the personal-welcome preview. This branch leads with the clinic name, services, and city, then introduces the doctor. The descriptive North Star names that implemented character rather than a new brand identity.
+These are historical design notes from the clinic-introduction prototype. The standalone preview has been removed; the maintained design lives in `src/App.jsx`, `src/App.css`, and their components. Check the running React site for current layout and behavior.
 
-The supplied identity stays binding: warm ivory space, deep ink copy, restrained gold, stone separators, bottle-green surfaces, Playfair Display and Montserrat. Real approved portrait photography brings the human presence. Thin rules and open layouts keep information calm and readable, with no text laid over the doctor's face. The preview uses the reconstructed logo from `design/brand/`: sampled gold on the dark opening and an ink variant on the light header and footer. Compare it with the original master if supplied later.
+The supplied identity stays binding: warm ivory space, deep ink copy, restrained gold, stone separators, bottle-green surfaces, Playfair Display and Montserrat. Real approved portrait photography brings the human presence. The maintained logo asset is in `src/assets/clinic/`; compare it with the original master if supplied later.
 
 **Key Characteristics:**
 
@@ -205,7 +205,7 @@ Native `details` and `summary` provide keyboard-operable disclosure without cust
 
 ### Portrait and caption
 
-The approved original portrait is referenced locally; `design/assets.json` records its source and hash. The image is lazy-loaded in the doctor section, has explicit dimensions and descriptive Spanish alternative text. A plain caption below identifies the doctor and clinic; the professional title sits in the adjacent doctor copy, with no gold caption rule. Original files remain unchanged. Production asset copies, optimization, and final integration are deferred to Phase 3.
+The doctor portrait used by the maintained site is in `src/assets/clinic/doctor.webp`. See the React doctor section for its current crop, caption, and accessible text.
 
 ### Contact surface
 
@@ -219,7 +219,7 @@ The green section combines an ivory/gold heading, readable contact information, 
 - **Do** use verified contrasting pairs for reading text and keep gold restrained.
 - **Do** retain visible focus, native FAQ semantics, and reduced-motion behavior.
 - **Do** preserve natural portrait colors and review the face crop at each layout width.
-- **Do** treat this document as a proposed prototype handoff awaiting user review.
+- **Do** treat this document as historical design context and verify current choices in the React site.
 
 ### Don't:
 

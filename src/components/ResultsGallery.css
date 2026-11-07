@@ -1,0 +1,41 @@
+.results-gallery { --line: rgba(73, 53, 44, 0.12); background: #faf8f2; color: var(--home-coffee); }
+.results-gallery .section-space { padding-block: clamp(3.5rem, 6vw, 5.5rem); }
+.gallery-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2rem; }
+.gallery-eyebrow { margin-bottom: .75rem; color: var(--home-coffee); font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.gallery-heading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 600; color: var(--home-coffee); }
+.gallery-heading h2 em { font-style: italic; }
+.gallery-heading > p { max-width: 37ch; margin: 0; font-size: 1rem; line-height: 1.7; color: #5e4b41; }
+.result-card { min-width: 0; margin: 0; border-radius: var(--radius-card); }
+.result-card-open { display: block; width: 100%; height: 100%; padding: 0; border: 1px solid var(--line); border-radius: inherit; overflow: hidden; background: #ffffff; color: var(--home-coffee); text-align: left; font: inherit; cursor: pointer; box-shadow: 0 4px 12px rgba(73, 53, 44, 0.04); transition: border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+/* Explicit inset dimensions keep intrinsic image size from enlarging the preview frame. */
+.result-card-image { position: relative; display: block; height: clamp(200px, 26vw, 310px); padding: .8rem; background: #ffffff; }
+.result-card-image img { position: absolute; inset: .8rem; display: block; width: calc(100% - 1.6rem); height: calc(100% - 1.6rem); object-fit: contain; }
+.result-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 66px; padding: .8rem 1rem; border-top: 1px solid var(--line); font-size: .875rem; font-weight: 600; line-height: 1.4; color: var(--home-coffee); }
+.result-card-action { font-size: 0.8rem; font-weight: 600; color: var(--home-coffee); opacity: 0.85; transition: opacity 220ms var(--ease-out); }
+.result-card-open:hover { border-color: var(--home-coffee); box-shadow: 0 8px 24px rgba(73, 53, 44, 0.08); }
+.result-card-open:hover .result-card-action { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+.gallery-carousel { min-width: 0; }
+.gallery-carousel .result-card { width: 100%; }
+.gallery-carousel .result-card-image { height: clamp(220px, 30vw, 330px); }
+.results-lightbox { position: fixed; inset: 0; width: max-content; max-width: min(92vw, 1100px); max-height: 96dvh; padding: 0; border: 1px solid rgba(233, 216, 196, 0.2); background: #1e1916; color: var(--color-ivory); overflow: hidden; }
+.results-lightbox::backdrop { background: rgba(30, 24, 20, 0.88); }
+.lightbox-panel { width: max-content; max-width: min(92vw, 1100px); padding: .75rem; }
+.lightbox-topbar, .lightbox-controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: min(270px, calc(92vw - 1.5rem)); }
+.lightbox-topbar { min-height: 48px; font-size: .85rem; font-weight: 600; color: var(--home-beige); }
+.lightbox-topbar button, .lightbox-controls button { min-width: 44px; min-height: 44px; border: 1px solid rgba(233, 216, 196, 0.3); border-radius: 0; background: transparent; color: var(--home-beige); cursor: pointer; transition: background 200ms ease, color 200ms ease; }
+.lightbox-topbar button:hover, .lightbox-controls button:hover { background: var(--home-beige); color: var(--home-coffee); }
+.lightbox-close { font-size: 1.7rem; line-height: 1; }
+.lightbox-image-wrap { display: grid; place-items: center; min-height: 0; max-width: 100%; background: #171311; }
+.lightbox-image-wrap img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(96dvh - 158px); object-fit: contain; }
+.result-image-error { display: block; padding: 2rem 1rem; text-align: center; font-size: .85rem; line-height: 1.6; }
+.lightbox-controls { min-height: 54px; font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--home-beige); }
+.lightbox-controls button { padding: .4rem .65rem; font: inherit; }
+.results-gallery button:focus-visible, .results-gallery a:focus-visible, .results-lightbox button:focus-visible { outline: 3px solid var(--home-coffee); outline-offset: 3px; }
+.results-lightbox button:focus-visible { outline-color: var(--home-beige); outline-offset: -4px; }
+@media (max-width: 599px) {
+  .gallery-heading { display: block; }
+  .gallery-heading > p { margin-top: 1rem; }
+  .result-card-image { height: 250px; }
+  .gallery-carousel .result-card-image { height: 260px; }
+  .lightbox-controls button span { display: none; }
+}

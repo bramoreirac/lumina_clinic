@@ -1,18 +1,18 @@
 import useMotionPreference from './useMotionPreference'
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { entrance, revealViewport } from './motionSettings'
+import { sectionEntrance } from './motionSettings'
 
 const elements = { article: motion.article, div: motion.div, figure: motion.figure }
 
-export default function Reveal({ as = 'article', children, ...props }) {
+export default function Reveal({ as = 'article', children, className = '', ...props }) {
   const Element = elements[as]
   const reducedMotion = useMotionPreference()
   const [focused, setFocused] = useState(false)
-  const { initial, animate, transition } = entrance(reducedMotion)
+  const { initial, whileInView, viewport, transition } = sectionEntrance(reducedMotion)
   return (
-    <Element {...props} initial={initial} animate={focused || reducedMotion ? animate : undefined}
-      whileInView={animate} viewport={revealViewport} transition={focused ? { duration: 0 } : transition}
+    <Element {...props} className={`${className} section-entrance`} initial={initial} animate={focused || reducedMotion ? whileInView : undefined}
+      whileInView={whileInView} viewport={viewport} transition={focused ? { duration: 0 } : transition}
       onFocusCapture={() => setFocused(true)}>
       {children}
     </Element>

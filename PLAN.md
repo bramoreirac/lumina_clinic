@@ -2,7 +2,7 @@
 
 Prepared: 27 October 2026.
 
-Status: The clinic-led layout was accepted for React implementation; a preliminary Vercel deployment was requested for doctor review, while Netlify remains the intended final host. The personal-welcome preview was reviewed positively. This branch compares a clinic-introduction variant at [design/index.html](design/index.html), with the visual handoff in [DESIGN.md](DESIGN.md) and search strategy in [SEO.md](SEO.md). The React implementation is ready for preliminary deployment and further review.
+Status: The root React site is the maintained design. The earlier standalone design previews have been retired. Netlify remains the intended final host; see [DESIGN.md](DESIGN.md) for historical design notes and [SEO.md](SEO.md) for the search strategy.
 
 ## 1. Objective and agreed constraints
 
@@ -169,7 +169,7 @@ Source review, asset recommendations, the service catalog, draft copy, and custo
 - [x] Receive positive user review of the personal-welcome preview.
 - [x] Review the clinic-introduction alternative on `feature/optionb`; the user accepted this layout for React implementation.
 
-Preview: run the existing Vite server and open `/design/`. See [design/README.md](design/README.md) for instructions and review scope. This is a local HTML/CSS/JavaScript prototype; `/` now contains the React implementation and the production build includes the React site. Draft copy and missing logo/address remain tracked dependencies.
+Preview: run the Vite server and open `/` or `/servicios/`. The React implementation is the only maintained design. Draft copy and missing logo/address remain tracked dependencies.
 
 **Complete when:** the layout and contact flow are agreed and the brand rules are reflected consistently.
 

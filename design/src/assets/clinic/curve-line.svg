@@ -1,0 +1,16 @@
+<!-- Adapted from Curve Line, BGJar https://bgjar.com/curve-line ; CC BY 4.0. Colors adapted. -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
+    <g mask="url(&quot;#SvgjsMask1000&quot;)" fill="none">
+        <rect width="1440" height="560" x="0" y="0" fill="#f2efe6"></rect>
+        <path d="M346.04 607.54C512 592.08 623.64 244.72 905.21 244.48 1186.79 244.24 1313.34 469.67 1464.39 474.08" stroke="rgba(201,166,107,0.22)" stroke-width="2"></path>
+        <path d="M567.09 629.57C692.74 588.5 644.75 224.71 905.33 223.12 1165.92 221.53 1407.57 389.87 1581.82 391.12" stroke="rgba(201,166,107,0.22)" stroke-width="2"></path>
+        <path d="M346.05 586.11C476.83 574.76 562.05 307.56 790.29 306.14 1018.52 304.72 1012.4 376.14 1234.52 376.14 1456.64 376.14 1566.33 306.35 1678.76 306.14" stroke="rgba(201,166,107,0.22)" stroke-width="2"></path>
+        <path d="M348.29 646.26C535.62 617.91 639.07 171.41 938.36 170.69 1237.65 169.97 1365.88 438.49 1528.43 445.09" stroke="rgba(201,166,107,0.22)" stroke-width="2"></path>
+        <path d="M865.27 566.81C956.07 552.01 901.9 349.64 1147.79 331.02 1393.69 312.4 1556.55 68.95 1712.84 62.22" stroke="rgba(201,166,107,0.22)" stroke-width="2"></path>
+    </g>
+    <defs>
+        <mask id="SvgjsMask1000">
+            <rect width="1440" height="560" fill="#ffffff"></rect>
+        </mask>
+    </defs>
+</svg>
