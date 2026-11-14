@@ -13,11 +13,12 @@ const baseOptions = {
   i18n: { carousel: 'Carrusel', slide: 'Elemento', slideLabel: '%s de %s' },
 }
 
-export default function ContinuousCarousel({ children, id, label, className = '', options, suspended = false, onClick, onToggleCapture, onMounted, pauseOnInteraction = true, showPauseButton = true }) {
+export default function ContinuousCarousel({ children, id, label, className = '', options, suspended = false, onClick, onToggleCapture, onMounted, pauseOnInteraction = true, showPauseButton = true, resumeOnRelease = false, pauseOnPointerFocus = true }) {
   const slider = useRef(null)
   const container = useRef(null)
   const [paused, setPaused] = useState(false)
   const [visible, setVisible] = useState(false)
+  const [focused, setFocused] = useState(false)
   const reducedMotion = useMotionPreference()
 
   useEffect(() => {
@@ -31,15 +32,24 @@ export default function ContinuousCarousel({ children, id, label, className = ''
 
   useEffect(() => {
     const autoScroll = slider.current?.splide?.Components.AutoScroll
-    if (visible && !paused && !reducedMotion && !suspended) autoScroll?.play()
+    if (visible && !paused && !reducedMotion && !suspended && !focused) autoScroll?.play()
     else autoScroll?.pause()
-  }, [visible, paused, reducedMotion, suspended])
+  }, [visible, paused, reducedMotion, suspended, focused])
+
+  useEffect(() => {
+    if (!resumeOnRelease) return
+    const release = () => setPaused(false)
+    window.addEventListener('pointerup', release)
+    window.addEventListener('pointercancel', release)
+    return () => { window.removeEventListener('pointerup', release); window.removeEventListener('pointercancel', release) }
+  }, [resumeOnRelease])
 
   return (
-    <div className={`continuous-carousel ${className}`} ref={container}>
+    <div className={`continuous-carousel ${className}`} ref={container}
+      onFocusCapture={(event) => setFocused(pauseOnPointerFocus || event.target.matches(':focus-visible'))} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false) }}>
       <div onPointerDown={() => { if (pauseOnInteraction) setPaused(true) }} onTouchStart={() => { if (pauseOnInteraction) setPaused(true) }} onClick={onClick} onToggleCapture={onToggleCapture}>
         <Splide ref={slider} id={id} aria-label={label} options={{ ...baseOptions, ...options }} extensions={extensions}
-          onDrag={() => setPaused(true)} onMounted={onMounted} onRefresh={onMounted}>
+          onDrag={() => { if (pauseOnInteraction && !resumeOnRelease) setPaused(true) }} onMounted={onMounted} onRefresh={onMounted}>
           {Children.map(children, (child) => <SplideSlide>{child}</SplideSlide>)}
         </Splide>
       </div>

@@ -81,7 +81,7 @@ export default function ServicesPage() {
         <section className="services-gallery" aria-labelledby="services-gallery-title">
           <h2 id="services-gallery-title">Tratamientos en imágenes.</h2>
           <ContinuousCarousel id="services-carousel" label="Tratamientos en imágenes" className="service-images"
-            options={serviceCarouselOptions} suspended={serviceOpen} pauseOnInteraction={false} showPauseButton={false}
+            options={serviceCarouselOptions} suspended={serviceOpen} pauseOnInteraction={false} showPauseButton={false} pauseOnPointerFocus={false}
             onClick={toggleServiceImage} onToggleCapture={updateServiceOpen} onMounted={prepareServiceCopies}>
             {serviceGallery.map((service) => <ServiceCard key={service.name} {...service} />)}
           </ContinuousCarousel>

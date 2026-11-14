@@ -11,7 +11,7 @@ const getMobile = () => window.matchMedia(mobileQuery).matches
 export default function FeaturedCarousel({ children }) {
   const mobile = useSyncExternalStore(subscribe, getMobile, () => false)
   return mobile ? (
-    <ContinuousCarousel id="featured-treatments" label="Tratamientos destacados" className="featured-carousel">
+    <ContinuousCarousel id="featured-treatments" label="Tratamientos destacados" className="featured-carousel" showPauseButton={false} resumeOnRelease>
       {Children.map(children, (card) => <article className="featured-card">{card.props.children}</article>)}
     </ContinuousCarousel>
   ) : <div className="featured-grid">{children}</div>
