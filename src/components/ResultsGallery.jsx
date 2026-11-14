@@ -1,19 +1,37 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { resultsGallery } from '../data/resultsGallery'
 import ResultCard from './ResultCard'
 import ResultsLightbox from './ResultsLightbox'
-import ContinuousCarousel from './ContinuousCarousel'
+import useMotionPreference from './useMotionPreference'
+import '@splidejs/react-splide/css/core'
 import './ResultsGallery.css'
 
 const carouselOptions = {
-  fixedWidth: 'min(58%, 600px)',
-  padding: 0,
-  breakpoints: { 599: { fixedWidth: '82%' } },
+  type: 'loop', perPage: 1, perMove: 1, gap: 0, speed: 700,
+  arrows: true, pagination: true, autoplay: true, interval: 5000,
+  pauseOnHover: true, pauseOnFocus: true, keyboard: 'focused',
+  i18n: {
+    carousel: 'Carrusel', slide: 'Resultado', slideLabel: '%s de %s',
+    prev: 'Resultado anterior', next: 'Resultado siguiente',
+    first: 'Primer resultado', last: 'Último resultado',
+    select: 'Selecciona un resultado', slideX: 'Ver resultado %s', pageX: 'Ver resultado %s',
+  },
 }
 
 export default function ResultsGallery() {
+  const reducedMotion = useMotionPreference()
+  const sliderRef = useRef(null)
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const triggerRef = useRef(null)
+  const lightboxOpen = lightboxIndex !== null
+
+  useEffect(() => {
+    const autoplay = sliderRef.current?.splide?.Components.Autoplay
+    if (reducedMotion || lightboxOpen) autoplay?.pause()
+    else autoplay?.play()
+  }, [reducedMotion, lightboxOpen])
+
   const navigateLightbox = useCallback((direction) => {
     setLightboxIndex((current) => current === null ? null : (current + direction + resultsGallery.length) % resultsGallery.length)
   }, [])
@@ -35,10 +53,14 @@ export default function ResultsGallery() {
           <div><p className="gallery-eyebrow">Lúmina · Casos reales</p><h2 id="results-title">Antes y <em>después.</em></h2></div>
           <p>Explora imágenes de tratamientos. Cada persona requiere una valoración individual y los resultados pueden variar.</p>
         </div>
-        <ContinuousCarousel id="results-carousel" label="Antes y después" className="gallery-carousel"
-          options={carouselOptions} suspended={lightboxIndex !== null} onClick={onCarouselClick}>
-          {resultsGallery.map((result, index) => <ResultCard key={result.id} result={result} index={index} />)}
-        </ContinuousCarousel>
+        <div className="gallery-carousel" onClick={onCarouselClick}>
+          <Splide ref={sliderRef} id="results-carousel" aria-label="Antes y después"
+            options={{ ...carouselOptions, speed: reducedMotion ? 0 : 700 }}>
+            {resultsGallery.map((result, index) => (
+              <SplideSlide key={result.id}><ResultCard result={result} index={index} /></SplideSlide>
+            ))}
+          </Splide>
+        </div>
 
       </div>
       <ResultsLightbox results={resultsGallery} index={lightboxIndex} onClose={() => setLightboxIndex(null)} onNavigate={navigateLightbox} triggerRef={triggerRef} />

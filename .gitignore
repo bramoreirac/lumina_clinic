@@ -35,3 +35,8 @@ docs/
 
 # Vercel project credentials and local configuration
 .vercel/
+
+# Design drafts
+output/
+
+tmp/

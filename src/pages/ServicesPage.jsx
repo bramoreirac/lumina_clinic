@@ -52,7 +52,7 @@ const prepareServiceCopies = (splide) => {
   })
 }
 
-export default function ServicesPage({ badge, rotatingItems }) {
+export default function ServicesPage() {
   const [serviceOpen, setServiceOpen] = useState(false)
   const toggleServiceImage = (event) => {
     const button = event.target.closest('.service-image-toggle')
@@ -66,13 +66,9 @@ export default function ServicesPage({ badge, rotatingItems }) {
   }
   return (
     <>
-      <Hero image={heroImage} width={1200} height={1200} titleId="services-hero-title" className="home-hero photo-hero services-hero"
-        badge={badge}
-        rotatingItems={rotatingItems}
-        eyebrow="Lúmina · Nuestros servicios"
-        title={<>Un cuidado <em>que comienza por conocerte.</em></>}
-        description="Medicina estética y dermatología clínica en León, Nicaragua. Conoce nuestras opciones y consulta por una valoración profesional."
-        byline={<>Con la <strong>Dra. Steacey Maradiaga</strong></>}
+      <Hero image={heroImage} width={1200} height={1200} titleId="services-hero-title" className="approved-hero services-hero"
+        title="Nuestros servicios"
+        description="Medicina estética y dermatología clínica en León, Nicaragua. Conoce las opciones disponibles y consulta por una valoración profesional."
         actions={<>
           <a className="button button-primary" href="https://wa.me/50558811397">Consultar por WhatsApp</a>
         </>}
@@ -85,7 +81,7 @@ export default function ServicesPage({ badge, rotatingItems }) {
         <section className="services-gallery" aria-labelledby="services-gallery-title">
           <h2 id="services-gallery-title">Tratamientos en imágenes.</h2>
           <ContinuousCarousel id="services-carousel" label="Tratamientos en imágenes" className="service-images"
-            options={serviceCarouselOptions} suspended={serviceOpen} pauseOnInteraction={false}
+            options={serviceCarouselOptions} suspended={serviceOpen} pauseOnInteraction={false} showPauseButton={false}
             onClick={toggleServiceImage} onToggleCapture={updateServiceOpen} onMounted={prepareServiceCopies}>
             {serviceGallery.map((service) => <ServiceCard key={service.name} {...service} />)}
           </ContinuousCarousel>

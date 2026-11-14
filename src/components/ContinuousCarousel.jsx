@@ -13,7 +13,7 @@ const baseOptions = {
   i18n: { carousel: 'Carrusel', slide: 'Elemento', slideLabel: '%s de %s' },
 }
 
-export default function ContinuousCarousel({ children, id, label, className = '', options, suspended = false, onClick, onToggleCapture, onMounted, pauseOnInteraction = true }) {
+export default function ContinuousCarousel({ children, id, label, className = '', options, suspended = false, onClick, onToggleCapture, onMounted, pauseOnInteraction = true, showPauseButton = true }) {
   const slider = useRef(null)
   const container = useRef(null)
   const [paused, setPaused] = useState(false)
@@ -45,7 +45,7 @@ export default function ContinuousCarousel({ children, id, label, className = ''
       </div>
       <div className="continuous-carousel-controls">
         <span>Desliza para explorar</span>
-        {!reducedMotion && <button type="button" aria-controls={id} disabled={suspended} onClick={() => setPaused(!paused)}>
+        {showPauseButton && !reducedMotion && <button type="button" aria-controls={id} disabled={suspended} onClick={() => setPaused(!paused)}>
           <svg viewBox="0 0 24 24" aria-hidden="true">{paused && !suspended ? <path d="m9 5 10 7-10 7Z" /> : <path d="M9 5v14M15 5v14" />}</svg>
           {suspended ? 'En pausa' : paused ? 'Reanudar' : 'Pausar'}
         </button>}

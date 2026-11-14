@@ -1,11 +1,11 @@
 import useMotionPreference from './useMotionPreference'
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
-import logoInk from '../assets/clinic/lumina-logo-ink.svg'
 import { easeOut } from './motionSettings'
 
 export default function SiteHeader({ isServicesPage }) {
-  const [mobile, setMobile] = useState(() => window.matchMedia('(max-width: 799px)').matches)
+  const mobileQuery = '(max-width: 1000px)'
+  const [mobile, setMobile] = useState(() => window.matchMedia(mobileQuery).matches)
   const [open, setOpen] = useState(false)
   const button = useRef(null)
   const nav = useRef(null)
@@ -13,7 +13,7 @@ export default function SiteHeader({ isServicesPage }) {
   const visible = !mobile || open
 
   useEffect(() => {
-    const media = window.matchMedia('(max-width: 799px)')
+    const media = window.matchMedia(mobileQuery)
     const onChange = (event) => {
       // Return focus before a resize can hide the desktop navigation.
       if (event.matches && nav.current?.contains(document.activeElement)) button.current?.focus()
@@ -22,7 +22,7 @@ export default function SiteHeader({ isServicesPage }) {
     }
     media.addEventListener('change', onChange)
     return () => media.removeEventListener('change', onChange)
-  }, [])
+  }, [mobileQuery])
 
   const closeOnEscape = (event) => {
     if (event.key === 'Escape' && mobile && open) {
@@ -41,9 +41,9 @@ export default function SiteHeader({ isServicesPage }) {
   }
 
   return (
-    <header className="site-header home-header" onKeyDown={closeOnEscape}>
+    <header className="site-header approved-header" onKeyDown={closeOnEscape}>
       <div className="container header-inner">
-        <a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, inicio"><img src={logoInk} alt="" width="750" height="521" /></a>
+        <a className="wordmark" href="/#inicio" aria-label="Lúmina Clínica Estética, inicio"><img src="/approved-nav-mark.svg" alt="" width="60" height="41" /></a>
         <button ref={button} className="menu-toggle" aria-expanded={open} aria-controls="navigation" onClick={() => setOpen(!open)}>
           Menú <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" /></svg>
         </button>
