@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { ScrollRevealHeading } from './ScrollRevealPrototype'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { resultsGallery } from '../data/resultsGallery'
 import ResultCard from './ResultCard'
@@ -50,7 +51,7 @@ export default function ResultsGallery() {
     <section className="results-gallery" id="resultados" aria-labelledby="results-title">
       <div className="container section-space">
         <div className="gallery-heading">
-          <div><p className="gallery-eyebrow">Lúmina · Casos reales</p><h2 id="results-title">Antes y <em>después.</em></h2></div>
+          <div><p className="gallery-eyebrow">Lúmina · Casos reales</p><ScrollRevealHeading id="results-title">Antes y <em>después.</em></ScrollRevealHeading></div>
           <p>Explora imágenes de tratamientos. Cada persona requiere una valoración individual y los resultados pueden variar.</p>
         </div>
         <div className="gallery-carousel" onClick={onCarouselClick}>

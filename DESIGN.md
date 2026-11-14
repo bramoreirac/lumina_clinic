@@ -1,96 +1,45 @@
 ---
-name: Lúmina Clínica Estética
-description: Current root React visual system, updated 7 November 2026 after user-reviewed refinements.
-colors:
-  coffee: "#49352c"
-  beige: "#e9d8c4"
-  ivory: "#faf8f2"
-  warm-surface: "#f7ecdf"
-  card: "#ffffff"
-  cta: "#8c6b58"
-  cta-hover: "#80604e"
-  cta-text: "#faf8f2"
-  green: "#2e4034"
-  gold: "#c9a66b"
-typography:
-  display: "Montserrat, Arial, sans-serif"
-  body: "Montserrat, Arial, sans-serif"
-rounded:
-  card: "16px"
-  media: "24px"
-  pill: "999px"
-  shell: "0px"
+name: Lumina Clinica Estetica
+description: Current visual and interaction reference for the root React site.
 ---
 
 # Current design system
 
-Updated: **7 November 2026**. This replaces the early prototype specification. The source of implementation truth is `src/App.css`, component styles, and the running root application. User-approved changes supersede original brand-manual/prototype defaults where they differ.
+Updated: **13 November 2026**. The running application and `src/App.css` are the implementation authority. This document records the current design, not the earlier prototype. Preserve approved Spanish copy, clinic details and photography.
 
-## Direction and composition
+## Composition
 
-Warm beige and ivory surfaces, brown typography, natural clinic photography, and direct consultation actions. Montserrat now carries headings and body text; Playfair Display is no longer used for the site's headings. Preserve the approved Spanish copy and natural photo colors.
+The homepage order is hero, featured treatments, clinic principles, doctor, before/after results, consultation process, FAQ, contact/map and footer. `/servicios/` has its own hero, introduction, image carousel, category directory, results link, and shared contact/footer. Results are at `/#resultados`.
 
-The homepage presents hero → featured → doctor → clinic principles → before/after → process → FAQ → contact → footer. Services is a separate page with a matching hero, image carousel, expandable category directory, and shared contact/footer. Results remain a homepage anchor. The old standalone moving strip is not rendered.
+Both pages use a dark full-bleed photo hero with a 70% ink overlay, centered light text and gold actions. The landing hero includes the clinic badge; the services hero has one WhatsApp action. A cream capsule header floats over the hero, 24px from the top. Navigation becomes a disclosure at 1000px and below. The header row remains stable when expanded.
 
-The header stays in normal document flow. Desktop navigation is inline; the mobile menu is a disclosure. Main content uses a centered 1200px maximum-width container, responsive gutters, and stacked layouts on smaller screens. Existing component-specific breakpoints remain authoritative; featured switches to a carousel below 600px, while the header/hero layout changes below 800px.
+Content generally uses a 1200px maximum width and responsive gutters. Featured treatments use a grid on desktop and a continuous carousel below 600px. At narrower sizes, content groups stack; the final two clinic values are centered below 800px. Doctor and process photo/text compositions join edge to edge, stretch together on tablet and stack on mobile.
 
-## Color and typography
+## Visual language
 
-| Use | Current value |
-| --- | --- |
-| Headings and main brown text | `#49352C` |
-| Header and hero background | `#E9D8C4` |
-| Featured, doctor, and results section backgrounds | `#FAF8F2` |
-| Process, contact, and footer section backgrounds | `#F7ECDF` |
-| Featured/results cards and joined doctor/process content | `#FFFFFF` |
-| Services image-card caption | `#EFDDC6` |
-| Featured, doctor, Services-results, contact WhatsApp, and footer CTA | `#8C6B58` with `#FAF8F2` text |
-| Those CTA hover states | `#80604E` with `#FAF8F2` text |
-| Header/hero CTA | Coffee background with beige text |
-| Supporting icons and restrained accents | Bottle green and gold, according to component rules |
+- Ink `#17181a`, cream `#f2efe6`, forest `#2e4034`, gold `#c9a66b`, and near-white card surfaces define the current palette. The contact and footer form a continuous forest-green area.
+- Playfair Display is the display serif; Montserrat is the body and control typeface. Both are locally hosted with `font-display: swap`.
+- The header, buttons and contact actions use rounded capsule shapes. Featured cards use 16px corners; service imagery and joined compositions use 24px exposed corners. The green contact panel has rounded top corners.
+- The principles section uses the botanical horizontal SVG, including a mirrored decoration. The pressed-flower image and its source files are retained; do not assume it is visible in the current landing presentation or that its license has been verified.
+- Expanded vertical spacing on both pages supports scroll-linked reveals. The featured introduction uses an 88px gap to the cards at desktop/tablet and 70px on mobile. Services uses 80px between introduction and gallery and 96px between carousel and directory at desktop/tablet; mobile uses 64px and 80px respectively. See the responsive rules in `App.css` for exact section padding.
 
-The shared lighter CTA pair has a calculated normal-text contrast of approximately 4.54:1. Recheck contrast before further lightening its background or darkening its text.
-
-Montserrat is locally served with `font-display: swap`. Roboto Condensed remains declared in CSS; original font files/licenses are retained. Headings use responsive sizes and component-specific weights, including the uppercase/italic hero treatment. Do not restore historical serif headings or make every label match the large hero typography.
-
-## Shape and surface rules
-
-- Header, hero, hero photo/actions, and footer action keep their sharp rectangular treatment. The round hero logo is an intentional exception.
-- Featured photo: 24px corners. Featured and before/after card outer corners: 16px.
-- Featured cards clip the upper icon panel to the outer curve. Its internal horizontal edge remains straight; the circular consultation arrow stays circular.
-- Featured, doctor, Services-results, contact WhatsApp, and directions actions are pill-shaped. Footer action shares their lighter color but remains rectangular.
-- Joined doctor/process compositions round their exposed outer corners and keep adjoining edges flush. They stack without a gap on mobile.
-- Services image cards retain 24px outer corners and solid warm captions. Caption top edges remain straight. The moving Services cards do not use frosted glass.
-- FAQ rows and support cards retain their component-specific rounded geometry. Fine borders and restrained shadows are already part of the implementation.
-
-Use the declared `--radius-card`, `--radius-media`, and `--radius-pill` tokens for new matching treatments. Do not round every internal seam or apply one radius indiscriminately.
-
-## Hero and imagery
-
-Both pages use `Hero.jsx`, with separate approved photos and the shared beige/brown layout. On desktop the photo fills the right half; on mobile it sits below the text. The logo badge straddles the photo's top edge on mobile. The main mobile photo uses `center top`; Services retains its own crop. Services has only the WhatsApp hero CTA; the homepage also links to Services.
-
-The clinic-intro background currently uses `pressed-flowers-pattern.jpg` at low opacity. The original AI/EPS/JPG sources are in `source-assets/pressed-flowers/`. Additional unused SVG sources are preserved outside the application bundle. Keep the distinction between permission to publish people in photos and licensing of third-party artwork.
-
-## Interaction and motion
+## Motion and interaction
 
 | Element | Current behavior |
 | --- | --- |
-| Section entrance | Once-only 300ms fade from 0.94 opacity to 1; starts 48px before entering view; no vertical translation or opacity reset on entry. Some elements retain short stagger delays. |
-| Doctor/process joined card | One parent fade, with static photo/text children. |
-| Hero introduction | Photo opacity animation over 400ms; text/actions use 450ms entrances with 16px movement and staggered delays. |
-| Hero treatment names | CSS vertical rotation through a 16-second cycle. |
-| Featured cards | Desktop grid; continuous mobile carousel. SVG face/icon hover movement remains. |
-| Results and Services image cards | Continuous carousel on desktop/mobile, free dragging, no navigation arrows or pagination, pause/resume control. |
-| Carousel playback | Auto Scroll speed 0.35; paused offscreen, in hidden tabs, on hover/focus, or under reduced motion. Opening result/service details suspends the appropriate carousel. |
-| FAQ/service tree | 250ms height/opacity expansion; plus icon rotates. Mobile navigation animates over 220ms. |
-| Reduced motion | Disables automatic CSS/carousel movement and section/hero entrance motion while keeping content readable and controls usable. |
+| Hero | Background photo fades in; heading, description and actions fade up with staggered 450ms entrances. |
+| Section headings | `ScrollRevealPrototype.jsx` uses Motion scroll progress to reveal words through opacity and blur; accessible heading labels preserve complete text. Applied to landing and services headings. |
+| Supporting groups | Featured cards/photo, joined doctor/process compositions, faith and FAQ support, and services directory use scroll-linked opacity. Focus within a reveal makes its content fully visible. |
+| Doctor portraits | Each portrait fades upward 48px over 800ms once it enters view; reduced motion removes the entrance. |
+| Contact/footer | Shared elements use hero-style staggered fade-up entrances when entering view on both pages. Focused links remain visible. |
+| Featured carousel | Continuous looping mobile carousel; press/drag pauses temporarily and release resumes. No visible pause button. |
+| Services carousel | Continuous looping image cards; opening a description suspends movement and closing it resumes when playback conditions permit. No visible pause button. |
+| Results gallery | Slide-based autoplay every 5 seconds, with arrows and pagination; pauses on hover/focus and while the lightbox is open. |
+| Disclosures and navigation | FAQ and category panels animate height/opacity; mobile navigation fades and shifts on open/close. |
+| Reduced motion | Automatic carousel movement and spatial entrances are disabled; scroll reveal text is rendered without animation. Smooth anchor scrolling is disabled. |
 
-The current pause-on-touch and mobile-anchor caveats are recorded in [PLAN.md](PLAN.md); they were not solved by the section-fade adjustment. Do not describe all scroll behavior as fully resolved.
+Continuous carousels pause when offscreen or in a hidden tab and respond to focus/hover as configured. The lack of a persistent pause control on the featured and services carousels is an accessibility follow-up, despite temporary press/focus pauses. Do not describe the results gallery as continuous auto-scroll.
 
-## Accessibility and content
+## Content and accessibility
 
-Preserve semantic headings, skip navigation, focus indicators, labeled controls, `aria-expanded`, collapsed-region `inert`, and keyboard-accessible disclosure/dialog behavior. The results dialog locks background scrolling and restores the prior position on close. Manual browser checks are not a claim of complete WCAG certification.
-
-Keep treatment descriptions and patient collages intact unless the user requests changes. Do not add credentials, outcomes, statistics, prices, or testimonials. The footer contains a centered location description and the 2026 copyright notice, without a decorative-source credit line.
-
-External template analysis is reference material, not the current site's specification or evidence that template assets are licensed. Use this document for current choices and [PLAN.md](PLAN.md) for pending release work.
+Keep semantic headings, complete accessible labels for split text, image alternatives, keyboard focus, skip navigation and disclosure states. The results lightbox restores the previous scroll position on close. Browser checks are not a complete accessibility certification. Do not invent medical claims, credentials, prices, testimonials or outcomes. See [PRODUCT.md](PRODUCT.md) for content commitments and [PLAN.md](PLAN.md) for outstanding review and launch work.

@@ -1,3 +1,4 @@
+import { ScrollRevealHeading, ScrollRevealCard } from '../components/ScrollRevealPrototype'
 import { useState } from 'react'
 import Hero from '../components/Hero'
 import ContinuousCarousel from '../components/ContinuousCarousel'
@@ -75,19 +76,19 @@ export default function ServicesPage() {
       />
       <section className="services-section container section-space" id="servicios" aria-labelledby="services-title">
         <div className="section-intro services-intro">
-          <div><p className="eyebrow">Sabiduría en cada proceso</p><h2 id="services-title">Encuentra el cuidado<br />que buscas.</h2></div>
+          <div><p className="eyebrow">Sabiduría en cada proceso</p><ScrollRevealHeading id="services-title">Encuentra el cuidado<br />que buscas.</ScrollRevealHeading></div>
           <p>Explora cada categoría y abre un tratamiento para conocer más. La doctora te orientará sobre las opciones adecuadas para ti.</p>
         </div>
         <section className="services-gallery" aria-labelledby="services-gallery-title">
-          <h2 id="services-gallery-title">Tratamientos en imágenes.</h2>
+          <ScrollRevealHeading id="services-gallery-title">Tratamientos en imágenes.</ScrollRevealHeading>
           <ContinuousCarousel id="services-carousel" label="Tratamientos en imágenes" className="service-images"
             options={serviceCarouselOptions} suspended={serviceOpen} pauseOnInteraction={false} showPauseButton={false} pauseOnPointerFocus={false}
             onClick={toggleServiceImage} onToggleCapture={updateServiceOpen} onMounted={prepareServiceCopies}>
             {serviceGallery.map((service) => <ServiceCard key={service.name} {...service} />)}
           </ContinuousCarousel>
         </section>
-        <h2 className="service-category-index-title" id="service-category-index-title">Más servicios por categoría.</h2>
-        <ServicesTree categories={categories} services={remainingServices} />
+        <ScrollRevealHeading className="service-category-index-title" id="service-category-index-title">Más servicios por categoría.</ScrollRevealHeading>
+        <ScrollRevealCard as="div" className="services-directory-reveal"><ServicesTree categories={categories} services={remainingServices} /></ScrollRevealCard>
         <a className="button services-results-link" href={`${import.meta.env.BASE_URL}#resultados`}>Explorar los resultados de tratamientos</a>
       </section>
     </>

@@ -1,5 +1,6 @@
 import { Children, useSyncExternalStore } from 'react'
 import ContinuousCarousel from './ContinuousCarousel'
+import { ScrollRevealCard } from './ScrollRevealPrototype'
 
 const mobileQuery = '(max-width: 599px)'
 const subscribe = (callback) => {
@@ -10,9 +11,10 @@ const subscribe = (callback) => {
 const getMobile = () => window.matchMedia(mobileQuery).matches
 export default function FeaturedCarousel({ children }) {
   const mobile = useSyncExternalStore(subscribe, getMobile, () => false)
+  const cards = Children.map(children, (card) => <ScrollRevealCard>{card.props.children}</ScrollRevealCard>)
   return mobile ? (
     <ContinuousCarousel id="featured-treatments" label="Tratamientos destacados" className="featured-carousel" showPauseButton={false} resumeOnRelease>
-      {Children.map(children, (card) => <article className="featured-card">{card.props.children}</article>)}
+      {cards}
     </ContinuousCarousel>
-  ) : <div className="featured-grid">{children}</div>
+  ) : <div className="featured-grid">{cards}</div>
 }

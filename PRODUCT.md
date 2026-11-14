@@ -2,7 +2,7 @@
 
 <!-- impeccable:product-schema 1 -->
 
-Updated: **7 November 2026**.
+Updated: **13 November 2026**.
 
 ## Platform
 
@@ -46,7 +46,7 @@ The doctor name/phone/city remain consistent with the earlier discovery. The dis
 
 ## Brand Commitments
 
-Preserve the Lúmina identity, approved natural photography, and warm, respectful Spanish voice. Later user-approved refinements use Montserrat throughout, warm beige/ivory surfaces, brown headings, rounded body content, and lighter brown CTAs. [DESIGN.md](DESIGN.md) records the current specification; original prototype styling is not binding where the user has changed it.
+Preserve the Lúmina identity, approved natural photography, and warm, respectful Spanish voice. The current implementation uses Playfair Display headings, Montserrat body text, dark photo heroes, cream surfaces, forest-green contact areas and gold actions. [DESIGN.md](DESIGN.md) records the current specification; original prototype styling is not binding where the user has changed it.
 
 ## Evidence on Hand
 
@@ -62,7 +62,7 @@ Preserve the Lúmina identity, approved natural photography, and warm, respectfu
 - Make clinic information, treatment descriptions, and contact actions clear and useful.
 - Preserve supplied facts; do not invent qualifications, medical outcomes, testimonials, or prices.
 - Keep normal vertical scrolling stable and respect reduced-motion preferences.
-- Keep carousels manually explorable and retain visible pause/resume and keyboard focus behavior.
+- Keep carousels manually explorable and preserve keyboard focus and reduced-motion behavior. Featured and services continuous carousels currently have no persistent pause button; accessibility review remains open.
 - Maintain a small static site without implying a contact request is a confirmed appointment.
 
 ## Open Decisions

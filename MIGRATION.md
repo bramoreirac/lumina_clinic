@@ -1,3 +1,5 @@
+> **Historical migration record:** The status, measurements and pending tasks below describe an earlier implementation and are not current. Use [DESIGN.md](DESIGN.md), [README.md](README.md) and [PLAN.md](PLAN.md) for the current site.
+
 ---
 name: Lúmina — Penpot → React Migration Plan
 description: Migration of Penpot `final-landing` / `final-services` designs into this React + Vite project. Compiled 12 November 2026 from live Penpot MCP inspection and codebase analysis.

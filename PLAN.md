@@ -1,6 +1,6 @@
 # Lúmina Clínica Estética — Project status and release plan
 
-Updated: **7 November 2026**. Initial discovery began on 27 October 2026.
+Updated: **13 November 2026**. Initial discovery began on 27 October 2026.
 
 ## Current status
 
@@ -10,51 +10,34 @@ The project uses React + Vite, JavaScript/JSX, Motion, and Splide with its Auto 
 
 ## Implemented scope
 
-- [x] Homepage: header, hero, featured treatments, doctor, clinic principles, before/after, process, FAQ, contact/map, and footer.
-- [x] Separate `/servicios/` entry point with a matching hero and its existing treatment photo; the redundant hero services link has been removed.
-- [x] Four featured cards: static desktop grid and continuous mobile carousel.
-- [x] Eight image cards in the Services carousel on desktop/mobile, followed by twelve additional treatments in three expandable categories. The underlying catalog has seventeen entries; three gallery-specific services bring the combined directory to twenty distinct names.
-- [x] Before/after gallery on the homepage with continuous scrolling and an accessible image dialog. Header navigation points to `/#resultados`; a separate results page is not maintained.
-- [x] Shared WhatsApp, telephone, Instagram, email, address, Google Maps/Waze links, and embedded map.
-- [x] Current visual direction: Montserrat, warm beige/ivory surfaces, brown headings and CTAs, rounded content cards, and sharp header/hero/footer treatments.
-- [x] Featured photo corners: 24px; featured/results card corners: 16px; content CTAs: pill-shaped. Footer CTA remains rectangular.
-- [x] Featured, doctor, Services-results, contact WhatsApp, and footer CTAs use `#8C6B58` with `#FAF8F2` text and `#80604E` hover backgrounds. Header/hero CTAs retain their darker treatment.
-- [x] Section entrance jumps replaced by once-only, position-stable fades. Joined doctor and process photo/text compositions fade as single units. Hero and horizontal carousel animation remain.
-- [x] Centered footer description and copyright: © 2026 Lúmina Clínica Estética. Todos los derechos reservados.
-- [x] Removed obsolete standalone application copies and their active references. Preserved twelve distinct SVGs in tracked `source-assets/` folders; identical root assets were retained and verified by hash.
-- [x] Root Netlify configuration: Node 24, `npm run build`, publish `dist`.
-- [x] Basic Spanish titles/descriptions, favicon, language, viewport, and review-only robots metadata in both HTML entry points.
+- [x] Landing page: hero, featured treatments, clinic principles, doctor, results gallery/lightbox, consultation process, FAQ and shared contact/footer.
+- [x] Separate `/servicios/` page with photo hero, image carousel, expandable category directory and results link.
+- [x] Dark photo heroes, floating cream capsule navigation, gold actions and responsive layouts for desktop, tablet and mobile.
+- [x] Scroll-linked word reveals on section headings on both pages and coordinated opacity reveals on selected content groups. Expanded spacing gives the effects more room.
+- [x] Fade-up entrances for both doctor portraits and shared contact/footer content. Reduced-motion paths remain implemented.
+- [x] Featured mobile carousel pauses on press and resumes on release; services image carousel suspends for an open description and resumes on close when playback conditions permit.
+- [x] Results use slide-based autoplay with arrows, pagination and an image lightbox.
+- [x] Removed unreferenced `PressLink` and `ServicesStrip` components and related obsolete CSS.
+- [x] Root Netlify build configuration and two Vite HTML entry points; basic review-only metadata and favicon.
 
-The old moving services strip component is not rendered. The hero's vertical treatment-name rotator remains active.
+## Validation record
+
+Recent local `npm run lint` and `npm run build` checks passed during the implementation. Targeted Playwright checks covered 1440px, 768px and 375px layouts, selected reveal and reduced-motion states, category interaction, carousel pause/resume, and footer/portrait alignment. The latest documentation update alone is not a fresh hosted or full accessibility audit. No automated test suite, physical-device coverage or performance score is claimed.
+
+### Interaction follow-ups
+
+- [ ] Review the accessibility of automatically moving featured and services carousels: neither currently has a persistent pause control. Press/focus pauses are not equivalent to a persistent control.
+- [ ] Retest mobile header anchor navigation while its expanded menu closes; an earlier review observed possible overshoot.
+- [ ] Check vertical touch gestures on carousel areas on physical devices and confirm they do not unexpectedly leave playback paused.
+- [ ] Review abrupt height changes when a services image disclosure opens.
+- [ ] Replace or validate the 300ms services deep-link positioning delay against the category expansion behavior.
+- [ ] Test the scroll-linked reveals, portrait entrances and focus visibility across supported browsers, reduced-motion settings, zoom and slow devices.
 
 ## Content and assets
 
 Current displayed clinic details and their source locations are recorded in [PRODUCT.md](PRODUCT.md). Earlier missing-address/email notes are obsolete: the implementation now includes both. The customer confirmed permission to publish the people shown in photos. Third-party artwork licenses and photographer rights are separate from that confirmation.
 
-The active pressed-flower background license is not documented in the repository and should be verified. Keep existing font licenses. The reconstructed logo is still used; replacing it with a supplied master is an optional asset follow-up. Final medical copy/credential sign-off has not been separately recorded here. Do not invent prices, medical outcomes, testimonials, or qualifications.
-
-## Validation record
-
-Latest recorded `npm run lint`, `npm run build`, and whitespace checks passed after removal of the obsolete application. This documentation-only update does not represent another browser certification or hosted deployment test.
-
-Recent Chromium checks at 1440px desktop and 390px mobile verified:
-
-- No horizontal page overflow in the checked layouts.
-- Position-stable section entrances with opacity increasing from 0.94 to 1, no downward reset, and no page-height change during the fades.
-- Joined doctor/process compositions and readable reduced-motion output.
-- Rounded featured/results cards, appropriate keyboard focus, retained SVG hover movement, and continuous carousel behavior.
-- Lightbox closing restores the prior vertical scroll position.
-
-Earlier iterations included additional viewport and keyboard checks, but these do not establish current physical-device, Firefox, Edge, or Safari coverage. No automated test suite or performance score is claimed.
-
-### Documented interaction follow-ups
-
-These were identified during the motion review and were **not** included in the approved section-fade fix:
-
-- [ ] Mobile header anchor navigation can overshoot while the expanded menu collapses. Coordinate navigation with menu closure.
-- [ ] A vertical touch starting on featured/results cards can persistently pause autoplay because pointer/touch start is treated as interaction. Distinguish vertical page scrolling from intentional horizontal dragging.
-- [ ] Native disclosure inside Services image cards changes the carousel's height abruptly when opened.
-- [ ] Services deep links use a 300ms timeout after expansion. Replace the timing assumption with completion-aware positioning when refining this behavior.
+The retained pressed-flower source license is not documented in the repository; verify it before using the artwork. Keep existing font licenses. The reconstructed logo is still used; replacing it with a supplied master is an optional asset follow-up. Final medical copy/credential sign-off has not been separately recorded here. Do not invent prices, medical outcomes, testimonials, or qualifications.
 
 ## Remaining release tasks
 
@@ -64,7 +47,7 @@ These were identified during the motion review and were **not** included in the 
 - [ ] Resolve the documented interaction follow-ups or explicitly accept the remaining behavior for release.
 - [ ] Test the final build on representative physical mobile devices and available browsers, including keyboard navigation, reduced motion, lightbox, service disclosures, and header links.
 - [ ] Inspect production asset loading, external contact/directions links, console errors, accessibility, and performance. Historical checks are not a production Lighthouse score.
-- [ ] Verify the active third-party background license and preserve required notices.
+- [ ] Verify licenses for third-party artwork in use and preserve required notices.
 
 ### Netlify and the `.com` domain
 

@@ -227,7 +227,6 @@ nav a.nav-contact:hover { text-decoration: none; }
 .clinic-faith cite { display: block; color: var(--color-muted); margin-top: .7rem; font: 500 .8rem/1.5 var(--font-body); }
 .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end; margin-bottom: 3rem; }
 .section-intro p { font-size: 0.9rem; max-width: 46ch; }
-.services-section .section-intro { align-items: start; }
 .services-intro,
 .services-intro h2,
 .services-intro p,
@@ -663,8 +662,8 @@ nav a.nav-contact:hover { text-decoration: none; }
 
 /* Treatments */
 .landing-main .featured-section { background: var(--landing-bg); }
-.landing-main .featured-section .section-space { padding-block: 96px 91px; }
-.landing-main .featured-heading { grid-template-columns: 560px 1fr; gap: 80px; margin-bottom: 50px; align-items: end; color: var(--landing-ink); }
+.landing-main .featured-section .section-space { padding-block: 120px 112px; }
+.landing-main .featured-heading { grid-template-columns: 560px 1fr; gap: 80px; margin-bottom: 88px; align-items: end; color: var(--landing-ink); }
 .landing-main .featured-eyebrow { margin-bottom: 22px; color: var(--landing-ink); font-size: 12px; letter-spacing: .14em; }
 .landing-main .featured-heading h2 { max-width: 560px; font-size: 48px; line-height: 1.14; }
 .landing-main .featured-heading > p { max-width: 510px; margin-bottom: 2px; font-size: 15px; line-height: 1.7; }
@@ -877,6 +876,8 @@ nav a.nav-contact:hover { text-decoration: none; }
   .approved-social a:hover .approved-social-circle { background: var(--color-gold); color: var(--color-forest); }
 }
 .approved-footer-brand a { transition: opacity var(--duration-ui) var(--ease-out); }
+.approved-contact :is(.approved-contact-cta:focus-visible, .approved-map:focus-within),
+.approved-footer :is(.approved-footer-brand a:focus-visible, .approved-footer-column:focus-within, .approved-social:focus-within) { opacity: 1 !important; transform: none !important; }
 @media (hover: hover) {
   .approved-footer-brand a:hover { opacity: .85; }
 }
@@ -944,7 +945,8 @@ nav a.nav-contact:hover { text-decoration: none; }
   .approved-hero.services-hero { padding-top: 150px; }
   .approved-hero.services-hero h1 { font-size: clamp(34px, 9vw, 46px); }
 
-  .landing-main .featured-section .section-space { padding-block: 70px; }
+  .landing-main .featured-section .section-space { padding-block: 80px; }
+  .landing-main .featured-heading { margin-bottom: 70px; }
   .landing-main .featured-heading h2,
   .landing-main .clinic-principles-heading h2,
   .landing-main .doctor-copy h2,
@@ -976,4 +978,39 @@ nav a.nav-contact:hover { text-decoration: none; }
   .approved-footer-brand img { width: 140px; }
   .approved-footer-brand a { grid-column: 1 / -1; grid-row: auto; }
   .approved-footer .approved-footer-column { grid-column: 1; }
+}
+
+/* Landing-page spacing for the scroll-linked reveals. */
+.landing-main .clinic-intro { row-gap: 68px; padding-block: 120px 80px; }
+.landing-main .doctor-section { padding-block: 96px; }
+.landing-main .results-gallery .section-space { padding-block: 112px 106px; }
+.landing-main .gallery-heading { margin-bottom: 68px; }
+.landing-main .process-section .section-space { padding-block: 112px 110px; }
+.landing-main .faq-section { padding-top: 108px; }
+@media (max-width: 1000px) {
+  .landing-main .clinic-intro { padding-top: 96px; }
+}
+@media (max-width: 650px) {
+  .landing-main .clinic-intro { row-gap: 52px; padding-block: 80px; }
+  .landing-main .doctor-section { padding-block: 66px; }
+  .landing-main .results-gallery .section-space { padding-block: 100px 68px; }
+  .landing-main .gallery-heading { margin-bottom: 52px; }
+  .landing-main .process-section .section-space { padding-block: 103px 70px; }
+  .landing-main .faq-section { padding-top: 86px; }
+}
+
+/* Services spacing follows the landing page's scroll-reveal rhythm. */
+.services-section.section-space { padding-block: 120px 112px; }
+.services-section .services-intro { margin-bottom: 80px; }
+.services-gallery { margin-bottom: 96px; }
+.services-gallery > h2 { margin-bottom: 48px; }
+.service-category-index-title { margin-bottom: 40px; }
+.services-results-link { margin-top: 56px; }
+@media (max-width: 650px) {
+  .services-section.section-space { padding-block: 80px; }
+  .services-section .services-intro { margin-bottom: 64px; }
+  .services-gallery { margin-bottom: 80px; }
+  .services-gallery > h2 { margin-bottom: 40px; }
+  .service-category-index-title { margin-bottom: 32px; }
+  .services-results-link { margin-top: 48px; }
 }
