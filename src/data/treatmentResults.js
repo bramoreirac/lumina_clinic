@@ -5,8 +5,6 @@ import alopecia04 from '../assets/clinic/results/before_after_alopecia_04.webp'
 import pigmentation01 from '../assets/clinic/results/before_after_despig_corp_01.webp'
 import pigmentation02 from '../assets/clinic/results/before_after_despig_corp_02.webp'
 import body01 from '../assets/clinic/results/before_after_grasa_local_01.webp'
-import body02 from '../assets/clinic/results/before_after_grasa_local_02.webp'
-import body03 from '../assets/clinic/results/before_after_grasa_local_03.webp'
 import toxin01 from '../assets/clinic/results/before_after_tox_bot_01.webp'
 import toxin02 from '../assets/clinic/results/before_after_tox_bot_02.webp'
 
@@ -14,8 +12,6 @@ import toxin02 from '../assets/clinic/results/before_after_tox_bot_02.webp'
 export const treatmentResults = [
   { id: 'grasa_local', name: 'Tratamiento de grasa localizada', images: [
     { src: body01, width: 877, height: 481, alt: 'Antes y después del tratamiento de grasa localizada en el abdomen' },
-    { src: body02, width: 1280, height: 1810, alt: 'Comparación frontal y lateral del abdomen antes y después del tratamiento de grasa localizada' },
-    { src: body03, width: 1280, height: 2275, alt: 'Evolución del abdomen en los días 0, 15 y 22, según las etiquetas de la imagen' },
   ] },
   { id: 'alopecia', name: 'Tratamiento de alopecia', images: [
     { src: alopecia01, width: 977, height: 572, alt: 'Antes y después de alopecia: vista superior del cabello' },
