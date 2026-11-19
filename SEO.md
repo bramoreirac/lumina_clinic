@@ -1,50 +1,27 @@
-# Search visibility and launch status
+# Search visibility and social sharing
 
-Updated: **7 November 2026**. This records the current local implementation and remaining production work, not search rankings or a hosted audit.
+Updated **18 November 2026**.
 
-## Current implementation
+## Production configuration
 
-| Item | Status |
+| Item | Repository configuration |
 | --- | --- |
-| Language | Both HTML entry points declare `lang="es"`. |
-| Homepage title | Lúmina \| Medicina estética en León, Nicaragua |
-| Services title | Servicios \| Lúmina Clínica Estética en León, Nicaragua |
-| Descriptions | Separate Spanish meta descriptions in `index.html` and `servicios/index.html`. |
-| Basic metadata | Viewport, UTF-8, theme color, and SVG favicon are present. |
-| Robots meta | Both pages still specify `noindex, nofollow` for review. |
-| Routes | `/` and `/servicios/` have Vite HTML entry points. Results use `/#resultados`, not a standalone page. |
-| Main content | Rendered client-side by React into an initially empty `#root`; no static prerendering is configured. |
-| Local details | Visible address/map, phone, email, Instagram, and current hours are implemented; see [PRODUCT.md](PRODUCT.md). |
-| Canonical, Open Graph, social image metadata | Not implemented. |
-| Sitemap and robots.txt | Not present in `public/`. |
-| Structured data | Not implemented. |
-| Production `.com` domain, Search Console, rankings | Not verified or configured by this documentation update. |
+| HTML and metadata | `index.html` and `servicios/index.html` declare Spanish, distinct page titles and descriptions, and absolute canonicals on `https://www.lumina-clinica.com`. |
+| Open Graph | Page-specific URL, title, and description. Both pages share `/social-preview.png`, a 1200 × 630 branded image. |
+| Favicon | Both pages use `/lumina-icon.svg`. |
+| Crawling and indexing | Both HTML entries omit the earlier review-only `noindex, nofollow`. `public/robots.txt` allows crawling and points to the sitemap. |
+| Sitemap | `public/sitemap.xml` lists the homepage and `/servicios/`. Results are a section of the homepage. |
+| Rendering | React fills `#root` in the browser. Metadata is in the initial HTML. |
+| Structured data | Neither entry currently includes structured data. |
 
-`noindex` is an indexing instruction, not access protection. Removing it does not guarantee indexing, and retaining it would prevent the intended production pages from being eligible for normal indexing by compliant search engines.
+## Preview images
 
-## Launch checklist
+`og:image` declares the branded image for social sharing. Google chooses the larger search-result thumbnail automatically and may use an image from the page. The favicon is the small icon beside the result. [Google Search image guidance](https://developers.google.com/search/docs/appearance/google-images#specify-a-preferred-image-with-metadata) · [Google favicon guidance](https://developers.google.com/search/docs/appearance/favicon-in-search)
 
-- [ ] Confirm the final HTTPS domain and preferred root/`www` hostname, then verify redirects.
-- [ ] Remove review-only `noindex, nofollow` from both authorized production entry points. Keep preview protection/indexing controls separate so review deployments do not become competing public copies.
-- [ ] Add absolute, page-specific canonical URLs and social sharing metadata using the final domain and approved imagery.
-- [ ] Add `sitemap.xml` for the actual maintained public pages and an intentional `robots.txt` policy. Do not add a removed results page to the sitemap.
-- [ ] Verify page titles/descriptions, meaningful rendered headings, image alternatives, direct `/servicios/` loads, and contact destinations on the hosted build.
-- [ ] Consider appropriate business structured data only after confirming the clinic details. Do not fabricate ratings, reviews, credentials, opening hours, or medical claims.
-- [ ] Evaluate static prerendering if discoverability/rendering checks justify it; React remains client-rendered today.
-- [ ] Measure hosted performance/accessibility and inspect rendered output. No current Lighthouse/Core Web Vitals score is claimed.
-- [ ] With owner authorization, verify Search Console, submit the sitemap, inspect indexing, and review any existing Google Business Profile details and website link. None of those account actions is implied by this checklist.
+If the clinic chooses to suppress the homepage image preview, use a page-level `max-image-preview:none` directive. The current homepage has no such directive. [Google preview controls](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#max-image-preview)
 
-## Content maintenance
+## Maintenance
 
-Use readable, original Spanish treatment information and natural service/location headings. The current directory combines eight image cards with twelve additional categorized entries; the old ten-item discovery list is not the current directory. Treatment descriptions and professional wording require clinic review, without promises of universal suitability or guaranteed results.
-
-Keep contact/FAQ hours and externally maintained clinic profiles aligned. Do not treat a visual layout, carousel, corner radius, or structured-data addition as evidence of ranking improvement. Additional treatment-specific pages would need useful original content and are outside the current two-page scope.
-
-## Reference documents
-
-These are reference links retained for implementation-time verification, not a claim they were rechecked during this documentation-only update.
-
-- [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
-- [Google JavaScript SEO basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
-- [Google local business structured data](https://developers.google.com/search/docs/appearance/structured-data/local-business)
-- [Google Business Profile local ranking guidance](https://support.google.com/business/answer/7091?hl=en)
+- Keep the canonical, `og:url`, and sitemap aligned when changing a route or hostname. Keep the favicon and social preview URLs accessible.
+- When changing metadata, check the deployed HTML and verify that the image and sitemap load from the canonical hostname.
+- If the site owner uses Search Console, inspect the canonical URL there and request indexing when an update needs recrawling. Publishing metadata or requesting a crawl provides no guarantee of a particular thumbnail or ranking. [Google recrawl guidance](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl)

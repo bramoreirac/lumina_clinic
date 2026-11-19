@@ -1,79 +1,54 @@
 # Lúmina Clínica Estética
 
-Spanish-language clinic website built with React, Vite, JavaScript/JSX, Motion, and Splide. It is a static application with no backend, database, patient accounts, booking system, or payments.
+Spanish-language website for Lúmina Clínica Estética in León, Nicaragua. The project is complete and deployed. The repository declares [www.lumina-clinica.com](https://www.lumina-clinica.com/) as the canonical production hostname.
 
-## Project status
-
-Updated: **13 November 2026**.
-
-The root application is the only maintained version. The design and content implementation are substantially complete after desktop/mobile review. Final Netlify deployment and connection of the approved `.com` domain remain pending; no production URL or current Netlify deployment status has been verified in this repository review.
-
-| Page | Current implementation |
+| Page | Content |
 | --- | --- |
-| `/` | Hero, featured treatments, clinic principles, doctor, before/after gallery, consultation process, FAQ, contact/map, and footer. |
-| `/servicios/` | Matching hero with its own photo, eight image-based treatment cards, expandable service categories, results link, and shared contact/footer. |
+| `/` | Featured treatments, clinic principles, doctor profile, before-and-after carousel and lightbox, consultation process, FAQ, and contact information. |
+| `/servicios/` | Treatment image carousel, expandable service directory, and shared contact and footer. |
 
-Results live at `/#resultados`; there is no separate results page. Both HTML entry points still contain `noindex, nofollow` for review. The earlier standalone site copies have been removed, with distinct SVG assets preserved under `source-assets/`.
+The results gallery is at `/#resultados`. Both pages are built by Vite and rendered in the browser with React. Motion and Splide handle animation and carousels. WhatsApp and phone links let visitors inquire about appointments. There is no backend or booking system.
 
 ## Local development
 
-Use Node.js 24 to match `netlify.toml`.
+Use Node.js 24 to match the hosting configuration.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the URL printed by Vite. Visit `/` and `/servicios/`. On PowerShell, use `npm.cmd` if execution policy blocks `npm`.
+Open the URL Vite prints and visit both routes. On Windows PowerShell, use `npm.cmd` if script execution policy blocks `npm`.
 
 | Command | Purpose |
 | --- | --- |
-| `npm run dev` | Start the development server. |
-| `npm run lint` | Run ESLint. |
-| `npm run build` | Generate both static page entry points and bundled assets in `dist/`. |
+| `npm run lint` | Run repository-wide ESLint. |
+| `npm exec -- eslint src` | Lint the application source. Useful when locally ignored video assets trigger repository-wide lint errors. |
+| `npm run build` | Build both HTML entry points and assets into `dist/`. |
 | `npm run preview` | Serve the production build locally after building. |
 
-There is no automated test script configured. Recent local lint and production builds passed during the implementation work. Playwright checks covered 1440px, 768px and 375px layouts, selected motion and reduced-motion states, carousel interactions and disclosures. These are targeted checks, not comprehensive physical-device, cross-browser or hosted-release certification.
+Use the release smoke checks in [PLAN.md](PLAN.md) after making changes. The project has no automated test script.
 
-## Editing and assets
+## Editing the site
 
-| Location | Responsibility |
+| Location | What to edit |
 | --- | --- |
-| `src/App.jsx` | Homepage content and shared contact/footer. |
-| `src/App.css` | Shared visual styles, responsive rules, colors, and shapes. |
-| `src/pages/ServicesPage.jsx` | Services page composition and category definitions. |
-| `src/data/services.js` | Treatment descriptions and service anchors. |
-| `src/data/serviceGallery.js` | Eight Services image cards and gallery-specific descriptions. |
-| `src/data/treatmentResults.js`, `src/data/resultsGallery.js` | Before/after images and gallery data. |
-| `src/components/` | Shared hero/header, carousels, service tree, FAQ, lightbox, and motion helpers, including `ScrollRevealPrototype.jsx`. |
-| `src/assets/clinic/`, `src/assets/fonts/` | Application media and local font files/licenses. |
-| `public/` | Files copied to the build without bundling, including the favicon. |
-| `source-assets/pressed-flowers/` | Original flower artwork: AI, EPS, and JPG files. |
-| `source-assets/svg-patterns/`, `source-assets/icons/` | Preserved additional SVGs and variants; not imported by the current site. |
+| `src/App.jsx` | Homepage, shared contact and footer, and FAQ. Keep FAQ and footer hours aligned. |
+| `src/pages/ServicesPage.jsx`, `src/data/services.js`, `src/data/serviceGallery.js` | Services page, categories, treatment descriptions, and eight image cards. |
+| `src/data/treatmentResults.js` | Active before-and-after entries. The carousel and lightbox use the same nine results through `src/data/resultsGallery.js`. |
+| `src/components/`, `src/App.css`, `src/index.css` | Shared components, layout, responsive styling, and motion. Results also have a dedicated stylesheet. |
+| `src/assets/clinic/`, `src/assets/fonts/` | Runtime imagery, fonts, and font notices. |
+| `public/` | Files copied to the build, including the favicon, social preview, robots.txt, and sitemap. |
+| `source-assets/` | Tracked flower artwork and SVG references retained outside the published build. |
 
-`customer_files/`, `docs/`, and local agent/browser records are ignored by Git. Preserved files under `source-assets/` are tracked and are not published by the current build. Runtime images must stay in the application assets or `public/` and be referenced appropriately.
+The two inactive localized-fat WebP files remain in `src/assets/clinic/results/`. Restore an import and image entry in `treatmentResults.js` to re-enable either comparison in both views. Preserve each image's full composition and original labels. Keep customer originals, scratch output, local guides, and video drafts in their existing Git-ignored folders.
 
-The customer confirmed permission to publish photos of the real people shown. This does not document ownership or licensing of every third-party asset. Verify licenses for artwork before using it; the pressed-flower source license remains undocumented. Existing font license files are retained. The reconstructed logo remains in use; a supplied master can replace it later.
+## Hosting and documentation
 
-## Netlify and launch
+`netlify.toml` configures Node 24, `npm run build`, and `dist/` as the publish directory. Vite emits `dist/index.html` and `dist/servicios/index.html`. Netlify's build command runs independently of lint.
 
-`netlify.toml` sets Node **24**, build command **`npm run build`**, and publish directory **`dist`**. Vite emits `dist/index.html` and `dist/servicios/index.html`; the app does not use a client router. Netlify's configured build does **not** run lint automatically.
-
-Before launch:
-
-- Confirm the production branch, hosting/domain ownership, approved `.com` address, and maintenance responsibility.
-- Verify a hosted build, including direct loading and refreshing `/servicios/`, image loading, contact links, and mobile behavior.
-- Connect the domain, verify HTTPS and the preferred root/`www` hostname, and preserve any existing email DNS records.
-- Remove review-only `noindex, nofollow` from both production entry points when publication is authorized; keep previews excluded from indexing.
-- Add final-domain canonicals, social sharing metadata, sitemap/robots configuration, and verified structured data as appropriate. These are not implemented yet.
-- Complete final clinic content review and the remaining browser/interaction checks in [PLAN.md](PLAN.md).
-
-Do not treat a successful build as visual, medical-content, SEO, or licensing clearance. Current live hosting settings must be checked in the hosting account at deployment time.
-
-## Documentation
-
-- [PLAN.md](PLAN.md): completed work, validation record, known follow-ups, and launch checklist.
-- [DESIGN.md](DESIGN.md): current visual and motion specification.
-- [PRODUCT.md](PRODUCT.md): scope, clinic details currently displayed, and content commitments.
-- [SEO.md](SEO.md): current metadata and outstanding launch SEO work.
-- [PHASE_1.md](PHASE_1.md): historical discovery inventory; its original assumptions are superseded by the current documents and implementation.
+- [PLAN.md](PLAN.md) covers the maintenance handoff, release smoke checks, and rollback.
+- [PRODUCT.md](PRODUCT.md) records the published scope and displayed clinic details.
+- [DESIGN.md](DESIGN.md) describes the visual system and interactions.
+- [SEO.md](SEO.md) explains indexing, social previews, and Google thumbnails.
+- [PHASE_1.md](PHASE_1.md) and [MIGRATION.md](MIGRATION.md) preserve the discovery and Penpot migration history.

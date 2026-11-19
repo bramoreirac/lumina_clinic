@@ -2,7 +2,7 @@
 
 <!-- impeccable:product-schema 1 -->
 
-Updated: **13 November 2026**.
+Updated: **18 November 2026**.
 
 ## Platform
 
@@ -23,7 +23,7 @@ Introduce the clinic and doctor, explain available treatments, show approved tre
 - Featured treatments, doctor/principles/process sections, results carousel/lightbox, FAQ, Services image carousel and category tree, shared contact/map, and footer.
 - Public content lives in JSX and local JavaScript data modules. Edits require a rebuild/redeployment.
 - No backend, database, accounts, CMS, online payments, appointment availability, intake forms, analytics integration, or multilingual switcher.
-- Final public deployment and `.com` domain connection are pending; no live production URL has been verified in this status update.
+- The project is complete and deployed. The canonical hostname is `www.lumina-clinica.com`.
 
 ## Clinic Details Currently Displayed
 
@@ -33,16 +33,17 @@ These describe the current implementation, not an independent verification of me
 | --- | --- |
 | Clinic | Lúmina Clínica Estética |
 | Doctor | Dra. Steacey Maradiaga |
-| Credentials | “Médico estético / Medicina y cirugía general.” and “Dermatología clínica / UAM & UCEM.” |
-| Location | León, Nicaragua; Reparto Mariana Sanson, del cuerpo de bomberos 9 cuadras al norte |
+| Credentials | “Médico y Cirujano General / Médico Estético / Dermatología Clínica” |
+| Location | León, Nicaragua · Reparto Mariana Sanson |
 | Map pin | `12.433326721191406,-86.84996795654297` |
 | Phone/WhatsApp | +505 5881 1397; `https://wa.me/50558811397` |
-| Contact hours | Monday–Friday 9:00 am–6:00 pm; Saturday 9:00 am–5:00 pm; Sunday by prior coordination |
+| Footer hours | Monday–Friday 9:00 am–6:00 pm; Saturday 9:00 am–5:00 pm; Sunday by appointment |
 | FAQ hours | Same weekday/Saturday hours, with other times by appointment |
 | Instagram | `https://www.instagram.com/clinica_estetica_lumina/` |
+| Other social links | [Facebook](https://www.facebook.com/stacey.maradiagaurbina) and [TikTok](https://www.tiktok.com/@dra.steaceymaradiaga) |
 | Email | `steaceymaradiaga@gmail.com` |
 
-The doctor name/phone/city remain consistent with the earlier discovery. The displayed address, email, Instagram destination, hours, and credential lines supersede the early prototype's missing fields and older copy. `src/App.jsx` currently contains both FAQ and contact hours; update both together if they change.
+Update the FAQ and footer hours together in `src/App.jsx` when the clinic changes its schedule.
 
 ## Brand Commitments
 
@@ -52,7 +53,7 @@ Preserve the Lúmina identity, approved natural photography, and warm, respectfu
 
 - Customer-supplied clinic content, portraits, treatment media, and brand manual; historical source review remains in [PHASE_1.md](PHASE_1.md).
 - Customer confirmed permission to publish the real people shown in photos. Do not extend this statement to every third-party graphic or soundtrack license.
-- Before/after images are implemented on the landing page; their complete original collage layout is preserved.
+- The homepage shows nine before-and-after comparisons with their original collage composition and labels. Two additional localized-fat images are retained for possible future use.
 - Optimized runtime copies live under `src/assets/clinic/`. Original flower artwork and preserved unused SVGs live under tracked `source-assets/` folders.
 - The site uses reconstructed logo assets; an original master can replace them when provided.
 - No verified review collection, outcome statistics, awards, prices, or experience totals have been established by this documentation update.
@@ -65,6 +66,4 @@ Preserve the Lúmina identity, approved natural photography, and warm, respectfu
 - Keep carousels manually explorable and preserve keyboard focus and reduced-motion behavior. Featured and services continuous carousels currently have no persistent pause button; accessibility review remains open.
 - Maintain a small static site without implying a contact request is a confirmed appointment.
 
-## Open Decisions
-
-Confirm final-domain/account ownership and release responsibility, final clinic content review, active third-party artwork licensing, hosted verification, and production indexing metadata. Known interaction follow-ups remain listed in [PLAN.md](PLAN.md). The address, email, and photo-publication permission are no longer blanket pending items.
+See [PLAN.md](PLAN.md) for maintenance and release checks.
