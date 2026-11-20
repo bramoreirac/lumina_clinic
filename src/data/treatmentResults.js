@@ -5,7 +5,6 @@ import alopecia04 from '../assets/clinic/results/before_after_alopecia_04.webp'
 import pigmentation01 from '../assets/clinic/results/before_after_despig_corp_01.webp'
 import pigmentation02 from '../assets/clinic/results/before_after_despig_corp_02.webp'
 import body01 from '../assets/clinic/results/before_after_grasa_local_01.webp'
-import toxin01 from '../assets/clinic/results/before_after_tox_bot_01.webp'
 import toxin02 from '../assets/clinic/results/before_after_tox_bot_02.webp'
 
 // Preserve each supplied comparison's complete composition and original labels.
@@ -24,7 +23,6 @@ export const treatmentResults = [
     { src: pigmentation02, width: 1080, height: 1169, alt: 'Antes y después de despigmentación corporal: comparación de una axila' },
   ] },
   { id: 'tox_bot', name: 'Toxina botulínica', images: [
-    { src: toxin01, width: 1209, height: 1371, alt: 'Antes y después de toxina botulínica: comparación del contorno de los ojos' },
     { src: toxin02, width: 1280, height: 1619, alt: 'Antes y después de toxina botulínica: comparación de la frente' },
   ] },
 ]
